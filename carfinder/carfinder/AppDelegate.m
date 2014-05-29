@@ -8,11 +8,20 @@
 
 #import "AppDelegate.h"
 
+#import "MarkLocationViewController.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // placeholder - replace with an actual view controller when I've written it.
+    MarkLocationViewController * vc = [[MarkLocationViewController alloc] init];
+    
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [[self window] setRootViewController:navController];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
