@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
+		0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */; };
+		0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
+		0B6CFA9F1936D2DC00B77374 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFA9D1936D2DC00B77374 /* InfoPlist.strings */; };
+		0B6CFAA11936D2DC00B77374 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAA01936D2DC00B77374 /* main.m */; };
+		0B6CFAA51936D2DC00B77374 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAA41936D2DC00B77374 /* AppDelegate.m */; };
+		0B6CFAA71936D2DC00B77374 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAA61936D2DC00B77374 /* Images.xcassets */; };
+		0B6CFAAE1936D2DC00B77374 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFAAD1936D2DC00B77374 /* XCTest.framework */; };
+		0B6CFAAF1936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
+		0B6CFAB01936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
+		0B6CFAB81936D2DC00B77374 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAB61936D2DC00B77374 /* InfoPlist.strings */; };
+		0B6CFABA1936D2DC00B77374 /* carfinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAB91936D2DC00B77374 /* carfinderTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0B6CFAB11936D2DC00B77374 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B6CFA891936D2DC00B77374 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B6CFA901936D2DC00B77374;
+			remoteInfo = carfinder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B6CFA911936D2DC00B77374 /* carfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0B6CFA981936D2DC00B77374 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0B6CFA9C1936D2DC00B77374 /* carfinder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "carfinder-Info.plist"; sourceTree = "<group>"; };
+		0B6CFA9E1936D2DC00B77374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0B6CFAA01936D2DC00B77374 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0B6CFAA21936D2DC00B77374 /* carfinder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "carfinder-Prefix.pch"; sourceTree = "<group>"; };
+		0B6CFAA31936D2DC00B77374 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0B6CFAA41936D2DC00B77374 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0B6CFAA61936D2DC00B77374 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0B6CFAAC1936D2DC00B77374 /* carfinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = carfinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B6CFAAD1936D2DC00B77374 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0B6CFAB51936D2DC00B77374 /* carfinderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "carfinderTests-Info.plist"; sourceTree = "<group>"; };
+		0B6CFAB71936D2DC00B77374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0B6CFAB91936D2DC00B77374 /* carfinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carfinderTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B6CFA8E1936D2DC00B77374 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */,
+				0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */,
+				0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B6CFAA91936D2DC00B77374 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6CFAAE1936D2DC00B77374 /* XCTest.framework in Frameworks */,
+				0B6CFAB01936D2DC00B77374 /* UIKit.framework in Frameworks */,
+				0B6CFAAF1936D2DC00B77374 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B6CFA881936D2DC00B77374 = {
+			isa = PBXGroup;
+			children = (
+				0B6CFA9A1936D2DC00B77374 /* carfinder */,
+				0B6CFAB31936D2DC00B77374 /* carfinderTests */,
+				0B6CFA931936D2DC00B77374 /* Frameworks */,
+				0B6CFA921936D2DC00B77374 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0B6CFA921936D2DC00B77374 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B6CFA911936D2DC00B77374 /* carfinder.app */,
+				0B6CFAAC1936D2DC00B77374 /* carfinderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0B6CFA931936D2DC00B77374 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B6CFA941936D2DC00B77374 /* Foundation.framework */,
+				0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */,
+				0B6CFA981936D2DC00B77374 /* UIKit.framework */,
+				0B6CFAAD1936D2DC00B77374 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0B6CFA9A1936D2DC00B77374 /* carfinder */ = {
+			isa = PBXGroup;
+			children = (
+				0B6CFAA31936D2DC00B77374 /* AppDelegate.h */,
+				0B6CFAA41936D2DC00B77374 /* AppDelegate.m */,
+				0B6CFAA61936D2DC00B77374 /* Images.xcassets */,
+				0B6CFA9B1936D2DC00B77374 /* Supporting Files */,
+			);
+			path = carfinder;
+			sourceTree = "<group>";
+		};
+		0B6CFA9B1936D2DC00B77374 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0B6CFA9C1936D2DC00B77374 /* carfinder-Info.plist */,
+				0B6CFA9D1936D2DC00B77374 /* InfoPlist.strings */,
+				0B6CFAA01936D2DC00B77374 /* main.m */,
+				0B6CFAA21936D2DC00B77374 /* carfinder-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0B6CFAB31936D2DC00B77374 /* carfinderTests */ = {
+			isa = PBXGroup;
+			children = (
+				0B6CFAB91936D2DC00B77374 /* carfinderTests.m */,
+				0B6CFAB41936D2DC00B77374 /* Supporting Files */,
+			);
+			path = carfinderTests;
+			sourceTree = "<group>";
+		};
+		0B6CFAB41936D2DC00B77374 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0B6CFAB51936D2DC00B77374 /* carfinderTests-Info.plist */,
+				0B6CFAB61936D2DC00B77374 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B6CFA901936D2DC00B77374 /* carfinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B6CFABD1936D2DC00B77374 /* Build configuration list for PBXNativeTarget "carfinder" */;
+			buildPhases = (
+				0B6CFA8D1936D2DC00B77374 /* Sources */,
+				0B6CFA8E1936D2DC00B77374 /* Frameworks */,
+				0B6CFA8F1936D2DC00B77374 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = carfinder;
+			productName = carfinder;
+			productReference = 0B6CFA911936D2DC00B77374 /* carfinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0B6CFAAB1936D2DC00B77374 /* carfinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B6CFAC01936D2DC00B77374 /* Build configuration list for PBXNativeTarget "carfinderTests" */;
+			buildPhases = (
+				0B6CFAA81936D2DC00B77374 /* Sources */,
+				0B6CFAA91936D2DC00B77374 /* Frameworks */,
+				0B6CFAAA1936D2DC00B77374 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0B6CFAB21936D2DC00B77374 /* PBXTargetDependency */,
+			);
+			name = carfinderTests;
+			productName = carfinderTests;
+			productReference = 0B6CFAAC1936D2DC00B77374 /* carfinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0B6CFA891936D2DC00B77374 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Cory Neale";
+				TargetAttributes = {
+					0B6CFAAB1936D2DC00B77374 = {
+						TestTargetID = 0B6CFA901936D2DC00B77374;
+					};
+				};
+			};
+			buildConfigurationList = 0B6CFA8C1936D2DC00B77374 /* Build configuration list for PBXProject "carfinder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0B6CFA881936D2DC00B77374;
+			productRefGroup = 0B6CFA921936D2DC00B77374 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B6CFA901936D2DC00B77374 /* carfinder */,
+				0B6CFAAB1936D2DC00B77374 /* carfinderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0B6CFA8F1936D2DC00B77374 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6CFA9F1936D2DC00B77374 /* InfoPlist.strings in Resources */,
+				0B6CFAA71936D2DC00B77374 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B6CFAAA1936D2DC00B77374 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6CFAB81936D2DC00B77374 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B6CFA8D1936D2DC00B77374 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6CFAA51936D2DC00B77374 /* AppDelegate.m in Sources */,
+				0B6CFAA11936D2DC00B77374 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B6CFAA81936D2DC00B77374 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6CFABA1936D2DC00B77374 /* carfinderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0B6CFAB21936D2DC00B77374 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B6CFA901936D2DC00B77374 /* carfinder */;
+			targetProxy = 0B6CFAB11936D2DC00B77374 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0B6CFA9D1936D2DC00B77374 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B6CFA9E1936D2DC00B77374 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0B6CFAB61936D2DC00B77374 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B6CFAB71936D2DC00B77374 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0B6CFABB1936D2DC00B77374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0B6CFABC1936D2DC00B77374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B6CFABE1936D2DC00B77374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "carfinder/carfinder-Prefix.pch";
+				INFOPLIST_FILE = "carfinder/carfinder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0B6CFABF1936D2DC00B77374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "carfinder/carfinder-Prefix.pch";
+				INFOPLIST_FILE = "carfinder/carfinder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0B6CFAC11936D2DC00B77374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/carfinder.app/carfinder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "carfinder/carfinder-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "carfinderTests/carfinderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0B6CFAC21936D2DC00B77374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/carfinder.app/carfinder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "carfinder/carfinder-Prefix.pch";
+				INFOPLIST_FILE = "carfinderTests/carfinderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B6CFA8C1936D2DC00B77374 /* Build configuration list for PBXProject "carfinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B6CFABB1936D2DC00B77374 /* Debug */,
+				0B6CFABC1936D2DC00B77374 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B6CFABD1936D2DC00B77374 /* Build configuration list for PBXNativeTarget "carfinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B6CFABE1936D2DC00B77374 /* Debug */,
+				0B6CFABF1936D2DC00B77374 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0B6CFAC01936D2DC00B77374 /* Build configuration list for PBXNativeTarget "carfinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B6CFAC11936D2DC00B77374 /* Debug */,
+				0B6CFAC21936D2DC00B77374 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0B6CFA891936D2DC00B77374 /* Project object */;
+}
