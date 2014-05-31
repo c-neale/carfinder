@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray * locations;
 
 - (IBAction)markLocationButtonPressed:(id)sender;
+- (IBAction)FindButtonPressed:(id)sender;
 
 // table view delegate functions
 // (nothing here...yet)

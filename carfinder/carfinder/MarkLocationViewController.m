@@ -8,6 +8,8 @@
 
 #import "MarkLocationViewController.h"
 
+#import "MapLocationViewController.h"
+
 @interface MarkLocationViewController ()
 {
     
@@ -29,7 +31,7 @@
         locations = [[NSMutableArray alloc] init];
         
         locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
+        [locationManager setDelegate:self];
         
         currentLocation = nil;
     }
@@ -60,7 +62,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    NSLog(@"rows in section: %d", [locations count]);
     return [locations count];
 }
 
@@ -91,9 +92,9 @@
 {
     if(currentLocation != nil)
     {
-        NSLog(@"Location added to table");
         [locations addObject:currentLocation];
         
+        // tell the table view it needs to update its data.
         [locationTableView reloadData];
     }
     else
@@ -101,4 +102,14 @@
         NSLog(@"currentLocation is nil - something is wrong!");
     }
 }
+
+- (IBAction)FindButtonPressed:(id)sender
+{
+    MapLocationViewController * mlvc = [[MapLocationViewController alloc] init];
+
+    [mlvc setLocations:locations];
+    
+    [self.navigationController pushViewController:mlvc animated:YES];
+}
+
 @end
