@@ -18,4 +18,6 @@
 @property (nonatomic, strong) CLLocation * loc;
 @property (nonatomic, strong) NSString * name;
 
+- (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location;
+
 @end

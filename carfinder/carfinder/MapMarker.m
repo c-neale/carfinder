@@ -10,8 +10,22 @@
 
 @implementation MapMarker
 
+#pragma mark - Properties
+
 @synthesize loc;
 @synthesize name;
+
+- (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location
+{
+    self = [super init];
+    if(self)
+    {
+        name = nm;
+        loc = location;
+    }
+    
+    return self;
+}
 
 - (NSString *)description
 {

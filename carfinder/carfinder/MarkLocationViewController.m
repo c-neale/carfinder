@@ -147,10 +147,8 @@
 {
     if(currentLocation != nil)
     {
-        // TODO: add an init with name and locations function to mapmarker
-        MapMarker * newMarker = [[MapMarker alloc] init];
-        [newMarker setName:[NSString stringWithFormat:@"Location %d", [locations count]]];
-        [newMarker setLoc:currentLocation];
+        MapMarker * newMarker = [[MapMarker alloc] initWithName:[NSString stringWithFormat:@"Location %d", [locations count]]
+                                                    andLocation:currentLocation];
         
         [locations addObject:newMarker];
         
