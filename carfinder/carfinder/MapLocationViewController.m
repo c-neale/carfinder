@@ -19,7 +19,11 @@
 
 @implementation MapLocationViewController
 
+#pragma mark - Properties
+
 @synthesize locations;
+
+#pragma mark - Init/lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,37 +33,6 @@
 
     }
     return self;
-}
-
-- (void) addAnnotations:(NSArray *)locs
-{
-    [self removeAnnotations];
-    
-    NSMutableArray * annots = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [locs count]; ++i)
-    {
-        MapMarker * mm = [[MapMarker alloc] init];
-     
-        [mm setName:[NSString stringWithFormat:@"Location %d", i]];
-        [mm setLoc:[locs objectAtIndex:i]];
-        
-        [annots addObject:mm];
-    }
-    
-    [mapView addAnnotations:annots];
-}
-
-// maybe move this to a category class?
-- (void)removeAnnotations
-{
-    id userLocation = [mapView userLocation];
-    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[mapView annotations]];
-    if ( userLocation != nil ) {
-        [pins removeObject:userLocation]; // avoid removing user location off the map
-    }
-    
-    [mapView removeAnnotations:pins];
-    pins = nil;
 }
 
 - (void)viewDidLoad
@@ -75,7 +48,7 @@
     
     [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
 
-    [self addAnnotations:locations];
+    [self addAnnotations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,6 +56,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark helper functions
+
+- (void) addAnnotations
+{
+    [self removeAnnotations];
+    if (locations != nil)
+    {
+        [mapView addAnnotations:locations];
+    }
+}
+
+// maybe move this to a category class?
+- (void)removeAnnotations
+{
+    id userLocation = [mapView userLocation];
+    NSMutableArray *pins = [[NSMutableArray alloc] initWithArray:[mapView annotations]];
+    if ( userLocation != nil ) {
+        [pins removeObject:userLocation]; // avoid removing user location off the map
+    }
+    
+    [mapView removeAnnotations:pins];
+    pins = nil;
+}
+
+#pragma mark - IBActions
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender
 {
@@ -100,7 +99,9 @@
     }
 }
 
--(void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
+#pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
 }

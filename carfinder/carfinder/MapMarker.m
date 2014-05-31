@@ -13,6 +13,11 @@
 @synthesize loc;
 @synthesize name;
 
+- (NSString *)description
+{
+    return name;
+}
+
 #pragma mark - MKAnnotation
 // this will plot the marker to a correct place on map
 - (CLLocationCoordinate2D)coordinate

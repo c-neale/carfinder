@@ -14,24 +14,13 @@
 {
     CLLocation * currentLocation;
     __weak IBOutlet UITableView *locationTableView;
+    __weak IBOutlet UILabel *distanceLabel;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
-
 @property (nonatomic, strong) NSMutableArray * locations;
 
 - (IBAction)markLocationButtonPressed:(id)sender;
 - (IBAction)FindButtonPressed:(id)sender;
-
-// table view delegate functions
-// (nothing here...yet)
-
-// table view data source functions
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-
-// location manager delegate functions
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 
 @end

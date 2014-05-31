@@ -19,7 +19,7 @@
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender;
 
-- (void)addAnnotations:(NSArray *)locs;
+- (void)addAnnotations;
 - (void)removeAnnotations;
 
 @end
