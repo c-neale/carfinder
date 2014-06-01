@@ -14,6 +14,7 @@
 
 @synthesize loc;
 @synthesize name;
+@synthesize address;
 
 - (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location
 {
@@ -22,6 +23,7 @@
     {
         name = nm;
         loc = location;
+        address = @"";
     }
     
     return self;

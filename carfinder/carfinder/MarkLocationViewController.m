@@ -8,7 +8,11 @@
 
 #import "MarkLocationViewController.h"
 
+#import <AddressBookUI/ABAddressFormatting.h>
+
 #import "MapLocationViewController.h"
+#import "LocationDetailsViewController.h"
+
 #import "MapMarker.h"
 
 @interface MarkLocationViewController ()
@@ -34,7 +38,6 @@
         locations = [[NSMutableArray alloc] init];
         
         locationManager = [[CLLocationManager alloc] init];
-        [locationManager setDelegate:self];
         
         currentLocation = nil;
     }
@@ -49,7 +52,11 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
     [locationManager startUpdatingLocation];
+    
+    [locationTableView reloadData];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -141,8 +148,14 @@
 
 - (IBAction)editLocations:(id)sender
 {
-    // TODO: this should be controlled some other way. probably a button.
-    [locationTableView setEditing:YES animated:YES];
+    BOOL enterEditMode = YES;
+    
+    if([locationTableView isEditing])
+    {
+        enterEditMode = NO;
+    }
+     
+    [locationTableView setEditing:enterEditMode animated:YES];
 }
 
 - (IBAction)markLocationButtonPressed:(id)sender
@@ -151,6 +164,23 @@
     {
         MapMarker * newMarker = [[MapMarker alloc] initWithName:[NSString stringWithFormat:@"Location %lu", (unsigned long)[locations count]]
                                                     andLocation:currentLocation];
+        
+        // geocode to get a friendly address
+        CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation:currentLocation
+                       completionHandler:^(NSArray * placemarks, NSError * error) {
+                           if(error != nil)
+                           {
+                               // TODO: handle the error a bit better.
+                               NSLog(@"Error occurred while attemting to reverse geocode the address");
+                           }
+                           else
+                           {
+                               // TODO: handle multiples somehow?
+                               CLPlacemark * placemark = [placemarks lastObject];
+                               newMarker.address = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+                           }
+                       }];
         
         [locations addObject:newMarker];
         
@@ -194,11 +224,15 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
 
 #pragma mark - UITableViewDelegate
 
-/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] init];
+    
+    [ldvc setCurrentIndex:indexPath.row];
+    [ldvc setLocations:locations];
+    
+    [self.navigationController pushViewController:ldvc animated:YES];
 }
-*/
 
 #pragma mark - CLLocationManagerDelegate
 
