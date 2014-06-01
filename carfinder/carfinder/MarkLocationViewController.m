@@ -19,10 +19,6 @@
 
 @implementation MarkLocationViewController
 
-#pragma mark - macros
-
-//#define DEGREES_TO_RADIANS(x) x //* M_PI / 180.0f;
-
 #pragma mark - Properties
 
 @synthesize locationManager;
@@ -143,11 +139,17 @@
     [self.navigationController pushViewController:mlvc animated:YES];
 }
 
+- (IBAction)editLocations:(id)sender
+{
+    // TODO: this should be controlled some other way. probably a button.
+    [locationTableView setEditing:YES animated:YES];
+}
+
 - (IBAction)markLocationButtonPressed:(id)sender
 {
     if(currentLocation != nil)
     {
-        MapMarker * newMarker = [[MapMarker alloc] initWithName:[NSString stringWithFormat:@"Location %d", [locations count]]
+        MapMarker * newMarker = [[MapMarker alloc] initWithName:[NSString stringWithFormat:@"Location %lu", (unsigned long)[locations count]]
                                                     andLocation:currentLocation];
         
         [locations addObject:newMarker];
@@ -179,13 +181,24 @@
     return cell;
 }
 
+- (void)
+tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // remove the data from the array
+    [locations removeObjectAtIndex:indexPath.row];
+    
+    // remove the row from the table
+    NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
+    [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 #pragma mark - UITableViewDelegate
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: this should be controlled some other way. probably a button.
-    [tableView setEditing:YES animated:YES];
 }
+*/
 
 #pragma mark - CLLocationManagerDelegate
 

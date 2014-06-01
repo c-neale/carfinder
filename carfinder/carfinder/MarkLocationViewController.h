@@ -22,5 +22,6 @@
 
 - (IBAction)markLocationButtonPressed:(id)sender;
 - (IBAction)FindButtonPressed:(id)sender;
+- (IBAction)editLocations:(id)sender;
 
 @end
