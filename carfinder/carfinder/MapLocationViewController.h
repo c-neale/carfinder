@@ -22,4 +22,6 @@
 - (void)addAnnotations;
 - (void)removeAnnotations;
 
+- (void) showDirections;
+
 @end

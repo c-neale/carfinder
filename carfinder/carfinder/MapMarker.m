@@ -8,13 +8,25 @@
 
 #import "MapMarker.h"
 
+#import <AddressBookUI/ABAddressFormatting.h>
+
+@interface MapMarker ()
+{
+    
+}
+
+- (void) requestPlacemarkFromLocation:(CLLocation *)loc;
+
+@end
+
 @implementation MapMarker
 
 #pragma mark - Properties
 
-@synthesize loc;
 @synthesize name;
-@synthesize address;
+@synthesize placemark;
+
+#pragma mark - Init and lifecycle
 
 - (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location
 {
@@ -22,8 +34,8 @@
     if(self)
     {
         name = nm;
-        loc = location;
-        address = @"";
+        placemark = nil;
+        [self requestPlacemarkFromLocation:location];
     }
     
     return self;
@@ -34,11 +46,51 @@
     return name;
 }
 
+#pragma mark - internal methods
+
+- (void) requestPlacemarkFromLocation:(CLLocation *)loc
+{
+    // geocode to get a friendly address and create directions
+    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:loc
+                   completionHandler:^(NSArray * placemarks, NSError * error) {
+                       if(error != nil)
+                       {
+                           // TODO: handle the error a bit better.
+                           NSLog(@"Error occurred while attemting to reverse geocode the address");
+                       }
+                       else
+                       {
+                           // TODO: handle multiples somehow?
+                           placemark = [placemarks lastObject];
+                       }
+                   }];
+
+}
+
+#pragma mark - class methods
+
+// helper method to make it easier to get the location from the placemark.
+- (CLLocation *) location
+{
+    return placemark.location;
+}
+
+- (NSString *) address
+{
+    if(placemark != nil)
+    {
+        return ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+    }
+    
+    return @"";
+}
+
 #pragma mark - MKAnnotation
 // this will plot the marker to a correct place on map
 - (CLLocationCoordinate2D)coordinate
 {
-    return loc.coordinate;
+    return placemark.location.coordinate;
 }
 
 // this will be shown as marker title

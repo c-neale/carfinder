@@ -8,8 +8,6 @@
 
 #import "LocationDetailsViewController.h"
 
-#import "MapMarker.h"
-
 @interface LocationDetailsViewController ()
 
 @end
@@ -38,22 +36,7 @@
     // Do any additional setup after loading the view from its nib.
     
     MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
-    
-    [nameInput setText:currentLocation.name];
-    
-    NSString * latString = [[NSNumber numberWithDouble:currentLocation.loc.coordinate.latitude] stringValue];
-    NSString * lonString = [[NSNumber numberWithDouble:currentLocation.loc.coordinate.longitude] stringValue];
-    
-    [latitudeLabel setText: latString];
-    [longitudeLabel setText: lonString];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"hh:mm a dd-MM-yyyy"];
-    NSString * timestampString = [formatter stringFromDate:currentLocation.loc.timestamp];
-    
-    [timeStampLabel setText: timestampString];
-    
-    addressLabel.text = currentLocation.address;
+    [self setupUIFields:currentLocation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -67,6 +50,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Class methods
+
+- (void) setupUIFields:(MapMarker *)marker
+{
+    [nameInput setText:marker.name];
+    
+    CLLocation * location = [marker location];
+    
+    NSString * latString = [[NSNumber numberWithDouble:location.coordinate.latitude] stringValue];
+    NSString * lonString = [[NSNumber numberWithDouble:location.coordinate.longitude] stringValue];
+    
+    [latitudeLabel setText: latString];
+    [longitudeLabel setText: lonString];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh:mm a dd-MM-yyyy"];
+    NSString * timestampString = [formatter stringFromDate:location.timestamp];
+    
+    [timeStampLabel setText: timestampString];
+    
+    addressTextview.text = [marker address];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)nameValueChanged:(id)sender
@@ -74,5 +80,39 @@
     MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
     [currentLocation setName: [nameInput text]];
 }
+
+- (IBAction)refineButtonPressed:(id)sender
+{
+    [addressTextview resignFirstResponder];
+    
+    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:addressTextview.text
+                 completionHandler:^(NSArray *placemarks, NSError *error) {
+                    
+                     if(error != nil)
+                     {
+                         //TODO: handle error better
+                         NSLog(@"Error occurred looking up address");
+                     }
+                     else
+                     {
+                         // TODO: need to handle multiple results somehow...
+                         CLPlacemark *placemark = [placemarks lastObject];
+                         
+                         MapMarker * curMarker = [locations objectAtIndex:currentIndex];
+                         [curMarker setPlacemark:placemark];
+                         
+                         // refresh the ui info
+                         [self setupUIFields:curMarker];
+                     }
+                     
+                }];
+}
+
+#pragma mark - UITextviewDelegate
+/*
+- (void)textViewDidBeginEditing:(UITextView *)textView;
+- (void)textViewDidEndEditing:(UITextView *)textView;
+*/
 
 @end

@@ -15,10 +15,12 @@
     
 }
 
-@property (nonatomic, strong) CLLocation * loc;
 @property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) CLPlacemark * placemark;
 
 - (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location;
+
+- (CLLocation *) location;
+- (NSString *) address;
 
 @end

@@ -8,8 +8,6 @@
 
 #import "MarkLocationViewController.h"
 
-#import <AddressBookUI/ABAddressFormatting.h>
-
 #import "MapLocationViewController.h"
 #import "LocationDetailsViewController.h"
 
@@ -107,8 +105,8 @@
         for (int i = 1; i < [locations count]; ++i)
         {
             MapMarker * marker = [locations objectAtIndex:i];
-            CLLocationCoordinate2D first = curElement.loc.coordinate;
-            CLLocationCoordinate2D second = marker.loc.coordinate;
+            CLLocationCoordinate2D first = curElement.location.coordinate;
+            CLLocationCoordinate2D second = marker.location.coordinate;
             
             totalDist += [self distanceBetweenCoords:first and:second];
             
@@ -117,10 +115,10 @@
         
         // and finally add the distance between the last element and the current user position
         
-        int lastIndex = [locations count] - 1;
+        int lastIndex = (int)[locations count] - 1;
         MapMarker * lastElement = [locations objectAtIndex:lastIndex];
         CLLocationCoordinate2D first = currentLocation.coordinate;
-        CLLocationCoordinate2D second = lastElement.loc.coordinate;
+        CLLocationCoordinate2D second = lastElement.location.coordinate;
         
         totalDist += [self distanceBetweenCoords:first and:second];
     }
@@ -162,25 +160,10 @@
 {
     if(currentLocation != nil)
     {
-        MapMarker * newMarker = [[MapMarker alloc] initWithName:[NSString stringWithFormat:@"Location %lu", (unsigned long)[locations count]]
-                                                    andLocation:currentLocation];
+        NSString * defaultName = [NSString stringWithFormat:@"Location %lu", (unsigned long)[locations count]];
         
-        // geocode to get a friendly address
-        CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-        [geocoder reverseGeocodeLocation:currentLocation
-                       completionHandler:^(NSArray * placemarks, NSError * error) {
-                           if(error != nil)
-                           {
-                               // TODO: handle the error a bit better.
-                               NSLog(@"Error occurred while attemting to reverse geocode the address");
-                           }
-                           else
-                           {
-                               // TODO: handle multiples somehow?
-                               CLPlacemark * placemark = [placemarks lastObject];
-                               newMarker.address = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
-                           }
-                       }];
+        MapMarker * newMarker = [[MapMarker alloc] initWithName:defaultName
+                                                    andLocation:currentLocation];
         
         [locations addObject:newMarker];
         
@@ -189,6 +172,7 @@
     }
     else
     {
+        // TODO: handle the error better
         NSLog(@"currentLocation is nil - something is wrong!");
     }
 }
