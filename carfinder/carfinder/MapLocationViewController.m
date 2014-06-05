@@ -40,7 +40,6 @@
     [super viewDidLoad];
     
     mapView.showsUserLocation = YES;
-    mapView.delegate = self;
     
     MKUserLocation *userLocation = mapView.userLocation;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 50, 50);

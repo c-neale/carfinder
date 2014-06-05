@@ -17,6 +17,9 @@
 {
     
 }
+
+- (float) findTotalDistance;
+
 @end
 
 @implementation MarkLocationViewController
@@ -31,10 +34,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [locationTableView setAllowsSelection:YES];
         
         locations = [[NSMutableArray alloc] init];
-        
         locationManager = [[CLLocationManager alloc] init];
         
         currentLocation = nil;
@@ -70,30 +71,6 @@
 
 #pragma mark - helper functions
 
-- (float)distanceBetweenCoords:(CLLocationCoordinate2D)loc1 and:(CLLocationCoordinate2D)loc2
-{
-    // see http://www.movable-type.co.uk/scripts/latlong.html for explanation of this maths
-    
-    const float R = 6371.0f;  // the radius of the earth.
-/*
-    float lat1 = DEGREES_TO_RADIANS(loc1.latitude);
-    float lat2 = DEGREES_TO_RADIANS(loc2.latitude);
-    
-    float diffLat = DEGREES_TO_RADIANS(loc2.latitude - loc1.latitude);
-    float diffLon = DEGREES_TO_RADIANS(loc2.longitude - loc1.longitude);
-*/
-    float lat1 = loc1.latitude;
-    float lat2 = loc2.latitude;
-    
-    float diffLat = loc2.latitude - loc1.latitude;
-    float diffLon = loc2.longitude - loc1.longitude;
-    
-    float a = powf(sinf(diffLat * 0.5f), 2.0f) + cosf(lat1) * cosf(lat2) * powf(sinf(diffLon * 0.5f), 2.0f);
-    
-    float c = 2.0f * atan2f(sqrtf(a), sqrtf(1-a));
-    return R * c;
-}
-
 - (float) findTotalDistance
 {
     float totalDist = 0.0f;
@@ -105,10 +82,11 @@
         for (int i = 1; i < [locations count]; ++i)
         {
             MapMarker * marker = [locations objectAtIndex:i];
-            CLLocationCoordinate2D first = curElement.location.coordinate;
-            CLLocationCoordinate2D second = marker.location.coordinate;
             
-            totalDist += [self distanceBetweenCoords:first and:second];
+            CLLocation * first = curElement.location;
+            CLLocation * second = marker.location;
+            
+            totalDist += [first distanceFromLocation:second];
             
             curElement = marker;
         }
@@ -117,10 +95,8 @@
         
         int lastIndex = (int)[locations count] - 1;
         MapMarker * lastElement = [locations objectAtIndex:lastIndex];
-        CLLocationCoordinate2D first = currentLocation.coordinate;
-        CLLocationCoordinate2D second = lastElement.location.coordinate;
-        
-        totalDist += [self distanceBetweenCoords:first and:second];
+
+        totalDist += [currentLocation distanceFromLocation:lastElement.location];
     }
     
     return totalDist;
@@ -187,7 +163,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LocationCell"];
-    
     CLLocation * locationAtIndex = (CLLocation *)[locations objectAtIndex:indexPath.row];
     
     cell.textLabel.text = locationAtIndex.description;
@@ -204,6 +179,14 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     // remove the row from the table
     NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
     [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;
+{
+    MapMarker * sourceItem = [locations objectAtIndex:source.row];
+    
+    [locations removeObject:sourceItem];
+    [locations insertObject:sourceItem atIndex:dest.row];
 }
 
 #pragma mark - UITableViewDelegate
@@ -231,6 +214,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
+    // TODO: handle the error better.
     NSLog(@"Location manager failed with error: %@", error.localizedDescription);
 }
 
