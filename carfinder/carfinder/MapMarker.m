@@ -26,6 +26,9 @@
 @synthesize name;
 @synthesize placemark;
 
+@synthesize route;
+@synthesize routeCalcRequired;
+
 #pragma mark - Init and lifecycle
 
 - (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location
@@ -36,6 +39,10 @@
         name = nm;
         placemark = nil;
         [self requestPlacemarkFromLocation:location];
+        
+        // TODO: idea - maybe we can calculate routes in advance when the marker is created?
+        route = nil;
+        routeCalcRequired = YES;
     }
     
     return self;

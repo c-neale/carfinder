@@ -18,6 +18,10 @@
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) CLPlacemark * placemark;
 
+// this is the route to get to THIS destination
+@property (nonatomic, strong) MKRoute * route;
+@property (nonatomic) BOOL routeCalcRequired;
+
 - (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location;
 
 - (CLLocation *) location;
