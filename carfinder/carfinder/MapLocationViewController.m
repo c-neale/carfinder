@@ -180,6 +180,19 @@
     
     MapMarker * marker = [locations lastObject];
 
+    float distToMarker = [userLocation.location distanceFromLocation:marker.location];
+    
+    // TODO: make this threshold configurable.
+    if(distToMarker < 10.0f)
+    {
+        // get rid of the last object in the list.
+        [locations removeLastObject];
+        
+        // set the marker to be the new last marker in the list.
+        marker = [locations lastObject];
+    }
+    
+    // now update the path from the current location to the last marker in the list...
     [marker setRouteCalcRequired:YES];
     [self calculateRouteFrom:nil to:marker];
 }

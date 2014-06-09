@@ -15,7 +15,7 @@
     __weak IBOutlet MKMapView *mapView;
 }
 
-@property (nonatomic, strong) NSArray * locations;
+@property (nonatomic, strong) NSMutableArray * locations;
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender;
 
