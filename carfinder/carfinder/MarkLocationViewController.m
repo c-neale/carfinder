@@ -18,7 +18,7 @@
     UIBarButtonItem * editButton;
 }
 
-- (void) editLocations;
+- (void) toggleEditMode;
 - (void) updateEditButtonVisiblity;
 
 @end
@@ -44,7 +44,7 @@
         editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
-                                                     action:@selector(editLocations)];
+                                                     action:@selector(toggleEditMode)];
     }
     return self;
 }
@@ -79,7 +79,7 @@
 
 #pragma mark - Class methods
 
-- (void)editLocations
+- (void)toggleEditMode
 {
     BOOL enterEditMode = YES;
     
@@ -121,18 +121,30 @@
 {
     if(currentLocation != nil)
     {
-        NSString * defaultName = [NSString stringWithFormat:@"Location %lu", (unsigned long)[locations count]];
+        CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation:currentLocation
+                       completionHandler:^(NSArray * placemarks, NSError * error) {
+                           if(error != nil)
+                           {
+                               // TODO: handle the error a bit better.
+                               NSLog(@"Error occurred while attemting to reverse geocode the address");
+                           }
+                           else
+                           {
+                               // TODO: handle multiple results somehow?
+                               MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
+                               
+                               [locations addObject:newMarker];
+                               
+                               // tell the table view it needs to update its data.
+                               [locationTableView reloadData];
+                               
+                               [self updateEditButtonVisiblity];
+
+                           }
+                       }];
         
-        MapMarker * newMarker = [[MapMarker alloc] initWithName:defaultName
-                                                    andLocation:currentLocation];
-        
-        [locations addObject:newMarker];
-        
-        // tell the table view it needs to update its data.
-        [locationTableView reloadData];
-        
-        [self updateEditButtonVisiblity];
-    }
+            }
     else
     {
         // TODO: handle the error better
@@ -167,7 +179,19 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
     [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    [self updateEditButtonVisiblity];
+    if([locations count] == 0)
+    {
+        [self toggleEditMode];
+        [self updateEditButtonVisiblity];
+    }
+    
+    //TODO: work out which routes need re-calculating.
+    // for now, just recalculate all of them.
+    for(int i = 0; i < [locations count]; ++i)
+    {
+        MapMarker * marker = [locations objectAtIndex:i];
+        [marker setRouteCalcRequired:YES];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;

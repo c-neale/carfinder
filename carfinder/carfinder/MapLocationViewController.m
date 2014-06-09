@@ -48,15 +48,19 @@ const float distanceThreshold = 10.0f;
     [super viewDidLoad];
     
     mapView.showsUserLocation = YES;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     MKUserLocation *userLocation = mapView.userLocation;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 50, 50);
     [mapView setRegion:region animated:NO];
-    
-    [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
 
-    [self addAnnotations];
+    [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
     
+    [self addAnnotations];
     [self showDirections];
 }
 
@@ -178,15 +182,17 @@ const float distanceThreshold = 10.0f;
 
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
+//    [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
     
     MapMarker * marker = [locations lastObject];
-
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
     
     // TODO: make this threshold configurable.
     if(distToMarker < distanceThreshold)
     {
+        // remove the pin from the map.
+        [mapView removeAnnotation:[locations lastObject]];
+        
         // get rid of the last object in the list.
         [locations removeLastObject];
         

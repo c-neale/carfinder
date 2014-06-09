@@ -15,7 +15,7 @@
     
 }
 
-- (void) requestPlacemarkFromLocation:(CLLocation *)loc;
+- (NSString *) defaultName;
 
 @end
 
@@ -31,14 +31,14 @@
 
 #pragma mark - Init and lifecycle
 
-- (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location
+- (id) initWithPlacemark:(CLPlacemark *)pMark
 {
     self = [super init];
     if(self)
     {
-        name = nm;
-        placemark = nil;
-        [self requestPlacemarkFromLocation:location];
+        placemark = pMark;
+
+        name = [self defaultName];
         
         // TODO: idea - maybe we can calculate routes in advance when the marker is created?
         route = nil;
@@ -55,24 +55,12 @@
 
 #pragma mark - internal methods
 
-- (void) requestPlacemarkFromLocation:(CLLocation *)loc
+- (NSString *) defaultName
 {
-    // geocode to get a friendly address and create directions
-    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation:loc
-                   completionHandler:^(NSArray * placemarks, NSError * error) {
-                       if(error != nil)
-                       {
-                           // TODO: handle the error a bit better.
-                           NSLog(@"Error occurred while attemting to reverse geocode the address");
-                       }
-                       else
-                       {
-                           // TODO: handle multiples somehow?
-                           placemark = [placemarks lastObject];
-                       }
-                   }];
-
+    NSString * addr = [self address];
+    NSRange rng = [addr rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
+    
+    return [addr substringToIndex:rng.location];
 }
 
 #pragma mark - class methods

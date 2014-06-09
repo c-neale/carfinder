@@ -22,7 +22,7 @@
 @property (nonatomic, strong) MKRoute * route;
 @property (nonatomic) BOOL routeCalcRequired;
 
-- (id) initWithName:(NSString *)nm andLocation:(CLLocation *)location;
+- (id) initWithPlacemark:(CLPlacemark *)pMark;
 
 - (CLLocation *) location;
 - (NSString *) address;
