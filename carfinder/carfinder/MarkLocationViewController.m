@@ -18,8 +18,6 @@
     
 }
 
-- (float) findTotalDistance;
-
 @end
 
 @implementation MarkLocationViewController
@@ -67,46 +65,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - helper functions
-
-- (float) findTotalDistance
-{
-    float totalDist = 0.0f;
-    
-    if([locations count] > 0)
-    {
-        // calc the cumulative distance between all the array elements
-        MapMarker * curElement = [locations objectAtIndex:0];
-        for (int i = 1; i < [locations count]; ++i)
-        {
-            MapMarker * marker = [locations objectAtIndex:i];
-            
-            CLLocation * first = curElement.location;
-            CLLocation * second = marker.location;
-            
-            totalDist += [first distanceFromLocation:second];
-            
-            curElement = marker;
-        }
-        
-        // and finally add the distance between the last element and the current user position
-        
-        int lastIndex = (int)[locations count] - 1;
-        MapMarker * lastElement = [locations objectAtIndex:lastIndex];
-
-        totalDist += [currentLocation distanceFromLocation:lastElement.location];
-    }
-    
-    return totalDist;
-}
-
-- (void) setDistanceText
-{
-    float distance = [self findTotalDistance];
-    NSString * distText = [NSString stringWithFormat:@"Total Distance: %0.2fm", distance];
-    distanceLabel.text = distText;
 }
 
 #pragma mark - IBActions

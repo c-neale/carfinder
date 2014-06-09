@@ -14,7 +14,6 @@
 {
     CLLocation * currentLocation;
     __weak IBOutlet UITableView *locationTableView;
-    __weak IBOutlet UILabel *distanceLabel;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
