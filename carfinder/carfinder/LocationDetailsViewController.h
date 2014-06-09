@@ -25,6 +25,5 @@
 - (void) setupUIFields:(MapMarker *)marker;
 
 - (IBAction)nameValueChanged:(id)sender;
-- (IBAction)refineButtonPressed:(id)sender;
 
 @end

@@ -31,6 +31,7 @@
 		0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFADA193B300A00B77374 /* AddressBook.framework */; };
 		0B7B8FB019443AF500FE3716 /* VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B8FAF19443AF500FE3716 /* VersionCheck.m */; };
 		0B7B8FB31944628200FE3716 /* VersionComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B8FB21944628200FE3716 /* VersionComparer.m */; };
+		0B7B8FB519455C3D00FE3716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		0B7B8FAF19443AF500FE3716 /* VersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheck.m; sourceTree = "<group>"; };
 		0B7B8FB11944628200FE3716 /* VersionComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionComparer.h; sourceTree = "<group>"; };
 		0B7B8FB21944628200FE3716 /* VersionComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionComparer.m; sourceTree = "<group>"; };
+		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7B8FB519455C3D00FE3716 /* QuartzCore.framework in Frameworks */,
 				0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */,
 				0B6CFAD419398F2300B77374 /* CoreLocation.framework in Frameworks */,
 				0B6CFACF1936FB8A00B77374 /* MapKit.framework in Frameworks */,
@@ -129,6 +132,7 @@
 		0B6CFA931936D2DC00B77374 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */,
 				0B6CFADA193B300A00B77374 /* AddressBook.framework */,
 				0B6CFAD319398F2300B77374 /* CoreLocation.framework */,
 				0B6CFACE1936FB8A00B77374 /* MapKit.framework */,
@@ -425,6 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "carfinder/carfinder-Prefix.pch";
 				INFOPLIST_FILE = "carfinder/carfinder-Info.plist";
@@ -438,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "carfinder/carfinder-Prefix.pch";
 				INFOPLIST_FILE = "carfinder/carfinder-Info.plist";

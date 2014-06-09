@@ -8,7 +8,13 @@
 
 #import "LocationDetailsViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface LocationDetailsViewController ()
+{
+    UIBarButtonItem * cancelEditButton;
+    UIBarButtonItem * commitEditButton;
+}
 
 @end
 
@@ -25,7 +31,16 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
+        cancelEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:self
+                                                           action:@selector(cancelAddressChange)];
+        
+        commitEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Refine"
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:self
+                                                           action:@selector(commitAddressChange)];
     }
     return self;
 }
@@ -34,6 +49,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // add a border to the textview
+    addressTextview.layer.borderWidth = 1.0f;
+    addressTextview.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    addressTextview.layer.cornerRadius = 8.0f;
     
     MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
     [self setupUIFields:currentLocation];
@@ -73,22 +93,37 @@
     addressTextview.text = [marker address];
 }
 
-#pragma mark - IBActions
-
-- (IBAction)nameValueChanged:(id)sender
+- (void) updateAddressEditButtons:(BOOL) setVisible
 {
-    MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
-    [currentLocation setName: [nameInput text]];
+    if(setVisible)
+    {
+        [[self navigationItem] setLeftBarButtonItem:cancelEditButton animated:YES];
+        [[self navigationItem] setRightBarButtonItem:commitEditButton animated:YES];
+    }
+    else
+    {
+        [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
+        [[self navigationItem] setRightBarButtonItem:nil animated:YES];
+    }
 }
 
-- (IBAction)refineButtonPressed:(id)sender
+- (void) cancelAddressChange
+{
+    // stop editting/make keyboard disappear.
+    [addressTextview resignFirstResponder];
+    
+    // refresh the data back to original
+    [self setupUIFields:[locations objectAtIndex:currentIndex]];
+}
+
+- (void) commitAddressChange
 {
     [addressTextview resignFirstResponder];
     
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:addressTextview.text
                  completionHandler:^(NSArray *placemarks, NSError *error) {
-                    
+                     
                      if(error != nil)
                      {
                          //TODO: handle error better
@@ -106,13 +141,28 @@
                          [self setupUIFields:curMarker];
                      }
                      
-                }];
+                 }];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)nameValueChanged:(id)sender
+{
+    MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
+    [currentLocation setName: [nameInput text]];
 }
 
 #pragma mark - UITextviewDelegate
-/*
-- (void)textViewDidBeginEditing:(UITextView *)textView;
-- (void)textViewDidEndEditing:(UITextView *)textView;
-*/
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self updateAddressEditButtons:YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self updateAddressEditButtons:NO];
+}
+
 
 @end

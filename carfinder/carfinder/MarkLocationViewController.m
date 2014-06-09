@@ -15,8 +15,11 @@
 
 @interface MarkLocationViewController ()
 {
-    
+    UIBarButtonItem * editButton;
 }
+
+- (void) editLocations;
+- (void) updateEditButtonVisiblity;
 
 @end
 
@@ -37,6 +40,11 @@
         locationManager = [[CLLocationManager alloc] init];
         
         currentLocation = nil;
+        
+        editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                                      style:UIBarButtonItemStylePlain
+                                                     target:self
+                                                     action:@selector(editLocations)];
     }
     return self;
 }
@@ -54,6 +62,8 @@
     [locationManager startUpdatingLocation];
     
     [locationTableView reloadData];
+    
+    [self updateEditButtonVisiblity];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -67,6 +77,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Class methods
+
+- (void)editLocations
+{
+    BOOL enterEditMode = YES;
+    
+    [editButton setTitle:@"Stop Editting"];
+    
+    if([locationTableView isEditing])
+    {
+        enterEditMode = NO;
+        [editButton setTitle:@"Edit"];
+    }
+    
+    [locationTableView setEditing:enterEditMode animated:YES];
+}
+
+- (void) updateEditButtonVisiblity
+{
+    if([locations count] > 0)
+    {
+        [[self navigationItem] setRightBarButtonItem:editButton animated:YES];
+    }
+    else
+    {
+        [[self navigationItem] setRightBarButtonItem:nil animated:YES];
+    }
+}
+
 #pragma mark - IBActions
 
 - (IBAction)FindButtonPressed:(id)sender
@@ -76,18 +115,6 @@
     [mlvc setLocations:locations];
     
     [self.navigationController pushViewController:mlvc animated:YES];
-}
-
-- (IBAction)editLocations:(id)sender
-{
-    BOOL enterEditMode = YES;
-    
-    if([locationTableView isEditing])
-    {
-        enterEditMode = NO;
-    }
-     
-    [locationTableView setEditing:enterEditMode animated:YES];
 }
 
 - (IBAction)markLocationButtonPressed:(id)sender
@@ -103,6 +130,8 @@
         
         // tell the table view it needs to update its data.
         [locationTableView reloadData];
+        
+        [self updateEditButtonVisiblity];
     }
     else
     {
@@ -137,6 +166,8 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     // remove the row from the table
     NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
     [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self updateEditButtonVisiblity];
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;
@@ -165,9 +196,6 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
 {
     // just silently store the location so we know where they are when the button is pressed.
     currentLocation = newLocation;
-    
-    // update the distance label. // TODO: needs to be called in a few more places.
-    [self setDistanceText];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

@@ -10,11 +10,9 @@
 
 #import "MapMarker.h"
 
-// for debugging...
-#import <AddressBookUI/ABAddressFormatting.h>
-
 @interface MapLocationViewController ()
 {
+    // debug, can be removed at somepoint before release
     BOOL colSwitch;
 }
 
@@ -24,6 +22,10 @@
 @end
 
 @implementation MapLocationViewController
+
+#pragma mark - constants
+
+const float distanceThreshold = 10.0f;
 
 #pragma mark - Properties
 
@@ -183,7 +185,7 @@
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
     
     // TODO: make this threshold configurable.
-    if(distToMarker < 10.0f)
+    if(distToMarker < distanceThreshold)
     {
         // get rid of the last object in the list.
         [locations removeLastObject];
