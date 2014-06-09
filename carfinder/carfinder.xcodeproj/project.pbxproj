@@ -29,6 +29,8 @@
 		0B6CFAD8193ACA8B00B77374 /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAD6193ACA8B00B77374 /* LocationDetailsViewController.m */; };
 		0B6CFAD9193ACA8B00B77374 /* LocationDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAD7193ACA8B00B77374 /* LocationDetailsViewController.xib */; };
 		0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFADA193B300A00B77374 /* AddressBook.framework */; };
+		0B7B8FB019443AF500FE3716 /* VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B8FAF19443AF500FE3716 /* VersionCheck.m */; };
+		0B7B8FB31944628200FE3716 /* VersionComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B8FB21944628200FE3716 /* VersionComparer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,10 @@
 		0B6CFAD6193ACA8B00B77374 /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
 		0B6CFAD7193ACA8B00B77374 /* LocationDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationDetailsViewController.xib; sourceTree = "<group>"; };
 		0B6CFADA193B300A00B77374 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0B7B8FAE19443AF500FE3716 /* VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCheck.h; sourceTree = "<group>"; };
+		0B7B8FAF19443AF500FE3716 /* VersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheck.m; sourceTree = "<group>"; };
+		0B7B8FB11944628200FE3716 /* VersionComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionComparer.h; sourceTree = "<group>"; };
+		0B7B8FB21944628200FE3716 /* VersionComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionComparer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,10 @@
 				0B6CFA9B1936D2DC00B77374 /* Supporting Files */,
 				0B6CFAD01937152E00B77374 /* MapMarker.h */,
 				0B6CFAD11937152E00B77374 /* MapMarker.m */,
+				0B7B8FAE19443AF500FE3716 /* VersionCheck.h */,
+				0B7B8FAF19443AF500FE3716 /* VersionCheck.m */,
+				0B7B8FB11944628200FE3716 /* VersionComparer.h */,
+				0B7B8FB21944628200FE3716 /* VersionComparer.m */,
 			);
 			path = carfinder;
 			sourceTree = "<group>";
@@ -294,9 +304,11 @@
 				0B6CFACC1936F5AB00B77374 /* MapLocationViewController.m in Sources */,
 				0B6CFAA51936D2DC00B77374 /* AppDelegate.m in Sources */,
 				0B6CFAA11936D2DC00B77374 /* main.m in Sources */,
+				0B7B8FB31944628200FE3716 /* VersionComparer.m in Sources */,
 				0B6CFAC71936E43B00B77374 /* MarkLocationViewController.m in Sources */,
 				0B6CFAD8193ACA8B00B77374 /* LocationDetailsViewController.m in Sources */,
 				0B6CFAD21937152E00B77374 /* MapMarker.m in Sources */,
+				0B7B8FB019443AF500FE3716 /* VersionCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +505,7 @@
 				0B6CFABF1936D2DC00B77374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0B6CFAC01936D2DC00B77374 /* Build configuration list for PBXNativeTarget "carfinderTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +514,7 @@
 				0B6CFAC21936D2DC00B77374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
