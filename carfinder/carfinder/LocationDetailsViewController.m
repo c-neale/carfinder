@@ -48,7 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     // add a border to the textview
     addressTextview.layer.borderWidth = 1.0f;
@@ -126,8 +125,7 @@
                      
                      if(error != nil)
                      {
-                         //TODO: handle error better
-                         NSLog(@"Error occurred looking up address");
+                         DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
                      }
                      else
                      {

@@ -38,7 +38,7 @@
                                 if(connError != nil)
                                 {
                                     //TODO: handle error correctly
-                                    NSLog(@"connection error when attempting url request: %@", connError.debugDescription);
+                                    DebugLog(@"connection error when attempting url request: %@", connError.debugDescription);
                                 }
                                 else
                                 {
@@ -88,7 +88,7 @@
     if( parseError != nil )
     {
         // TODO: better error handling...
-        NSLog(@"Error detected checking for updated version: %@", parseError.debugDescription);
+        DebugLog(@"Error detected checking for updated version: %@", parseError.debugDescription);
         return @"";
     }
     

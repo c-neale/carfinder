@@ -126,8 +126,17 @@
                        completionHandler:^(NSArray * placemarks, NSError * error) {
                            if(error != nil)
                            {
-                               // TODO: handle the error a bit better.
-                               NSLog(@"Error occurred while attemting to reverse geocode the address");
+                               
+                               DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
+                               
+                               switch(error.code)
+                               {
+                                   case kCLErrorNetwork:
+                                       DebugLog(@"no network access, or geocode flooding detected");
+                                       break;
+                                   default:
+                                       break;
+                               }
                            }
                            else
                            {
@@ -144,11 +153,19 @@
                            }
                        }];
         
-            }
+    }
     else
     {
-        // TODO: handle the error better
-        NSLog(@"currentLocation is nil - something is wrong!");
+        NSString * errorTitle = @"Unable to find location";
+        NSString * errorMessage = @"Unable to find your current location.  Please enable location services in the privacy settings and try again";
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorTitle
+                                                         message:errorMessage
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        [alert show];
+        
     }
 }
 
@@ -224,8 +241,51 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    // TODO: handle the error better.
-    NSLog(@"Location manager failed with error: %@", error.localizedDescription);
+    // TODO: contains hardcoded strings.  should probably put them somewhere better.
+    
+    BOOL displayMessage = NO;
+    NSString * errorTitle = @"";
+    NSString * errorMessage = @"";
+    
+    DebugLog(@"Error domain: %@ code: %d", error.domain, error.code);
+    
+    switch(error.code)
+    {
+        case kCLErrorDenied:
+            
+            displayMessage = YES;
+            errorTitle = @"Unable to find location";
+            errorMessage = @"Unable to find your current location.  Please enable location services in the privacy settings and try again";
+            
+            DebugLog(@"Access to location services is denied. need to prompt user");
+            break;
+        case kCLErrorLocationUnknown:
+            DebugLog(@"Could not find location right now. will keep trying. - safe to ignore.");
+            break;
+        case kCLErrorHeadingFailure:
+            DebugLog(@"could not determine heading at this time. will keep trying - safe to ignore.");
+            break;
+        default:
+
+            displayMessage = YES;
+            errorTitle = @"Unknown Error";
+            errorMessage = @"Unable to find location due to unknown error. Please try again later.";
+
+            DebugLog(@"An unhandled error occurred while attempting to find user location.");
+            DebugLog(@"message: %@", error.debugDescription);
+            break;
+    }
+ 
+    if( displayMessage )
+    {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorTitle
+                                                     message:errorMessage
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+        [alert show];
+        
+    }
 }
 
 @end

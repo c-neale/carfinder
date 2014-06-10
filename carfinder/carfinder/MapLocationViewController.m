@@ -122,11 +122,10 @@ const float distanceThreshold = 10.0f;
         [dirs calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
             if(error != nil)
             {
-                // TODO: handle this error better
-                NSLog(@"error occurred calculating directions");
-                NSLog(@"error info: %@", error);
+                DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
                 
-                [dest setRouteCalcRequired:YES]; // error happened, wo reset this flag so it will get processed again next time.
+                // reset this flag so it will get processed again next time.
+                [dest setRouteCalcRequired:YES];
             }
             else
             {
@@ -182,8 +181,6 @@ const float distanceThreshold = 10.0f;
 
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-//    [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
-    
     MapMarker * marker = [locations lastObject];
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
     
@@ -209,6 +206,7 @@ const float distanceThreshold = 10.0f;
 {
     MKPolylineRenderer * routeLineRenderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
     
+/*
     if(colSwitch == NO) // alternate between red and blue paths (this is for debugging purposes)
     {
         routeLineRenderer.strokeColor = [UIColor redColor];
@@ -221,8 +219,10 @@ const float distanceThreshold = 10.0f;
     }
     
     colSwitch = !colSwitch;
-    
+
     routeLineRenderer.lineDashPattern = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:2], [NSNumber numberWithInt:12], nil];
+*/
+    routeLineRenderer.strokeColor = [UIColor redColor];
     routeLineRenderer.lineWidth = 5;
     
     return routeLineRenderer;
