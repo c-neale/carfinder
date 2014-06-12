@@ -80,6 +80,7 @@
 		0B7B8FB11944628200FE3716 /* VersionComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionComparer.h; sourceTree = "<group>"; };
 		0B7B8FB21944628200FE3716 /* VersionComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionComparer.m; sourceTree = "<group>"; };
 		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0BF683A2194938EE00AFB4C5 /* LogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +159,7 @@
 				0B7B8FAF19443AF500FE3716 /* VersionCheck.m */,
 				0B7B8FB11944628200FE3716 /* VersionComparer.h */,
 				0B7B8FB21944628200FE3716 /* VersionComparer.m */,
+				0BF683A2194938EE00AFB4C5 /* LogHelper.h */,
 			);
 			name = wayback;
 			path = carfinder;
