@@ -16,10 +16,19 @@
 @interface MarkLocationViewController ()
 {
     UIBarButtonItem * editButton;
+    UIBarButtonItem * clearButton;
 }
 
-- (void) toggleEditMode;
-- (void) updateEditButtonVisiblity;
+- (void) setEditMode:(BOOL)active;
+- (void) editButtonPressed;
+
+- (void) promptToClear;
+- (void) clearAllMarkers;
+
+- (void) updateNavbarButtonVisiblity;
+
+- (void) markLocation;
+- (BOOL) shouldPassivelyMarkLocation;
 
 @end
 
@@ -44,7 +53,14 @@
         editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
-                                                     action:@selector(toggleEditMode)];
+                                                     action:@selector(editButtonPressed)];
+        
+        clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
+                                                       style:UIBarButtonItemStylePlain
+                                                      target:self
+                                                      action:@selector(promptToClear)];
+        
+        self.title = @"Wayback";
     }
     return self;
 }
@@ -63,7 +79,7 @@
     
     [locationTableView reloadData];
     
-    [self updateEditButtonVisiblity];
+    [self updateNavbarButtonVisiblity];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -74,36 +90,97 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Class methods
 
-- (void)toggleEditMode
+- (void)setEditMode:(BOOL)active
 {
-    BOOL enterEditMode = YES;
-    
-    [editButton setTitle:@"Stop Editting"];
-    
-    if([locationTableView isEditing])
+    if( active )
     {
-        enterEditMode = NO;
+        [editButton setTitle:@"Stop Editting"];
+    }
+    else
+    {
         [editButton setTitle:@"Edit"];
     }
     
-    [locationTableView setEditing:enterEditMode animated:YES];
+    [markButton setEnabled:!active];
+    [showButton setEnabled:!active];
+    
+    [locationTableView setEditing:active animated:YES];
 }
 
-- (void) updateEditButtonVisiblity
+- (void)editButtonPressed
+{
+    [self setEditMode:![locationTableView isEditing]];
+}
+
+- (void) promptToClear
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Are you sure?"
+                                                     message:@"Are you sure you want to clear all?"
+                                                    delegate:self
+                                           cancelButtonTitle:@"No"
+                                           otherButtonTitles:@"Yes", nil];
+    
+    [alert show];
+}
+
+- (void) clearAllMarkers
+{
+    [locations removeAllObjects];
+    [locationTableView reloadData];
+}
+
+- (void) updateNavbarButtonVisiblity
 {
     if([locations count] > 0)
     {
+        [[self navigationItem] setLeftBarButtonItem:clearButton animated:YES];
         [[self navigationItem] setRightBarButtonItem:editButton animated:YES];
     }
     else
     {
+        [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
         [[self navigationItem] setRightBarButtonItem:nil animated:YES];
     }
+}
+
+- (void) markLocation
+{
+    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:currentLocation
+                   completionHandler:^(NSArray * placemarks, NSError * error) {
+                       if(error != nil)
+                       {
+                           
+                           DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
+                           
+                           switch(error.code)
+                           {
+                               case kCLErrorNetwork:
+                                   DebugLog(@"no network access, or geocode flooding detected");
+                                   break;
+                               default:
+                                   break;
+                           }
+                       }
+                       else
+                       {
+                           // TODO: handle multiple results somehow?
+                           MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
+                           
+                           [locations addObject:newMarker];
+                           
+                           // tell the table view it needs to update its data.
+                           [locationTableView reloadData];
+                           
+                           [self updateNavbarButtonVisiblity];
+                           
+                       }
+                   }];
+
 }
 
 #pragma mark - IBActions
@@ -121,38 +198,7 @@
 {
     if(currentLocation != nil)
     {
-        CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-        [geocoder reverseGeocodeLocation:currentLocation
-                       completionHandler:^(NSArray * placemarks, NSError * error) {
-                           if(error != nil)
-                           {
-                               
-                               DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
-                               
-                               switch(error.code)
-                               {
-                                   case kCLErrorNetwork:
-                                       DebugLog(@"no network access, or geocode flooding detected");
-                                       break;
-                                   default:
-                                       break;
-                               }
-                           }
-                           else
-                           {
-                               // TODO: handle multiple results somehow?
-                               MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
-                               
-                               [locations addObject:newMarker];
-                               
-                               // tell the table view it needs to update its data.
-                               [locationTableView reloadData];
-                               
-                               [self updateEditButtonVisiblity];
-
-                           }
-                       }];
-        
+        [self markLocation];
     }
     else
     {
@@ -198,8 +244,8 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     
     if([locations count] == 0)
     {
-        [self toggleEditMode];
-        [self updateEditButtonVisiblity];
+        [self setEditMode:NO];
+        [self updateNavbarButtonVisiblity];
     }
     
     //TODO: work out which routes need re-calculating.
@@ -231,12 +277,105 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     [self.navigationController pushViewController:ldvc animated:YES];
 }
 
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // need to be sure which alert view we are working with.
+    // although there is probably a better way of doing this.
+    if([[alertView title]  isEqual: @"Are you sure?"])
+    {
+        // check which button was pressed and process it.
+        switch (buttonIndex) {
+            case 1:
+                [self clearAllMarkers];
+                [self setEditMode:NO];
+                [self updateNavbarButtonVisiblity];
+                break;
+            case 0:
+            default:
+                break;
+        }
+    }
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     // just silently store the location so we know where they are when the button is pressed.
     currentLocation = newLocation;
+
+    // TODO: this needs way more thought.
+/*    if([self shouldPassivelyMarkLocation])
+    {
+        [self markLocation];
+    }
+     */
+}
+
+- (BOOL) shouldPassivelyMarkLocation
+{
+    BOOL passiveMode = YES;
+    
+    // if we are not in passive mode, obviously should be a NO.
+    if(passiveMode == NO)
+    {
+        DebugLog(@"Passive Mode is disabled");
+        return NO;
+    }
+
+    if([locations count] == 0)
+        return NO;
+    
+    /*
+     // TODO: this triggers multiple times. need to fix it.
+    // if we have no markers yet, then definately mark the current loction.
+    if([locations count] == 0)
+    {
+        DebugLog(@"Adding first location.");
+        return YES;
+    }
+     */
+    
+    CLLocation * prevLocation = [(MapMarker *)[locations lastObject] location];
+
+    // check if the direction of travel is changing.
+    CLLocationDirection prevDir = prevLocation.course;
+    CLLocationDirection curDir = currentLocation.course;
+    
+    // TODO: I need to rethink this whole process.
+    // if the deviation is greater than 5 degrees AND the distance is less than 10 or time is less than 5min,
+    // we should be replacing the last marker instead of just adding a new one.  this method probably isnt the
+    //place for that to happen, but i dont want to be doubling up on checking the conditions.
+    double deviation = fabs(prevDir - curDir);
+    DebugLog(@"Course Deviation: %f degrees", deviation);
+//    if(deviation < 5.0)
+    {
+        // if we have moved less than x metres, then also NO.
+        // TODO: make the 10.0f less hardcoded. value should ideally match the threshold to remove a marker.
+        CLLocationDistance distFromLastMarker = [currentLocation distanceFromLocation:prevLocation];
+        DebugLog(@"distance from last marker: %f m", distFromLastMarker);
+        if(distFromLastMarker < 10.0f)
+        {
+            return NO;
+        }
+    
+        // don't set a marker too often...
+        NSDate * prevTime = prevLocation.timestamp;
+        NSDate * thisTime = currentLocation.timestamp;
+    
+        NSTimeInterval interval = [thisTime timeIntervalSinceDate:prevTime];
+        double minsSinceLastMarker = interval / 60.0f;
+    
+        DebugLog(@"minutes since last marker: %f", minsSinceLastMarker);
+        if(minsSinceLastMarker < 1.0f) // TODO: make the 5.0f less hardcoded.
+        {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

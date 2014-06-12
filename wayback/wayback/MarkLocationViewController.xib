@@ -7,6 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarkLocationViewController">
             <connections>
                 <outlet property="locationTableView" destination="QH8-93-M2E" id="Ewv-sU-KOX"/>
+                <outlet property="markButton" destination="75X-Sg-SJv" id="AmX-AL-k86"/>
+                <outlet property="showButton" destination="AGT-CP-TTl" id="Bcb-Hw-Biu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

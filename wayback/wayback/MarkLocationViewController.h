@@ -10,10 +10,13 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface MarkLocationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface MarkLocationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 {
     CLLocation * currentLocation;
     __weak IBOutlet UITableView *locationTableView;
+    
+    __weak IBOutlet UIButton *markButton;
+    __weak IBOutlet UIButton *showButton;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;

@@ -14,3 +14,5 @@ carfinder/carfinder.xcodeproj/xcuserdata/cneale.xcuserdatad/xcdebugger/Breakpoin
 wayback/carfinder.xcodeproj/xcuserdata/cneale.xcuserdatad/xcschemes/xcschememanagement.plist
 
 wayback/wayback.xcodeproj/xcuserdata/cneale.xcuserdatad/xcschemes/xcschememanagement.plist
+
+*.xcbkptlist
