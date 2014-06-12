@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B6CFA911936D2DC00B77374 /* wayback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wayback.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B6CFA911936D2DC00B77374 /* WayBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WayBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0B6CFA981936D2DC00B77374 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -93,7 +93,7 @@
 		0B6CFA921936D2DC00B77374 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0B6CFA911936D2DC00B77374 /* wayback.app */,
+				0B6CFA911936D2DC00B77374 /* WayBack.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			);
 			name = wayback;
 			productName = carfinder;
-			productReference = 0B6CFA911936D2DC00B77374 /* wayback.app */;
+			productReference = 0B6CFA911936D2DC00B77374 /* WayBack.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -345,7 +345,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wayback/wayback-Prefix.pch";
 				INFOPLIST_FILE = "wayback/wayback-Info.plist";
-				PRODUCT_NAME = wayback;
+				PRODUCT_NAME = WayBack;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -359,7 +359,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wayback/wayback-Prefix.pch";
 				INFOPLIST_FILE = "wayback/wayback-Info.plist";
-				PRODUCT_NAME = wayback;
+				PRODUCT_NAME = WayBack;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
