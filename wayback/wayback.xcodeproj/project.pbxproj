@@ -34,7 +34,6 @@
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0B6CFA981936D2DC00B77374 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0B6CFAAD1936D2DC00B77374 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0B6CFACE1936FB8A00B77374 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0B6CFAD319398F2300B77374 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0B6CFADA193B300A00B77374 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -109,37 +108,60 @@
 				0B6CFA941936D2DC00B77374 /* Foundation.framework */,
 				0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */,
 				0B6CFA981936D2DC00B77374 /* UIKit.framework */,
-				0B6CFAAD1936D2DC00B77374 /* XCTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0BC7B87019493D11006EEFE7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BF683B3194939B000AFB4C5 /* MarkLocationViewController.h */,
+				0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */,
+				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
+				0BF683AE194939B000AFB4C5 /* MapLocationViewController.h */,
+				0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */,
+				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
+				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
+				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
+				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0BC7B87119493D3B006EEFE7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0BF683A6194939B000AFB4C5 /* InfoPlist.strings */,
+				0BF683AD194939B000AFB4C5 /* main.m */,
+				0BF683BA194939B000AFB4C5 /* wayback-Info.plist */,
+				0BF683BB194939B000AFB4C5 /* wayback-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0BC7B87219493D79006EEFE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0BF683B1194939B000AFB4C5 /* MapMarker.h */,
+				0BF683B2194939B000AFB4C5 /* MapMarker.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		0BF683A3194939B000AFB4C5 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
+				0BC7B87219493D79006EEFE7 /* Model */,
+				0BC7B87119493D3B006EEFE7 /* Supporting Files */,
+				0BC7B87019493D11006EEFE7 /* ViewControllers */,
 				0BF683A4194939B000AFB4C5 /* AppDelegate.h */,
 				0BF683A5194939B000AFB4C5 /* AppDelegate.m */,
-				0BF683A6194939B000AFB4C5 /* InfoPlist.strings */,
 				0BF683A8194939B000AFB4C5 /* Images.xcassets */,
-				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
-				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
-				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
 				0BF683AC194939B000AFB4C5 /* LogHelper.h */,
-				0BF683AD194939B000AFB4C5 /* main.m */,
-				0BF683AE194939B000AFB4C5 /* MapLocationViewController.h */,
-				0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */,
-				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
-				0BF683B1194939B000AFB4C5 /* MapMarker.h */,
-				0BF683B2194939B000AFB4C5 /* MapMarker.m */,
-				0BF683B3194939B000AFB4C5 /* MarkLocationViewController.h */,
-				0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */,
-				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
 				0BF683B6194939B000AFB4C5 /* VersionCheck.h */,
 				0BF683B7194939B000AFB4C5 /* VersionCheck.m */,
 				0BF683B8194939B000AFB4C5 /* VersionComparer.h */,
 				0BF683B9194939B000AFB4C5 /* VersionComparer.m */,
-				0BF683BA194939B000AFB4C5 /* wayback-Info.plist */,
-				0BF683BB194939B000AFB4C5 /* wayback-Prefix.pch */,
 			);
 			path = wayback;
 			sourceTree = "<group>";
