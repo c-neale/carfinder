@@ -10,28 +10,30 @@
 		0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
 		0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */; };
 		0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
-		0B6CFA9F1936D2DC00B77374 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFA9D1936D2DC00B77374 /* InfoPlist.strings */; };
-		0B6CFAA11936D2DC00B77374 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAA01936D2DC00B77374 /* main.m */; };
-		0B6CFAA51936D2DC00B77374 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAA41936D2DC00B77374 /* AppDelegate.m */; };
-		0B6CFAA71936D2DC00B77374 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAA61936D2DC00B77374 /* Images.xcassets */; };
 		0B6CFAAE1936D2DC00B77374 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFAAD1936D2DC00B77374 /* XCTest.framework */; };
 		0B6CFAAF1936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
 		0B6CFAB01936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
-		0B6CFAB81936D2DC00B77374 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAB61936D2DC00B77374 /* InfoPlist.strings */; };
-		0B6CFABA1936D2DC00B77374 /* carfinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAB91936D2DC00B77374 /* carfinderTests.m */; };
-		0B6CFAC71936E43B00B77374 /* MarkLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAC51936E43B00B77374 /* MarkLocationViewController.m */; };
-		0B6CFAC81936E43B00B77374 /* MarkLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAC61936E43B00B77374 /* MarkLocationViewController.xib */; };
-		0B6CFACC1936F5AB00B77374 /* MapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFACA1936F5AB00B77374 /* MapLocationViewController.m */; };
-		0B6CFACD1936F5AB00B77374 /* MapLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFACB1936F5AB00B77374 /* MapLocationViewController.xib */; };
 		0B6CFACF1936FB8A00B77374 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFACE1936FB8A00B77374 /* MapKit.framework */; };
-		0B6CFAD21937152E00B77374 /* MapMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAD11937152E00B77374 /* MapMarker.m */; };
 		0B6CFAD419398F2300B77374 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFAD319398F2300B77374 /* CoreLocation.framework */; };
-		0B6CFAD8193ACA8B00B77374 /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6CFAD6193ACA8B00B77374 /* LocationDetailsViewController.m */; };
-		0B6CFAD9193ACA8B00B77374 /* LocationDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6CFAD7193ACA8B00B77374 /* LocationDetailsViewController.xib */; };
 		0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFADA193B300A00B77374 /* AddressBook.framework */; };
-		0B7B8FB019443AF500FE3716 /* VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B8FAF19443AF500FE3716 /* VersionCheck.m */; };
-		0B7B8FB31944628200FE3716 /* VersionComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B8FB21944628200FE3716 /* VersionComparer.m */; };
 		0B7B8FB519455C3D00FE3716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */; };
+		0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683A5194939B000AFB4C5 /* AppDelegate.m */; };
+		0BF683C2194939B000AFB4C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683A6194939B000AFB4C5 /* InfoPlist.strings */; };
+		0BF683C3194939B000AFB4C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683A8194939B000AFB4C5 /* Images.xcassets */; };
+		0BF683C4194939B000AFB4C5 /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */; };
+		0BF683C5194939B000AFB4C5 /* LocationDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */; };
+		0BF683C6194939B000AFB4C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683AD194939B000AFB4C5 /* main.m */; };
+		0BF683C7194939B000AFB4C5 /* MapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */; };
+		0BF683C8194939B000AFB4C5 /* MapLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */; };
+		0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683B2194939B000AFB4C5 /* MapMarker.m */; };
+		0BF683CA194939B000AFB4C5 /* MarkLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */; };
+		0BF683CB194939B000AFB4C5 /* MarkLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */; };
+		0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683B7194939B000AFB4C5 /* VersionCheck.m */; };
+		0BF683CD194939B000AFB4C5 /* VersionComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683B9194939B000AFB4C5 /* VersionComparer.m */; };
+		0BF683CE194939B000AFB4C5 /* wayback-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683BA194939B000AFB4C5 /* wayback-Info.plist */; };
+		0BF683CF194939B000AFB4C5 /* carfinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF683BD194939B000AFB4C5 /* carfinderTests.m */; };
+		0BF683D0194939B000AFB4C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683BE194939B000AFB4C5 /* InfoPlist.strings */; };
+		0BF683D1194939B000AFB4C5 /* waybackTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BF683C0194939B000AFB4C5 /* waybackTests-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,38 +51,38 @@
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0B6CFA981936D2DC00B77374 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		0B6CFA9C1936D2DC00B77374 /* wayback-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "wayback-Info.plist"; sourceTree = "<group>"; };
-		0B6CFA9E1936D2DC00B77374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0B6CFAA01936D2DC00B77374 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0B6CFAA21936D2DC00B77374 /* wayback-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wayback-Prefix.pch"; sourceTree = "<group>"; };
-		0B6CFAA31936D2DC00B77374 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		0B6CFAA41936D2DC00B77374 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0B6CFAA61936D2DC00B77374 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0B6CFAAC1936D2DC00B77374 /* waybackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waybackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFAAD1936D2DC00B77374 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		0B6CFAB51936D2DC00B77374 /* waybackTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "waybackTests-Info.plist"; sourceTree = "<group>"; };
-		0B6CFAB71936D2DC00B77374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0B6CFAB91936D2DC00B77374 /* carfinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carfinderTests.m; sourceTree = "<group>"; };
-		0B6CFAC41936E43B00B77374 /* MarkLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationViewController.h; sourceTree = "<group>"; };
-		0B6CFAC51936E43B00B77374 /* MarkLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLocationViewController.m; sourceTree = "<group>"; };
-		0B6CFAC61936E43B00B77374 /* MarkLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkLocationViewController.xib; sourceTree = "<group>"; };
-		0B6CFAC91936F5AB00B77374 /* MapLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocationViewController.h; sourceTree = "<group>"; };
-		0B6CFACA1936F5AB00B77374 /* MapLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocationViewController.m; sourceTree = "<group>"; };
-		0B6CFACB1936F5AB00B77374 /* MapLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLocationViewController.xib; sourceTree = "<group>"; };
 		0B6CFACE1936FB8A00B77374 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0B6CFAD01937152E00B77374 /* MapMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapMarker.h; sourceTree = "<group>"; };
-		0B6CFAD11937152E00B77374 /* MapMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapMarker.m; sourceTree = "<group>"; };
 		0B6CFAD319398F2300B77374 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0B6CFAD5193ACA8B00B77374 /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
-		0B6CFAD6193ACA8B00B77374 /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
-		0B6CFAD7193ACA8B00B77374 /* LocationDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationDetailsViewController.xib; sourceTree = "<group>"; };
 		0B6CFADA193B300A00B77374 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		0B7B8FAE19443AF500FE3716 /* VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCheck.h; sourceTree = "<group>"; };
-		0B7B8FAF19443AF500FE3716 /* VersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheck.m; sourceTree = "<group>"; };
-		0B7B8FB11944628200FE3716 /* VersionComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionComparer.h; sourceTree = "<group>"; };
-		0B7B8FB21944628200FE3716 /* VersionComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionComparer.m; sourceTree = "<group>"; };
 		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0BF683A2194938EE00AFB4C5 /* LogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		0BF683A4194939B000AFB4C5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0BF683A5194939B000AFB4C5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0BF683A7194939B000AFB4C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0BF683A8194939B000AFB4C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
+		0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
+		0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationDetailsViewController.xib; sourceTree = "<group>"; };
+		0BF683AC194939B000AFB4C5 /* LogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHelper.h; sourceTree = "<group>"; };
+		0BF683AD194939B000AFB4C5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0BF683AE194939B000AFB4C5 /* MapLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocationViewController.h; sourceTree = "<group>"; };
+		0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocationViewController.m; sourceTree = "<group>"; };
+		0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLocationViewController.xib; sourceTree = "<group>"; };
+		0BF683B1194939B000AFB4C5 /* MapMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapMarker.h; sourceTree = "<group>"; };
+		0BF683B2194939B000AFB4C5 /* MapMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapMarker.m; sourceTree = "<group>"; };
+		0BF683B3194939B000AFB4C5 /* MarkLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationViewController.h; sourceTree = "<group>"; };
+		0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLocationViewController.m; sourceTree = "<group>"; };
+		0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkLocationViewController.xib; sourceTree = "<group>"; };
+		0BF683B6194939B000AFB4C5 /* VersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCheck.h; sourceTree = "<group>"; };
+		0BF683B7194939B000AFB4C5 /* VersionCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheck.m; sourceTree = "<group>"; };
+		0BF683B8194939B000AFB4C5 /* VersionComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionComparer.h; sourceTree = "<group>"; };
+		0BF683B9194939B000AFB4C5 /* VersionComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionComparer.m; sourceTree = "<group>"; };
+		0BF683BA194939B000AFB4C5 /* wayback-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "wayback-Info.plist"; sourceTree = "<group>"; };
+		0BF683BB194939B000AFB4C5 /* wayback-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "wayback-Prefix.pch"; sourceTree = "<group>"; };
+		0BF683BD194939B000AFB4C5 /* carfinderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = carfinderTests.m; sourceTree = "<group>"; };
+		0BF683BF194939B000AFB4C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0BF683C0194939B000AFB4C5 /* waybackTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "waybackTests-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +116,8 @@
 		0B6CFA881936D2DC00B77374 = {
 			isa = PBXGroup;
 			children = (
-				0B6CFA9A1936D2DC00B77374 /* wayback */,
-				0B6CFAB31936D2DC00B77374 /* waybackTests */,
+				0BF683A3194939B000AFB4C5 /* wayback */,
+				0BF683BC194939B000AFB4C5 /* waybackTests */,
 				0B6CFA931936D2DC00B77374 /* Frameworks */,
 				0B6CFA921936D2DC00B77374 /* Products */,
 			);
@@ -145,70 +147,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0B6CFA9A1936D2DC00B77374 /* wayback */ = {
+		0BF683A3194939B000AFB4C5 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
-				0B6CFAC31936E40900B77374 /* ViewControllers */,
-				0B6CFAA31936D2DC00B77374 /* AppDelegate.h */,
-				0B6CFAA41936D2DC00B77374 /* AppDelegate.m */,
-				0B6CFAA61936D2DC00B77374 /* Images.xcassets */,
-				0B6CFA9B1936D2DC00B77374 /* Supporting Files */,
-				0B6CFAD01937152E00B77374 /* MapMarker.h */,
-				0B6CFAD11937152E00B77374 /* MapMarker.m */,
-				0B7B8FAE19443AF500FE3716 /* VersionCheck.h */,
-				0B7B8FAF19443AF500FE3716 /* VersionCheck.m */,
-				0B7B8FB11944628200FE3716 /* VersionComparer.h */,
-				0B7B8FB21944628200FE3716 /* VersionComparer.m */,
-				0BF683A2194938EE00AFB4C5 /* LogHelper.h */,
+				0BF683A4194939B000AFB4C5 /* AppDelegate.h */,
+				0BF683A5194939B000AFB4C5 /* AppDelegate.m */,
+				0BF683A6194939B000AFB4C5 /* InfoPlist.strings */,
+				0BF683A8194939B000AFB4C5 /* Images.xcassets */,
+				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
+				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
+				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+				0BF683AC194939B000AFB4C5 /* LogHelper.h */,
+				0BF683AD194939B000AFB4C5 /* main.m */,
+				0BF683AE194939B000AFB4C5 /* MapLocationViewController.h */,
+				0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */,
+				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
+				0BF683B1194939B000AFB4C5 /* MapMarker.h */,
+				0BF683B2194939B000AFB4C5 /* MapMarker.m */,
+				0BF683B3194939B000AFB4C5 /* MarkLocationViewController.h */,
+				0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */,
+				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
+				0BF683B6194939B000AFB4C5 /* VersionCheck.h */,
+				0BF683B7194939B000AFB4C5 /* VersionCheck.m */,
+				0BF683B8194939B000AFB4C5 /* VersionComparer.h */,
+				0BF683B9194939B000AFB4C5 /* VersionComparer.m */,
+				0BF683BA194939B000AFB4C5 /* wayback-Info.plist */,
+				0BF683BB194939B000AFB4C5 /* wayback-Prefix.pch */,
 			);
-			name = wayback;
-			path = carfinder;
+			path = wayback;
 			sourceTree = "<group>";
 		};
-		0B6CFA9B1936D2DC00B77374 /* Supporting Files */ = {
+		0BF683BC194939B000AFB4C5 /* waybackTests */ = {
 			isa = PBXGroup;
 			children = (
-				0B6CFA9C1936D2DC00B77374 /* wayback-Info.plist */,
-				0B6CFA9D1936D2DC00B77374 /* InfoPlist.strings */,
-				0B6CFAA01936D2DC00B77374 /* main.m */,
-				0B6CFAA21936D2DC00B77374 /* wayback-Prefix.pch */,
+				0BF683BD194939B000AFB4C5 /* carfinderTests.m */,
+				0BF683BE194939B000AFB4C5 /* InfoPlist.strings */,
+				0BF683C0194939B000AFB4C5 /* waybackTests-Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0B6CFAB31936D2DC00B77374 /* waybackTests */ = {
-			isa = PBXGroup;
-			children = (
-				0B6CFAB91936D2DC00B77374 /* carfinderTests.m */,
-				0B6CFAB41936D2DC00B77374 /* Supporting Files */,
-			);
-			name = waybackTests;
-			path = carfinderTests;
-			sourceTree = "<group>";
-		};
-		0B6CFAB41936D2DC00B77374 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0B6CFAB51936D2DC00B77374 /* waybackTests-Info.plist */,
-				0B6CFAB61936D2DC00B77374 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0B6CFAC31936E40900B77374 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				0B6CFAC41936E43B00B77374 /* MarkLocationViewController.h */,
-				0B6CFAC51936E43B00B77374 /* MarkLocationViewController.m */,
-				0B6CFAC61936E43B00B77374 /* MarkLocationViewController.xib */,
-				0B6CFAC91936F5AB00B77374 /* MapLocationViewController.h */,
-				0B6CFACA1936F5AB00B77374 /* MapLocationViewController.m */,
-				0B6CFACB1936F5AB00B77374 /* MapLocationViewController.xib */,
-				0B6CFAD5193ACA8B00B77374 /* LocationDetailsViewController.h */,
-				0B6CFAD6193ACA8B00B77374 /* LocationDetailsViewController.m */,
-				0B6CFAD7193ACA8B00B77374 /* LocationDetailsViewController.xib */,
-			);
-			name = ViewControllers;
+			path = waybackTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,11 +269,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6CFAD9193ACA8B00B77374 /* LocationDetailsViewController.xib in Resources */,
-				0B6CFACD1936F5AB00B77374 /* MapLocationViewController.xib in Resources */,
-				0B6CFA9F1936D2DC00B77374 /* InfoPlist.strings in Resources */,
-				0B6CFAC81936E43B00B77374 /* MarkLocationViewController.xib in Resources */,
-				0B6CFAA71936D2DC00B77374 /* Images.xcassets in Resources */,
+				0BF683C8194939B000AFB4C5 /* MapLocationViewController.xib in Resources */,
+				0BF683D0194939B000AFB4C5 /* InfoPlist.strings in Resources */,
+				0BF683CB194939B000AFB4C5 /* MarkLocationViewController.xib in Resources */,
+				0BF683C5194939B000AFB4C5 /* LocationDetailsViewController.xib in Resources */,
+				0BF683C2194939B000AFB4C5 /* InfoPlist.strings in Resources */,
+				0BF683C3194939B000AFB4C5 /* Images.xcassets in Resources */,
+				0BF683CE194939B000AFB4C5 /* wayback-Info.plist in Resources */,
+				0BF683D1194939B000AFB4C5 /* waybackTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +284,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6CFAB81936D2DC00B77374 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,14 +294,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6CFACC1936F5AB00B77374 /* MapLocationViewController.m in Sources */,
-				0B6CFAA51936D2DC00B77374 /* AppDelegate.m in Sources */,
-				0B6CFAA11936D2DC00B77374 /* main.m in Sources */,
-				0B7B8FB31944628200FE3716 /* VersionComparer.m in Sources */,
-				0B6CFAC71936E43B00B77374 /* MarkLocationViewController.m in Sources */,
-				0B6CFAD8193ACA8B00B77374 /* LocationDetailsViewController.m in Sources */,
-				0B6CFAD21937152E00B77374 /* MapMarker.m in Sources */,
-				0B7B8FB019443AF500FE3716 /* VersionCheck.m in Sources */,
+				0BF683C7194939B000AFB4C5 /* MapLocationViewController.m in Sources */,
+				0BF683C4194939B000AFB4C5 /* LocationDetailsViewController.m in Sources */,
+				0BF683CF194939B000AFB4C5 /* carfinderTests.m in Sources */,
+				0BF683CA194939B000AFB4C5 /* MarkLocationViewController.m in Sources */,
+				0BF683CD194939B000AFB4C5 /* VersionComparer.m in Sources */,
+				0BF683C6194939B000AFB4C5 /* main.m in Sources */,
+				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,
+				0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */,
+				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B6CFABA1936D2DC00B77374 /* carfinderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,18 +324,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0B6CFA9D1936D2DC00B77374 /* InfoPlist.strings */ = {
+		0BF683A6194939B000AFB4C5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0B6CFA9E1936D2DC00B77374 /* en */,
+				0BF683A7194939B000AFB4C5 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		0B6CFAB61936D2DC00B77374 /* InfoPlist.strings */ = {
+		0BF683BE194939B000AFB4C5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0B6CFAB71936D2DC00B77374 /* en */,
+				0BF683BF194939B000AFB4C5 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
