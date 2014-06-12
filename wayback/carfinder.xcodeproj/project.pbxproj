@@ -113,8 +113,8 @@
 		0B6CFA881936D2DC00B77374 = {
 			isa = PBXGroup;
 			children = (
-				0B6CFA9A1936D2DC00B77374 /* carfinder */,
-				0B6CFAB31936D2DC00B77374 /* carfinderTests */,
+				0B6CFA9A1936D2DC00B77374 /* wayback */,
+				0B6CFAB31936D2DC00B77374 /* waybackTests */,
 				0B6CFA931936D2DC00B77374 /* Frameworks */,
 				0B6CFA921936D2DC00B77374 /* Products */,
 			);
@@ -144,7 +144,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0B6CFA9A1936D2DC00B77374 /* carfinder */ = {
+		0B6CFA9A1936D2DC00B77374 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
 				0B6CFAC31936E40900B77374 /* ViewControllers */,
@@ -159,6 +159,7 @@
 				0B7B8FB11944628200FE3716 /* VersionComparer.h */,
 				0B7B8FB21944628200FE3716 /* VersionComparer.m */,
 			);
+			name = wayback;
 			path = carfinder;
 			sourceTree = "<group>";
 		};
@@ -173,12 +174,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0B6CFAB31936D2DC00B77374 /* carfinderTests */ = {
+		0B6CFAB31936D2DC00B77374 /* waybackTests */ = {
 			isa = PBXGroup;
 			children = (
 				0B6CFAB91936D2DC00B77374 /* carfinderTests.m */,
 				0B6CFAB41936D2DC00B77374 /* Supporting Files */,
 			);
+			name = waybackTests;
 			path = carfinderTests;
 			sourceTree = "<group>";
 		};
@@ -254,6 +256,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Cory Neale";
 				TargetAttributes = {
+					0B6CFA901936D2DC00B77374 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
 					0B6CFAAB1936D2DC00B77374 = {
 						TestTargetID = 0B6CFA901936D2DC00B77374;
 					};

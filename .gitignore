@@ -6,3 +6,9 @@ carfinder/carfinder.xcodeproj/xcuserdata/cneale.xcuserdatad/xcschemes/carfinder.
 carfinder/carfinder.xcodeproj/xcuserdata/cneale.xcuserdatad/xcschemes/xcschememanagement.plist
 
 carfinder/carfinder.xcodeproj/xcuserdata/cneale.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+
+*.xcuserstate
+
+*.xcscheme
+
+wayback/carfinder.xcodeproj/xcuserdata/cneale.xcuserdatad/xcschemes/xcschememanagement.plist
