@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GAI.h"
+
 #import <MapKit/MapKit.h>
 
-@interface MapLocationViewController : UIViewController<MKMapViewDelegate>
+@interface MapLocationViewController : GAITrackedViewController<MKMapViewDelegate>
 {
     __weak IBOutlet MKMapView *mapView;
 }

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GAI.h"
+
 #import "MapMarker.h"
 
-@interface LocationDetailsViewController : UIViewController<UITextViewDelegate>
+@interface LocationDetailsViewController : GAITrackedViewController<UITextViewDelegate>
 {
     __weak IBOutlet UITextField *nameInput;
     __weak IBOutlet UILabel *latitudeLabel;

@@ -73,6 +73,10 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    self.screenName = @"Mark Locations";
+    
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
     [locationManager startUpdatingLocation];
@@ -84,6 +88,8 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [locationManager stopUpdatingLocation];
 }
 
@@ -391,7 +397,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     NSString * errorTitle = @"";
     NSString * errorMessage = @"";
     
-    DebugLog(@"Error domain: %@ code: %d", error.domain, error.code);
+    DebugLog(@"Error domain: %@ code: %d", error.domain, (int)error.code);
     
     switch(error.code)
     {

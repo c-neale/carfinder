@@ -58,6 +58,13 @@
     [self setupUIFields:currentLocation];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.screenName = @"Location Details";
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -125,7 +132,7 @@
                      
                      if(error != nil)
                      {
-                         DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
+                         DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
                      }
                      else
                      {

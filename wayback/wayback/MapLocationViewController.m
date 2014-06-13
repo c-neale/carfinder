@@ -50,6 +50,13 @@ const float distanceThreshold = 10.0f;
     mapView.showsUserLocation = YES;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.screenName = @"Map Locations";
+}
+
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -122,7 +129,7 @@ const float distanceThreshold = 10.0f;
         [dirs calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
             if(error != nil)
             {
-                DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
+                DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
                 
                 // reset this flag so it will get processed again next time.
                 [dest setRouteCalcRequired:YES];

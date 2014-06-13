@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GAI.h"
+
 #import <CoreLocation/CoreLocation.h>
 
-@interface MarkLocationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
+@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 {
     CLLocation * currentLocation;
     __weak IBOutlet UITableView *locationTableView;

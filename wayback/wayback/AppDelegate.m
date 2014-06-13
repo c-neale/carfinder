@@ -10,10 +10,30 @@
 
 #import "MarkLocationViewController.h"
 
+#import "GAI.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+#ifndef DISABLE_ANALYTICS
+    [GAI sharedInstance].dryRun = YES;
+#endif
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+#ifdef DEBUG
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+#else
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
+#endif
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50634961-2"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // placeholder - replace with an actual view controller when I've written it.
