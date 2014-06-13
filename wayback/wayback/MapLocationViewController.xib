@@ -15,17 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t7x-zF-PUA">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="t7x-zF-PUA">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="NHM-IS-m2E"/>
                     </connections>
                 </mapView>
-                <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="knC-eu-S46">
+                <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="knC-eu-S46">
                     <rect key="frame" x="66" y="80" width="189" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="T9A-Yh-bQf"/>
+                        <constraint firstAttribute="width" constant="189" id="TRl-r3-cpf"/>
+                    </constraints>
                     <segments>
                         <segment title="Standard"/>
                         <segment title="Satellite"/>
@@ -37,6 +41,15 @@
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="t7x-zF-PUA" secondAttribute="trailing" id="9EB-bu-ijn"/>
+                <constraint firstItem="knC-eu-S46" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Ysm-6P-rHU"/>
+                <constraint firstAttribute="bottom" secondItem="t7x-zF-PUA" secondAttribute="bottom" id="beS-jj-33e"/>
+                <constraint firstItem="t7x-zF-PUA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dHi-Jt-Oh7"/>
+                <constraint firstAttribute="centerX" secondItem="t7x-zF-PUA" secondAttribute="centerX" id="hJg-gD-GCd"/>
+                <constraint firstItem="t7x-zF-PUA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="n6w-HE-nFH"/>
+                <constraint firstAttribute="centerX" secondItem="knC-eu-S46" secondAttribute="centerX" id="rXb-cA-0lc"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

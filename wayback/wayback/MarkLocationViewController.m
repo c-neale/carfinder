@@ -155,7 +155,7 @@
                        if(error != nil)
                        {
                            
-                           DebugLog(@"error domain: %@ code: %d", error.domain, error.code);
+                           DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
                            
                            switch(error.code)
                            {
@@ -168,7 +168,12 @@
                        }
                        else
                        {
-                           // TODO: handle multiple results somehow?
+                           if([placemarks count] > 1)
+                           {
+                               DebugLog(@"Multiple places found! (%d total)", (int)[placemarks count]);
+                           }
+                           
+                           // TODO: handle multiple results somehow? how often will this happen?
                            MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
                            
                            [locations addObject:newMarker];
