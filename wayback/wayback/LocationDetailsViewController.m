@@ -62,7 +62,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.screenName = @"Location Details";
+    self.screenName = @"LocationDetailsViewController";
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -133,6 +133,7 @@
                      if(error != nil)
                      {
                          DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
+                         [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
                      }
                      else
                      {

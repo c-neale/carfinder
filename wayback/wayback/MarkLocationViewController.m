@@ -60,7 +60,7 @@
                                                       target:self
                                                       action:@selector(promptToClear)];
         
-        self.title = @"Wayback";
+        self.title = @"the Way Back";
     }
     return self;
 }
@@ -75,7 +75,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.screenName = @"Mark Locations";
+    self.screenName = @"MarkLocationViewController";
     
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
@@ -214,6 +214,8 @@
     {
         NSString * errorTitle = @"Unable to find location";
         NSString * errorMessage = @"Unable to find your current location.  Please enable location services in the privacy settings and try again";
+        
+        [LogHelper logAndTrackErrorMessage:@"Location services is off" fromClass:self fromFunction:_cmd];
         
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorTitle
                                                          message:errorMessage
@@ -397,6 +399,8 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     NSString * errorMessage = @"";
     
     DebugLog(@"Error domain: %@ code: %d", error.domain, (int)error.code);
+    
+    [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
     
     switch(error.code)
     {

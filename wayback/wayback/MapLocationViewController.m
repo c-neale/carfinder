@@ -13,7 +13,7 @@
 @interface MapLocationViewController ()
 {
     // debug, can be removed at somepoint before release
-    BOOL colSwitch;
+//    BOOL colSwitch;
 }
 
 - (void) calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest;
@@ -38,7 +38,7 @@ const float distanceThreshold = 10.0f;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        colSwitch = NO;
+        //colSwitch = NO;
     }
     return self;
 }
@@ -54,7 +54,7 @@ const float distanceThreshold = 10.0f;
 {
     [super viewWillAppear:animated];
     
-    self.screenName = @"Map Locations";
+    self.screenName = @"MapLocationViewController";
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -131,6 +131,8 @@ const float distanceThreshold = 10.0f;
             {
                 DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
                 
+                [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
+                
                 // reset this flag so it will get processed again next time.
                 [dest setRouteCalcRequired:YES];
             }
@@ -191,7 +193,6 @@ const float distanceThreshold = 10.0f;
     MapMarker * marker = [locations lastObject];
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
     
-    // TODO: make this threshold configurable.
     if(distToMarker < distanceThreshold)
     {
         // remove the pin from the map.

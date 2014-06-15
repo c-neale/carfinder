@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-// comment this line out for release builds.
-#define DEBUG_MODE
-
-#ifdef DEBUG_MODE
+#ifdef DEBUG
 
 #define DebugLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
