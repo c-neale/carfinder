@@ -1,6 +1,6 @@
 //
 //  MarkLocationViewController.m
-//  carfinder
+//  wayback
 //
 //  Created by Cory Neale on 29/05/2014.
 //  Copyright (c) 2014 Cory Neale. All rights reserved.
@@ -160,8 +160,7 @@
                    completionHandler:^(NSArray * placemarks, NSError * error) {
                        if(error != nil)
                        {
-                           
-                           DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
+                           [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
                            
                            switch(error.code)
                            {

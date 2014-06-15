@@ -1,9 +1,9 @@
 //
 //  VersionComparer.m
-//  Magic8Ball
+//  wayback
 //
 //  Created by Cory Neale on 2/05/2014.
-//
+//  Copyright (c) 2014 Cory Neale. All rights reserved.
 //
 
 #import "VersionComparer.h"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08DACC194D5230001D70A8 /* LogHelper.m */; };
 		0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
 		0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */; };
 		0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B08DACC194D5230001D70A8 /* LogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHelper.m; sourceTree = "<group>"; };
 		0B6CFA911936D2DC00B77374 /* WayBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WayBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -198,6 +200,7 @@
 				0BF683A5194939B000AFB4C5 /* AppDelegate.m */,
 				0BF683A8194939B000AFB4C5 /* Images.xcassets */,
 				0BF683AC194939B000AFB4C5 /* LogHelper.h */,
+				0B08DACC194D5230001D70A8 /* LogHelper.m */,
 				0BF683B6194939B000AFB4C5 /* VersionCheck.h */,
 				0BF683B7194939B000AFB4C5 /* VersionCheck.m */,
 				0BF683B8194939B000AFB4C5 /* VersionComparer.h */,
@@ -289,6 +292,7 @@
 				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,
 				0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */,
 				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
+				0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
