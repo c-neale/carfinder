@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0B08DACC194D5230001D70A8 /* LogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHelper.m; sourceTree = "<group>"; };
-		0B6CFA911936D2DC00B77374 /* WayBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WayBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B6CFA911936D2DC00B77374 /* The Way Back.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Way Back.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0B6CFA981936D2DC00B77374 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -116,7 +116,7 @@
 		0B6CFA921936D2DC00B77374 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0B6CFA911936D2DC00B77374 /* WayBack.app */,
+				0B6CFA911936D2DC00B77374 /* The Way Back.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			);
 			name = wayback;
 			productName = carfinder;
-			productReference = 0B6CFA911936D2DC00B77374 /* WayBack.app */;
+			productReference = 0B6CFA911936D2DC00B77374 /* The Way Back.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -239,6 +239,7 @@
 				ORGANIZATIONNAME = "Cory Neale";
 				TargetAttributes = {
 					0B6CFA901936D2DC00B77374 = {
+						DevelopmentTeam = 95YMZ8KDPQ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -393,7 +394,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/wayback/GoogleAnalytics",
 				);
-				PRODUCT_NAME = WayBack;
+				PRODUCT_NAME = "The Way Back";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -411,7 +412,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/wayback/GoogleAnalytics",
 				);
-				PRODUCT_NAME = WayBack;
+				PRODUCT_NAME = "The Way Back";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -46,6 +46,8 @@
                                                             style:UIBarButtonItemStylePlain
                                                            target:self
                                                            action:@selector(commitAddressChange)];
+        
+        self.title = @"Location Details";
     }
     return self;
 }

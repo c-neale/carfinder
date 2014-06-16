@@ -39,6 +39,8 @@ const float distanceThreshold = 10.0f;
     if (self)
     {
         //colSwitch = NO;
+        
+        self.title = @"";
     }
     return self;
 }

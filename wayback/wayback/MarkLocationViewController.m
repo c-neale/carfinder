@@ -60,7 +60,7 @@
                                                       target:self
                                                       action:@selector(promptToClear)];
         
-        self.title = @"the Way Back";
+        self.title = @"The Way Back";
     }
     return self;
 }
