@@ -191,40 +191,41 @@
 
 - (void) keyboardWillShow:(NSNotification *) notify
 {
-    NSDictionary* info = [notify userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGRect addrFrame = addressTextview.frame;
-    
-    float kbTop = screenRect.size.height - kbSize.height;
-    float tvTop = addrFrame.origin.y;
-    float tvBottom = tvTop + addrFrame.size.height;
-    
-    // check if the keyboard is obsucring anything.
-    if(tvTop > kbTop || tvBottom > kbTop)
+    if( [addressTextview isFirstResponder] )
     {
-        // it is, so we need to find out by how much so we can adjust accordingly.
-        float overlap = (tvBottom - kbTop) + 10.0f; // add 10 px so we get a bit of a buffer
+        NSDictionary* info = [notify userInfo];
+        CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGRect addrFrame = addressTextview.frame;
+    
+        float kbTop = screenRect.size.height - kbSize.height;
+        float tvTop = addrFrame.origin.y;
+        float tvBottom = tvTop + addrFrame.size.height;
+    
+        // check if the keyboard is obsucring anything.
+        if(tvTop > kbTop || tvBottom > kbTop)
+        {
+            // it is, so we need to find out by how much so we can adjust accordingly.
+            float overlap = (tvBottom - kbTop) + 10.0f; // add 10 px so we get a bit of a buffer
         
-        [UIView animateWithDuration:0.25f
-                              delay:0.0f
-                            options:0
-                         animations:^{
+            [UIView animateWithDuration:0.25f
+                                  delay:0.0f
+                                options:0
+                             animations:^{
                              
-                             CGRect curFrame = [[self view] frame];
-                             CGRect adjustedFrame = CGRectMake(curFrame.origin.x,
-                                                               curFrame.origin.y - overlap,
-                                                               curFrame.size.width,
-                                                               curFrame.size.height);
+                                 CGRect curFrame = [[self view] frame];
+                                 CGRect adjustedFrame = CGRectMake(curFrame.origin.x,
+                                                                   curFrame.origin.y - overlap,
+                                                                   curFrame.size.width,
+                                                                   curFrame.size.height);
                              
-                             [[self view] setFrame:adjustedFrame];
+                                 [[self view] setFrame:adjustedFrame];
                              
-                         }
-                         completion:nil];
+                             }
+                             completion:nil];
+        }
     }
-    
-    
 }
 
 - (void) keyboardWillBeHidden:(NSNotification *) notify
