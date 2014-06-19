@@ -15,6 +15,7 @@
 @interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 {
     CLLocation * currentLocation;
+    
     __weak IBOutlet UITableView *locationTableView;
     
     __weak IBOutlet UIButton *markButton;
