@@ -14,6 +14,10 @@
 		0B6CFACF1936FB8A00B77374 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFACE1936FB8A00B77374 /* MapKit.framework */; };
 		0B6CFAD419398F2300B77374 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFAD319398F2300B77374 /* CoreLocation.framework */; };
 		0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFADA193B300A00B77374 /* AddressBook.framework */; };
+		0B7B07671956A9A00077F4A4 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B07641956A9A00077F4A4 /* SlideMenuViewController.m */; };
+		0B7B07681956A9A00077F4A4 /* ViewControllerRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B07661956A9A00077F4A4 /* ViewControllerRegistry.m */; };
+		0B7B076D1956AA390077F4A4 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B076B1956AA390077F4A4 /* LeftMenuViewController.m */; };
+		0B7B076E1956AA390077F4A4 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B7B076C1956AA390077F4A4 /* LeftMenuViewController.xib */; };
 		0B7B8FB519455C3D00FE3716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */; };
 		0BC7B87D194B19F7006EEFE7 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B87C194B19F7006EEFE7 /* libGoogleAnalyticsServices.a */; };
 		0BC7B87F194B1A1E006EEFE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B87E194B1A1E006EEFE7 /* SystemConfiguration.framework */; };
@@ -44,6 +48,13 @@
 		0B6CFACE1936FB8A00B77374 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0B6CFAD319398F2300B77374 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0B6CFADA193B300A00B77374 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0B7B07631956A9A00077F4A4 /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
+		0B7B07641956A9A00077F4A4 /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
+		0B7B07651956A9A00077F4A4 /* ViewControllerRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerRegistry.h; sourceTree = "<group>"; };
+		0B7B07661956A9A00077F4A4 /* ViewControllerRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerRegistry.m; sourceTree = "<group>"; };
+		0B7B076A1956AA390077F4A4 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		0B7B076B1956AA390077F4A4 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		0B7B076C1956AA390077F4A4 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuViewController.xib; sourceTree = "<group>"; };
 		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0BC7B874194B19DD006EEFE7 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		0BC7B875194B19DD006EEFE7 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -139,18 +150,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0B7B07611956A98A0077F4A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BF683AC194939B000AFB4C5 /* LogHelper.h */,
+				0B08DACC194D5230001D70A8 /* LogHelper.m */,
+				0BF683B6194939B000AFB4C5 /* VersionCheck.h */,
+				0BF683B7194939B000AFB4C5 /* VersionCheck.m */,
+				0BF683B8194939B000AFB4C5 /* VersionComparer.h */,
+				0BF683B9194939B000AFB4C5 /* VersionComparer.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		0B7B07621956A9A00077F4A4 /* SlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0B7B07631956A9A00077F4A4 /* SlideMenuViewController.h */,
+				0B7B07641956A9A00077F4A4 /* SlideMenuViewController.m */,
+				0B7B07651956A9A00077F4A4 /* ViewControllerRegistry.h */,
+				0B7B07661956A9A00077F4A4 /* ViewControllerRegistry.m */,
+			);
+			path = SlideMenu;
+			sourceTree = "<group>";
+		};
+		0B7B07691956AA150077F4A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B7B076C1956AA390077F4A4 /* LeftMenuViewController.xib */,
+				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
+				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
+				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		0BC7B87019493D11006EEFE7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B7B07691956AA150077F4A4 /* Views */,
 				0BF683B3194939B000AFB4C5 /* MarkLocationViewController.h */,
 				0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */,
-				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
 				0BF683AE194939B000AFB4C5 /* MapLocationViewController.h */,
 				0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */,
-				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
 				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
 				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
-				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+				0B7B076A1956AA390077F4A4 /* LeftMenuViewController.h */,
+				0B7B076B1956AA390077F4A4 /* LeftMenuViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +238,8 @@
 		0BF683A3194939B000AFB4C5 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
+				0B7B07621956A9A00077F4A4 /* SlideMenu */,
+				0B7B07611956A98A0077F4A4 /* Utils */,
 				0BC7B873194B19DD006EEFE7 /* GoogleAnalytics */,
 				0BC7B87219493D79006EEFE7 /* Model */,
 				0BC7B87119493D3B006EEFE7 /* Supporting Files */,
@@ -199,12 +247,6 @@
 				0BF683A4194939B000AFB4C5 /* AppDelegate.h */,
 				0BF683A5194939B000AFB4C5 /* AppDelegate.m */,
 				0BF683A8194939B000AFB4C5 /* Images.xcassets */,
-				0BF683AC194939B000AFB4C5 /* LogHelper.h */,
-				0B08DACC194D5230001D70A8 /* LogHelper.m */,
-				0BF683B6194939B000AFB4C5 /* VersionCheck.h */,
-				0BF683B7194939B000AFB4C5 /* VersionCheck.m */,
-				0BF683B8194939B000AFB4C5 /* VersionComparer.h */,
-				0BF683B9194939B000AFB4C5 /* VersionComparer.m */,
 			);
 			path = wayback;
 			sourceTree = "<group>";
@@ -272,6 +314,7 @@
 			files = (
 				0BF683C8194939B000AFB4C5 /* MapLocationViewController.xib in Resources */,
 				0BF683CB194939B000AFB4C5 /* MarkLocationViewController.xib in Resources */,
+				0B7B076E1956AA390077F4A4 /* LeftMenuViewController.xib in Resources */,
 				0BF683C5194939B000AFB4C5 /* LocationDetailsViewController.xib in Resources */,
 				0BF683C2194939B000AFB4C5 /* InfoPlist.strings in Resources */,
 				0BF683C3194939B000AFB4C5 /* Images.xcassets in Resources */,
@@ -288,11 +331,14 @@
 				0BF683C7194939B000AFB4C5 /* MapLocationViewController.m in Sources */,
 				0BF683C4194939B000AFB4C5 /* LocationDetailsViewController.m in Sources */,
 				0BF683CA194939B000AFB4C5 /* MarkLocationViewController.m in Sources */,
+				0B7B07671956A9A00077F4A4 /* SlideMenuViewController.m in Sources */,
+				0B7B07681956A9A00077F4A4 /* ViewControllerRegistry.m in Sources */,
 				0BF683CD194939B000AFB4C5 /* VersionComparer.m in Sources */,
 				0BF683C6194939B000AFB4C5 /* main.m in Sources */,
 				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,
 				0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */,
 				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
+				0B7B076D1956AA390077F4A4 /* LeftMenuViewController.m in Sources */,
 				0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

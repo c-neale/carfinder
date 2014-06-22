@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import "SlideMenuViewController.h"
+
 #import "MarkLocationViewController.h"
+#import "LeftMenuViewController.h"
 
 #import "GAI.h"
 
@@ -37,11 +40,14 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // placeholder - replace with an actual view controller when I've written it.
-    MarkLocationViewController * vc = [[MarkLocationViewController alloc] init];
+    MarkLocationViewController * mlvc = [[MarkLocationViewController alloc] init];
+    LeftMenuViewController * lmvc = [[LeftMenuViewController alloc] init];
     
-    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:vc];
-    [[self window] setRootViewController:navController];
+    SlideMenuViewController * smvc = [[SlideMenuViewController alloc] initWithMainView:mlvc
+                                                                           andLeftMenu:lmvc
+                                                                          andRightMenu:nil];
+    
+    [[self window] setRootViewController:smvc];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
