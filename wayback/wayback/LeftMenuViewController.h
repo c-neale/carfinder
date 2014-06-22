@@ -10,7 +10,6 @@
 
 @interface LeftMenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
-    
 }
 
 @end
