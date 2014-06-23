@@ -9,6 +9,7 @@
 #import "SlideMenuViewController.h"
 #import "ViewControllerRegistry.h"
 
+#import "SMMainViewDelegate.h"
 
 typedef enum
 {
@@ -76,8 +77,7 @@ typedef enum
         [self initLeftViewController:left];
         [self initMainViewController:main];
         
-        leftMenuVisible = NO;
-        rightMenuVisible = NO;
+        leftMenuVisible = rightMenuVisible = NO;
         
         [self setupMenuButtons];
         [self setupGestures];
@@ -127,7 +127,7 @@ typedef enum
     }
 }
 
-- (void) initMainViewController:(UIViewController *)mainVc
+- (void) initMainViewController:(UIViewController<SMMainViewDelegate> *)mainVc
 {
     [self setMainController:mainVc];
 
@@ -146,7 +146,7 @@ typedef enum
 {
     if(newVcClass != [mainController class])
     {
-        UIViewController * nextController = [registry getFromRegistry:newVcClass];
+        UIViewController<SMMainViewDelegate> * nextController = (UIViewController<SMMainViewDelegate> *)[registry getFromRegistry:newVcClass];
     
         if(setupBlock != nil)
         {
@@ -213,7 +213,7 @@ typedef enum
 }
 
 - (void) setupGestures
-{
+{    
     UISwipeGestureRecognizer * swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(swipeLeftAction)];
     [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
@@ -279,6 +279,19 @@ typedef enum
     }
 }
 
+- (void) executeIfResponds:(UIViewController<SMMainViewDelegate> *)main toSelector:(SEL)selector withData:(UIViewController *)menu
+{
+    if([main respondsToSelector:selector])
+    {
+        // calling [main performSelector:selector withObject:menu]; thows a warning about memory leaks.
+        // see http://stackoverflow.com/a/20058585 for a full explanation of whats going on below.
+        IMP impl = [main methodForSelector:selector];
+        void (*func)(id, SEL, UIViewController *) = (void *)impl;
+        func(main, selector, menu);
+    }
+}
+
+// TODO: this function has a crap name.
 - (void) slideAnim:(SlideDirection)dir
 {
     float xPos = 0.0f;
@@ -286,14 +299,25 @@ typedef enum
     switch(dir)
     {
         case sdLeft:
+            [self executeIfResponds:mainController toSelector:@selector(showRightMenu:) withData:rightController];
+            [rightController viewWillAppear:NO];
+            
             xPos = 60.0f - mainController.view.frame.size.width;
             [self.view sendSubviewToBack:leftController.view];
             break;
         case sdRight:
+            
+            // call the showLeftMenu: selector on the main controller to pass any data to the menu
+            [self executeIfResponds:mainController toSelector:@selector(showLeftMenu:) withData:leftController];
+            
+            // call the view will appear method to set up the view before we display it.
+            [leftController viewWillAppear:NO];
+            
             xPos = mainController.view.frame.size.width - 60.0f;
             [self.view sendSubviewToBack:rightController.view];
             break;
         case sdCentre:
+            [mainController viewWillAppear:NO];
         default:
             break;
     }

@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SMMainViewDelegate.h"
+
 @interface SlideMenuViewController : UIViewController
 {
 }
 
-@property (nonatomic, strong) UIViewController * mainController;
+@property (nonatomic, strong) UIViewController<SMMainViewDelegate> * mainController;
 @property (nonatomic, strong) UIViewController * leftController;
 @property (nonatomic, strong) UIViewController * rightController;
 
-- (id) initWithMainView:(UIViewController *)mainController
+- (id) initWithMainView:(UIViewController<SMMainViewDelegate> *)mainController
             andLeftMenu:(UIViewController *)leftController
            andRightMenu:(UIViewController *)rightController;
 

@@ -12,6 +12,7 @@
 
 #import "MarkLocationViewController.h"
 #import "LeftMenuViewController.h"
+#import "LocationListMenuViewController.h"
 
 #import "GAI.h"
 
@@ -42,10 +43,11 @@
     
     MarkLocationViewController * mlvc = [[MarkLocationViewController alloc] init];
     LeftMenuViewController * lmvc = [[LeftMenuViewController alloc] init];
+    LocationListMenuViewController * llmvc = [[LocationListMenuViewController alloc] init];
     
     SlideMenuViewController * smvc = [[SlideMenuViewController alloc] initWithMainView:mlvc
                                                                            andLeftMenu:lmvc
-                                                                          andRightMenu:nil];
+                                                                          andRightMenu:llmvc];
     
     [[self window] setRootViewController:smvc];
     

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "GAI.h"
+#import "SMMainViewDelegate.h"
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
+@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, SMMainViewDelegate>
 {
     CLLocation * currentLocation;
     
