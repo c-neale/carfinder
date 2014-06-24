@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationListMenuViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface LocationListMenuViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
-    
+    __weak IBOutlet UITableView *locationsTableView;
 }
 
 @property (nonatomic, strong) NSMutableArray * locations;

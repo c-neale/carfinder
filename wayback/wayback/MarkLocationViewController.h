@@ -13,11 +13,9 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, SMMainViewDelegate>
+@interface MarkLocationViewController : GAITrackedViewController<CLLocationManagerDelegate, SMMainViewDelegate>
 {
     CLLocation * currentLocation;
-    
-    __weak IBOutlet UITableView *locationTableView;
     
     __weak IBOutlet UIButton *markButton;
     __weak IBOutlet UIButton *showButton;

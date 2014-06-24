@@ -184,11 +184,11 @@
 		0B7B07691956AA150077F4A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0B7B07711956D8150077F4A4 /* LocationListMenuViewController.xib */,
-				0B7B076C1956AA390077F4A4 /* LeftMenuViewController.xib */,
 				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
 				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
 				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+				0B7B076C1956AA390077F4A4 /* LeftMenuViewController.xib */,
+				0B7B07711956D8150077F4A4 /* LocationListMenuViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";

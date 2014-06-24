@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarkLocationViewController">
             <connections>
-                <outlet property="locationTableView" destination="QH8-93-M2E" id="Ewv-sU-KOX"/>
                 <outlet property="markButton" destination="75X-Sg-SJv" id="AmX-AL-k86"/>
                 <outlet property="showButton" destination="AGT-CP-TTl" id="Bcb-Hw-Biu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,17 +31,8 @@
                         <action selector="markLocationButtonPressed:" destination="-1" eventType="touchUpInside" id="0T3-Nn-wQe"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QH8-93-M2E">
-                    <rect key="frame" x="20" y="151" width="280" height="323"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="VXb-Rz-Q5R"/>
-                        <outlet property="delegate" destination="-1" id="ZsC-aw-bNv"/>
-                    </connections>
-                </tableView>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGT-CP-TTl">
-                    <rect key="frame" x="39" y="505" width="238" height="43"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGT-CP-TTl">
+                    <rect key="frame" x="41" y="505" width="238" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="VjD-mp-rrl"/>
@@ -59,12 +49,8 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="QH8-93-M2E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Hxd-QL-SsC"/>
                 <constraint firstAttribute="centerX" secondItem="AGT-CP-TTl" secondAttribute="centerX" id="UcK-9a-XoL"/>
-                <constraint firstItem="AGT-CP-TTl" firstAttribute="top" secondItem="QH8-93-M2E" secondAttribute="bottom" constant="31" id="V9Z-6I-FR0"/>
                 <constraint firstAttribute="bottom" secondItem="AGT-CP-TTl" secondAttribute="bottom" constant="20" id="ZrU-8y-DwW"/>
-                <constraint firstItem="QH8-93-M2E" firstAttribute="top" secondItem="75X-Sg-SJv" secondAttribute="bottom" constant="28" id="aM1-bT-T4C"/>
-                <constraint firstAttribute="trailing" secondItem="QH8-93-M2E" secondAttribute="trailing" constant="20" id="bHk-lW-JTl"/>
                 <constraint firstItem="75X-Sg-SJv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="79" id="iIL-1D-dwV"/>
                 <constraint firstAttribute="centerX" secondItem="75X-Sg-SJv" secondAttribute="centerX" id="rVh-oL-rBN"/>
             </constraints>

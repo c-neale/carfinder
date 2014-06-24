@@ -10,22 +10,16 @@
 
 #import "MapLocationViewController.h"
 #import "LocationDetailsViewController.h"
+#import "LocationListMenuViewController.h"
 
 #import "MapMarker.h"
 
 @interface MarkLocationViewController ()
 {
-//    UIBarButtonItem * editButton;
-//    UIBarButtonItem * clearButton;
 }
-
-//- (void) setEditMode:(BOOL)active;
-//- (void) editButtonPressed;
 
 //- (void) promptToClear;
 //- (void) clearAllMarkers;
-
-//- (void) updateNavbarButtonVisiblity;
 
 - (void) markLocation;
 - (BOOL) shouldPassivelyMarkLocation;
@@ -49,17 +43,7 @@
         locationManager = [[CLLocationManager alloc] init];
         
         currentLocation = nil;
-/*
-        editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-                                                      style:UIBarButtonItemStylePlain
-                                                     target:self
-                                                     action:@selector(editButtonPressed)];
-        
-        clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
-                                                       style:UIBarButtonItemStylePlain
-                                                      target:self
-                                                      action:@selector(promptToClear)];
-*/
+
         self.title = @"The Way Back";
     }
     return self;
@@ -80,10 +64,6 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.delegate = self;
     [locationManager startUpdatingLocation];
-    
-    [locationTableView reloadData];
-    
-//    [self updateNavbarButtonVisiblity];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -99,60 +79,6 @@
 }
 
 #pragma mark - Class methods
-
-/*
-- (void)setEditMode:(BOOL)active
-{
-    if( active )
-    {
-        [editButton setTitle:@"Stop Editting"];
-    }
-    else
-    {
-        [editButton setTitle:@"Edit"];
-    }
-    
-    [markButton setEnabled:!active];
-    [showButton setEnabled:!active];
-    
-    [locationTableView setEditing:active animated:YES];
-}*/
-/*
-- (void)editButtonPressed
-{
-    [self setEditMode:![locationTableView isEditing]];
-}*/
-/*
-- (void) promptToClear
-{
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Are you sure?"
-                                                     message:@"Are you sure you want to clear all?"
-                                                    delegate:self
-                                           cancelButtonTitle:@"No"
-                                           otherButtonTitles:@"Yes", nil];
-    
-    [alert show];
-}*/
-/*
-- (void) clearAllMarkers
-{
-    [locations removeAllObjects];
-    [locationTableView reloadData];
-}*/
-/*
-- (void) updateNavbarButtonVisiblity
-{
-    if([locations count] > 0)
-    {
-        [[self navigationItem] setLeftBarButtonItem:clearButton animated:YES];
-        [[self navigationItem] setRightBarButtonItem:editButton animated:YES];
-    }
-    else
-    {
-        [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
-        [[self navigationItem] setRightBarButtonItem:nil animated:YES];
-    }
-}*/
 
 - (void) markLocation
 {
@@ -183,9 +109,6 @@
                            MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
                            
                            [locations addObject:newMarker];
-                           
-                           // tell the table view it needs to update its data.
-                           [locationTableView reloadData];
                            
                            //[self updateNavbarButtonVisiblity];
                            
@@ -225,91 +148,6 @@
                                                otherButtonTitles:nil];
         [alert show];
         
-    }
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-{
-    return [locations count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LocationCell"];
-    CLLocation * locationAtIndex = (CLLocation *)[locations objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = locationAtIndex.description;
-    
-    return cell;
-}
-
-- (void)
-tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // remove the data from the array
-    [locations removeObjectAtIndex:indexPath.row];
-    
-    // remove the row from the table
-    NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
-    [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-
-    /*
-    if([locations count] == 0)
-    {
-        [self setEditMode:NO];
-        [self updateNavbarButtonVisiblity];
-    }*/
-    
-    //TODO: work out which routes need re-calculating.
-    // for now, just recalculate all of them.
-    for(int i = 0; i < [locations count]; ++i)
-    {
-        MapMarker * marker = [locations objectAtIndex:i];
-        [marker setRouteCalcRequired:YES];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;
-{
-    MapMarker * sourceItem = [locations objectAtIndex:source.row];
-    
-    [locations removeObject:sourceItem];
-    [locations insertObject:sourceItem atIndex:dest.row];
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] init];
-    
-    [ldvc setCurrentIndex:indexPath.row];
-    [ldvc setLocations:locations];
-    
-    [self.navigationController pushViewController:ldvc animated:YES];
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    // need to be sure which alert view we are working with.
-    // although there is probably a better way of doing this.
-    if([[alertView title]  isEqual: @"Are you sure?"])
-    {
-        // check which button was pressed and process it.
-        switch (buttonIndex) {
-            case 1:
-//                [self clearAllMarkers];
-//                [self setEditMode:NO];
-//                [self updateNavbarButtonVisiblity];
-                break;
-            case 0:
-            default:
-                break;
-        }
     }
 }
 
@@ -441,6 +279,13 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
         [alert show];
         
     }
+}
+
+#pragma mark - SMMainViewDelegate
+
+- (void) showRightMenu:(UIViewController *)rightMenuController
+{
+    [(LocationListMenuViewController *)rightMenuController setLocations:locations];
 }
 
 @end
