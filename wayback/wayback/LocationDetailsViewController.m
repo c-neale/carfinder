@@ -11,11 +11,19 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface LocationDetailsViewController ()
-{
-    UIBarButtonItem * cancelEditButton;
-    UIBarButtonItem * commitEditButton;
-}
 
+#pragma mark - IBOutlet properties
+@property (weak, nonatomic) IBOutlet UITextField *nameInput;
+@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
+@property (weak, nonatomic) IBOutlet UITextView *addressTextView;
+
+#pragma mark - private properties
+@property (nonatomic, strong) UIBarButtonItem * cancelEditButton;
+@property (nonatomic, strong) UIBarButtonItem * commitEditButton;
+
+#pragma mark - private methods
 - (void) registerForKeyboardNotifications;
 - (void) deregisterForKeyboardNotifications;
 - (void) keyboardWillShow:(NSNotification *) notify;
@@ -25,11 +33,6 @@
 
 @implementation LocationDetailsViewController
 
-#pragma mark - Properties
-
-@synthesize currentIndex;
-@synthesize locations;
-
 #pragma mark - Init and Lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,12 +40,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
-        cancelEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+        _cancelEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                             style:UIBarButtonItemStylePlain
                                                            target:self
                                                            action:@selector(cancelAddressChange)];
         
-        commitEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Refine"
+        _commitEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Refine"
                                                             style:UIBarButtonItemStylePlain
                                                            target:self
                                                            action:@selector(commitAddressChange)];
@@ -57,11 +60,11 @@
     [super viewDidLoad];
     
     // add a border to the textview
-    addressTextview.layer.borderWidth = 1.0f;
-    addressTextview.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    addressTextview.layer.cornerRadius = 8.0f;
+    _addressTextView.layer.borderWidth = 1.0f;
+    _addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    _addressTextView.layer.cornerRadius = 8.0f;
     
-    MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
+    MapMarker * currentLocation = [_locations objectAtIndex:_currentIndex];
     [self setupUIFields:currentLocation];
 }
 
@@ -91,31 +94,31 @@
 
 - (void) setupUIFields:(MapMarker *)marker
 {
-    [nameInput setText:marker.name];
+    [_nameInput setText:marker.name];
     
     CLLocation * location = [marker location];
     
     NSString * latString = [[NSNumber numberWithDouble:location.coordinate.latitude] stringValue];
     NSString * lonString = [[NSNumber numberWithDouble:location.coordinate.longitude] stringValue];
     
-    [latitudeLabel setText: latString];
-    [longitudeLabel setText: lonString];
+    [_latitudeLabel setText: latString];
+    [_longitudeLabel setText: lonString];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"hh:mm a dd-MM-yyyy"];
     NSString * timestampString = [formatter stringFromDate:location.timestamp];
     
-    [timeStampLabel setText: timestampString];
+    [_timeStampLabel setText: timestampString];
     
-    addressTextview.text = [marker address];
+    _addressTextView.text = [marker address];
 }
 
 - (void) updateAddressEditButtons:(BOOL) setVisible
 {
     if(setVisible)
     {
-        [[self navigationItem] setLeftBarButtonItem:cancelEditButton animated:YES];
-        [[self navigationItem] setRightBarButtonItem:commitEditButton animated:YES];
+        [[self navigationItem] setLeftBarButtonItem:_cancelEditButton animated:YES];
+        [[self navigationItem] setRightBarButtonItem:_commitEditButton animated:YES];
     }
     else
     {
@@ -127,18 +130,18 @@
 - (void) cancelAddressChange
 {
     // stop editting/make keyboard disappear.
-    [addressTextview resignFirstResponder];
+    [_addressTextView resignFirstResponder];
     
     // refresh the data back to original
-    [self setupUIFields:[locations objectAtIndex:currentIndex]];
+    [self setupUIFields:[_locations objectAtIndex:_currentIndex]];
 }
 
 - (void) commitAddressChange
 {
-    [addressTextview resignFirstResponder];
+    [_addressTextView resignFirstResponder];
     
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:addressTextview.text
+    [geocoder geocodeAddressString:_addressTextView.text
                  completionHandler:^(NSArray *placemarks, NSError *error) {
                      
                      if(error != nil)
@@ -151,7 +154,7 @@
                          // TODO: need to handle multiple results somehow...
                          CLPlacemark *placemark = [placemarks lastObject];
                          
-                         MapMarker * curMarker = [locations objectAtIndex:currentIndex];
+                         MapMarker * curMarker = [_locations objectAtIndex:_currentIndex];
                          [curMarker setPlacemark:placemark];
                          
                          // refresh the ui info
@@ -191,13 +194,13 @@
 
 - (void) keyboardWillShow:(NSNotification *) notify
 {
-    if( [addressTextview isFirstResponder] )
+    if( [_addressTextView isFirstResponder] )
     {
         NSDictionary* info = [notify userInfo];
         CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
         CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGRect addrFrame = addressTextview.frame;
+        CGRect addrFrame = _addressTextView.frame;
     
         float kbTop = screenRect.size.height - kbSize.height;
         float tvTop = addrFrame.origin.y;
@@ -251,8 +254,8 @@
 
 - (IBAction)nameValueChanged:(id)sender
 {
-    MapMarker * currentLocation = [locations objectAtIndex:currentIndex];
-    [currentLocation setName: [nameInput text]];
+    MapMarker * currentLocation = [_locations objectAtIndex:_currentIndex];
+    [currentLocation setName: [_nameInput text]];
 }
 
 #pragma mark - UITextviewDelegate

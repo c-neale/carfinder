@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface VersionCheck : NSObject<UIAlertViewDelegate>
-{
-    
-}
 
 - (void) newVersionForId:(int)appId;
 

@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapLocationViewController">
             <connections>
-                <outlet property="mapView" destination="t7x-zF-PUA" id="81e-GK-FXy"/>
+                <outlet property="mapView" destination="t7x-zF-PUA" id="802-yP-xWI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="6K1-6b-ji5"/>
             </connections>
         </placeholder>

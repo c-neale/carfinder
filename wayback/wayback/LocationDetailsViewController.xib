@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationDetailsViewController">
             <connections>
-                <outlet property="addressTextview" destination="DsL-HQ-C4b" id="B5G-wn-56A"/>
-                <outlet property="latitudeLabel" destination="Y9B-SI-zls" id="Adn-xg-HHr"/>
-                <outlet property="longitudeLabel" destination="qXn-WJ-PGd" id="Mtb-4b-Qik"/>
-                <outlet property="nameInput" destination="r2A-fz-91V" id="S9n-SE-tco"/>
-                <outlet property="timeStampLabel" destination="Qgc-Za-ET6" id="b6s-2O-XzX"/>
+                <outlet property="addressTextView" destination="DsL-HQ-C4b" id="TJU-SA-1mi"/>
+                <outlet property="latitudeLabel" destination="Y9B-SI-zls" id="1pj-Tr-MTY"/>
+                <outlet property="longitudeLabel" destination="qXn-WJ-PGd" id="IPF-ed-BLW"/>
+                <outlet property="nameInput" destination="r2A-fz-91V" id="st0-E6-jRZ"/>
+                <outlet property="timeStampLabel" destination="Qgc-Za-ET6" id="dbW-Ii-zXw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

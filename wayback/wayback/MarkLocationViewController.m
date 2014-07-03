@@ -14,10 +14,20 @@
 #import "MapMarker.h"
 
 @interface MarkLocationViewController ()
-{
-    UIBarButtonItem * editButton;
-    UIBarButtonItem * clearButton;
-}
+
+#pragma mark - IBOutlet properties
+@property (weak, nonatomic) IBOutlet UITableView *locationTableView;
+@property (weak, nonatomic) IBOutlet UIButton *markButton;
+@property (weak, nonatomic) IBOutlet UIButton *showButton;
+
+#pragma mark - private properties
+
+@property (nonatomic, strong) CLLocation * currentLocation;
+@property (nonatomic, strong) UIBarButtonItem * editButton;
+@property (nonatomic, strong) UIBarButtonItem * clearButton;
+
+
+#pragma mark - private methods
 
 - (void) setEditMode:(BOOL)active;
 - (void) editButtonPressed;
@@ -32,12 +42,9 @@
 
 @end
 
+#pragma mark -
+
 @implementation MarkLocationViewController
-
-#pragma mark - Properties
-
-@synthesize locationManager;
-@synthesize locations;
 
 #pragma mark - Init/Lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,17 +52,17 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        locations = [[NSMutableArray alloc] init];
-        locationManager = [[CLLocationManager alloc] init];
+        _locations = [[NSMutableArray alloc] init];
+        _locationManager = [[CLLocationManager alloc] init];
         
-        currentLocation = nil;
+        _currentLocation = nil;
         
-        editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+        _editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(editButtonPressed)];
         
-        clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
+        _clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
                                                        style:UIBarButtonItemStylePlain
                                                       target:self
                                                       action:@selector(promptToClear)];
@@ -77,11 +84,11 @@
     
     self.screenName = @"MarkLocationViewController";
     
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
     
-    [locationTableView reloadData];
+    [_locationTableView reloadData];
     
     [self updateNavbarButtonVisiblity];
 }
@@ -90,7 +97,7 @@
 {
     [super viewWillDisappear:animated];
     
-    [locationManager stopUpdatingLocation];
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,22 +111,22 @@
 {
     if( active )
     {
-        [editButton setTitle:@"Stop Editting"];
+        [_editButton setTitle:@"Stop Editting"];
     }
     else
     {
-        [editButton setTitle:@"Edit"];
+        [_editButton setTitle:@"Edit"];
     }
     
-    [markButton setEnabled:!active];
-    [showButton setEnabled:!active];
+    [_markButton setEnabled:!active];
+    [_showButton setEnabled:!active];
     
-    [locationTableView setEditing:active animated:YES];
+    [_locationTableView setEditing:active animated:YES];
 }
 
 - (void)editButtonPressed
 {
-    [self setEditMode:![locationTableView isEditing]];
+    [self setEditMode:![_locationTableView isEditing]];
 }
 
 - (void) promptToClear
@@ -135,16 +142,16 @@
 
 - (void) clearAllMarkers
 {
-    [locations removeAllObjects];
-    [locationTableView reloadData];
+    [_locations removeAllObjects];
+    [_locationTableView reloadData];
 }
 
 - (void) updateNavbarButtonVisiblity
 {
-    if([locations count] > 0)
+    if([self.locations count] > 0)
     {
-        [[self navigationItem] setLeftBarButtonItem:clearButton animated:YES];
-        [[self navigationItem] setRightBarButtonItem:editButton animated:YES];
+        [[self navigationItem] setLeftBarButtonItem:_clearButton animated:YES];
+        [[self navigationItem] setRightBarButtonItem:_editButton animated:YES];
     }
     else
     {
@@ -156,7 +163,7 @@
 - (void) markLocation
 {
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation:currentLocation
+    [geocoder reverseGeocodeLocation:_currentLocation
                    completionHandler:^(NSArray * placemarks, NSError * error) {
                        if(error != nil)
                        {
@@ -181,10 +188,10 @@
                            // TODO: handle multiple results somehow? how often will this happen?
                            MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
                            
-                           [locations addObject:newMarker];
+                           [_locations addObject:newMarker];
                            
                            // tell the table view it needs to update its data.
-                           [locationTableView reloadData];
+                           [_locationTableView reloadData];
                            
                            [self updateNavbarButtonVisiblity];
                            
@@ -199,14 +206,14 @@
 {
     MapLocationViewController * mlvc = [[MapLocationViewController alloc] init];
     
-    [mlvc setLocations:locations];
+    [mlvc setLocations:_locations];
     
     [self.navigationController pushViewController:mlvc animated:YES];
 }
 
 - (IBAction)markLocationButtonPressed:(id)sender
 {
-    if(currentLocation != nil)
+    if(_currentLocation != nil)
     {
         [self markLocation];
     }
@@ -231,13 +238,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    return [locations count];
+    return [_locations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LocationCell"];
-    CLLocation * locationAtIndex = (CLLocation *)[locations objectAtIndex:indexPath.row];
+    CLLocation * locationAtIndex = (CLLocation *)[_locations objectAtIndex:indexPath.row];
     
     cell.textLabel.text = locationAtIndex.description;
     
@@ -248,13 +255,13 @@
 tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // remove the data from the array
-    [locations removeObjectAtIndex:indexPath.row];
+    [_locations removeObjectAtIndex:indexPath.row];
     
     // remove the row from the table
     NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
     [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    if([locations count] == 0)
+    if([_locations count] == 0)
     {
         [self setEditMode:NO];
         [self updateNavbarButtonVisiblity];
@@ -262,19 +269,19 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     
     //TODO: work out which routes need re-calculating.
     // for now, just recalculate all of them.
-    for(int i = 0; i < [locations count]; ++i)
+    for(int i = 0; i < [_locations count]; ++i)
     {
-        MapMarker * marker = [locations objectAtIndex:i];
+        MapMarker * marker = [_locations objectAtIndex:i];
         [marker setRouteCalcRequired:YES];
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;
 {
-    MapMarker * sourceItem = [locations objectAtIndex:source.row];
+    MapMarker * sourceItem = [_locations objectAtIndex:source.row];
     
-    [locations removeObject:sourceItem];
-    [locations insertObject:sourceItem atIndex:dest.row];
+    [_locations removeObject:sourceItem];
+    [_locations insertObject:sourceItem atIndex:dest.row];
 }
 
 #pragma mark - UITableViewDelegate
@@ -284,7 +291,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] init];
     
     [ldvc setCurrentIndex:indexPath.row];
-    [ldvc setLocations:locations];
+    [ldvc setLocations:_locations];
     
     [self.navigationController pushViewController:ldvc animated:YES];
 }
@@ -316,7 +323,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     // just silently store the location so we know where they are when the button is pressed.
-    currentLocation = newLocation;
+    _currentLocation = newLocation;
 
     // TODO: this needs way more thought.
 /*    if([self shouldPassivelyMarkLocation])
@@ -337,7 +344,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
         return NO;
     }
 
-    if([locations count] == 0)
+    if([_locations count] == 0)
         return NO;
     
     /*
@@ -350,11 +357,11 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     }
      */
     
-    CLLocation * prevLocation = [(MapMarker *)[locations lastObject] location];
+    CLLocation * prevLocation = [(MapMarker *)[_locations lastObject] location];
 
     // check if the direction of travel is changing.
     CLLocationDirection prevDir = prevLocation.course;
-    CLLocationDirection curDir = currentLocation.course;
+    CLLocationDirection curDir = _currentLocation.course;
     
     // TODO: I need to rethink this whole process.
     // if the deviation is greater than 5 degrees AND the distance is less than 10 or time is less than 5min,
@@ -366,7 +373,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     {
         // if we have moved less than x metres, then also NO.
         // TODO: make the 10.0f less hardcoded. value should ideally match the threshold to remove a marker.
-        CLLocationDistance distFromLastMarker = [currentLocation distanceFromLocation:prevLocation];
+        CLLocationDistance distFromLastMarker = [_currentLocation distanceFromLocation:prevLocation];
         DebugLog(@"distance from last marker: %f m", distFromLastMarker);
         if(distFromLastMarker < 10.0f)
         {
@@ -375,7 +382,7 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     
         // don't set a marker too often...
         NSDate * prevTime = prevLocation.timestamp;
-        NSDate * thisTime = currentLocation.timestamp;
+        NSDate * thisTime = _currentLocation.timestamp;
     
         NSTimeInterval interval = [thisTime timeIntervalSinceDate:prevTime];
         double minsSinceLastMarker = interval / 60.0f;

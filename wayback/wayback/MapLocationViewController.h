@@ -13,9 +13,6 @@
 #import <MapKit/MapKit.h>
 
 @interface MapLocationViewController : GAITrackedViewController<MKMapViewDelegate>
-{
-    __weak IBOutlet MKMapView *mapView;
-}
 
 @property (nonatomic, strong) NSMutableArray * locations;
 

@@ -11,25 +11,25 @@
 #import "MapMarker.h"
 
 @interface MapLocationViewController ()
-{
-    // debug, can be removed at somepoint before release
-//    BOOL colSwitch;
-}
+
+#pragma mark - private properties
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+#pragma mark - private methods
 
 - (void) calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest;
 - (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker;
 
 @end
 
+#pragma mark -
+
 @implementation MapLocationViewController
 
 #pragma mark - constants
 
 const float distanceThreshold = 10.0f;
-
-#pragma mark - Properties
-
-@synthesize locations;
 
 #pragma mark - Init/lifecycle
 
@@ -49,7 +49,7 @@ const float distanceThreshold = 10.0f;
 {
     [super viewDidLoad];
     
-    mapView.showsUserLocation = YES;
+    _mapView.showsUserLocation = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -63,11 +63,11 @@ const float distanceThreshold = 10.0f;
 {
     [super viewDidAppear:animated];
     
-    MKUserLocation *userLocation = mapView.userLocation;
+    MKUserLocation *userLocation = _mapView.userLocation;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 50, 50);
-    [mapView setRegion:region animated:NO];
+    [_mapView setRegion:region animated:NO];
 
-    [mapView setCenterCoordinate:userLocation.coordinate animated:NO];
+    [_mapView setCenterCoordinate:userLocation.coordinate animated:NO];
     
     [self addAnnotations];
     [self showDirections];
@@ -84,31 +84,31 @@ const float distanceThreshold = 10.0f;
 - (void) addAnnotations
 {
     [self removeAnnotations];
-    if (locations != nil)
+    if (_locations != nil)
     {
-        [mapView addAnnotations:locations];
+        [_mapView addAnnotations:_locations];
     }
 }
 
 // maybe move this to a category class?
 - (void)removeAnnotations
 {
-    id userLocation = [mapView userLocation];
-    NSMutableArray * pins = [[NSMutableArray alloc] initWithArray:[mapView annotations]];
+    id userLocation = [_mapView userLocation];
+    NSMutableArray * pins = [[NSMutableArray alloc] initWithArray:[_mapView annotations]];
     if ( userLocation != nil ) {
         [pins removeObject:userLocation]; // avoid removing user location off the map
     }
     
-    [mapView removeAnnotations:pins];
+    [_mapView removeAnnotations:pins];
     pins = nil;
 }
 
 - (void) showDirections
 {
-    for(int i = 0; i < locations.count; ++i)
+    for(int i = 0; i < _locations.count; ++i)
     {
-        MapMarker * source = (i == (locations.count - 1)) ? nil : [locations objectAtIndex:i+1];
-        MapMarker * destination = [locations objectAtIndex:i];
+        MapMarker * source = (i == (_locations.count - 1)) ? nil : [_locations objectAtIndex:i+1];
+        MapMarker * destination = [_locations objectAtIndex:i];
         
         [self calculateRouteFrom:source to:destination];
     }
@@ -143,14 +143,14 @@ const float distanceThreshold = 10.0f;
                 // remove the current overlay, if it exists
                 if(dest.route != nil)
                 {
-                    [mapView removeOverlay:dest.route.polyline];
+                    [_mapView removeOverlay:dest.route.polyline];
                 }
                 
                 // get the route from the response object
                 MKRoute * route = response.routes.lastObject;
                 
                 // apply the new route overlay to the map.
-                [mapView addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
+                [_mapView addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
                 
                 // store the route on the destination for future reference.
                 [dest setRoute:route];
@@ -177,13 +177,13 @@ const float distanceThreshold = 10.0f;
     switch(sender.selectedSegmentIndex)
     {
         case 0:
-            mapView.mapType = MKMapTypeStandard;
+            _mapView.mapType = MKMapTypeStandard;
             break;
         case 1:
-            mapView.mapType = MKMapTypeSatellite;
+            _mapView.mapType = MKMapTypeSatellite;
             break;
         case 2:
-            mapView.mapType = MKMapTypeHybrid;
+            _mapView.mapType = MKMapTypeHybrid;
             break;
     }
 }
@@ -192,19 +192,19 @@ const float distanceThreshold = 10.0f;
 
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    MapMarker * marker = [locations lastObject];
+    MapMarker * marker = [_locations lastObject];
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
     
     if(distToMarker < distanceThreshold)
     {
         // remove the pin from the map.
-        [mapView removeAnnotation:[locations lastObject]];
+        [_mapView removeAnnotation:[_locations lastObject]];
         
         // get rid of the last object in the list.
-        [locations removeLastObject];
+        [_locations removeLastObject];
         
         // set the marker to be the new last marker in the list.
-        marker = [locations lastObject];
+        marker = [_locations lastObject];
     }
     
     // now update the path from the current location to the last marker in the list...

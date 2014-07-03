@@ -19,9 +19,6 @@
 #endif
 
 @interface LogHelper : NSObject
-{
-    
-}
 
 + (void) logAndTrackError:(NSError *) error fromClass:(id)object fromFunction:(SEL)selector;
 + (void) logAndTrackErrorMessage:(NSString *)message fromClass:(id)object fromFunction:(SEL)selector;

@@ -11,9 +11,6 @@
 #import "VersionComparer.h"
 
 @interface VersionCheck ()
-{
-    
-}
 
 - (void) handleResponseWithData:(NSData *)data;
 - (NSString *) getAppVersion;
