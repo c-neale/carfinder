@@ -10,11 +10,8 @@
 
 #import "GAI.h"
 
-#import <CoreLocation/CoreLocation.h>
+@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
-@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
-
-@property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSMutableArray * locations;
 
 - (IBAction)markLocationButtonPressed:(id)sender;

@@ -14,6 +14,7 @@
 		0B6CFACF1936FB8A00B77374 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFACE1936FB8A00B77374 /* MapKit.framework */; };
 		0B6CFAD419398F2300B77374 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFAD319398F2300B77374 /* CoreLocation.framework */; };
 		0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFADA193B300A00B77374 /* AddressBook.framework */; };
+		0B7B077E19653A220077F4A4 /* LocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B077D19653A220077F4A4 /* LocationProvider.m */; };
 		0B7B8FB519455C3D00FE3716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */; };
 		0BC7B87D194B19F7006EEFE7 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B87C194B19F7006EEFE7 /* libGoogleAnalyticsServices.a */; };
 		0BC7B87F194B1A1E006EEFE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B87E194B1A1E006EEFE7 /* SystemConfiguration.framework */; };
@@ -44,6 +45,8 @@
 		0B6CFACE1936FB8A00B77374 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0B6CFAD319398F2300B77374 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0B6CFADA193B300A00B77374 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0B7B077C19653A220077F4A4 /* LocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationProvider.h; sourceTree = "<group>"; };
+		0B7B077D19653A220077F4A4 /* LocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationProvider.m; sourceTree = "<group>"; };
 		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0BC7B874194B19DD006EEFE7 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		0BC7B875194B19DD006EEFE7 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -139,6 +142,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0B7B077B19653A010077F4A4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				0B7B077C19653A220077F4A4 /* LocationProvider.h */,
+				0B7B077D19653A220077F4A4 /* LocationProvider.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		0BC7B87019493D11006EEFE7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +204,7 @@
 		0BF683A3194939B000AFB4C5 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
+				0B7B077B19653A010077F4A4 /* New Group */,
 				0BC7B873194B19DD006EEFE7 /* GoogleAnalytics */,
 				0BC7B87219493D79006EEFE7 /* Model */,
 				0BC7B87119493D3B006EEFE7 /* Supporting Files */,
@@ -290,6 +303,7 @@
 				0BF683CA194939B000AFB4C5 /* MarkLocationViewController.m in Sources */,
 				0BF683CD194939B000AFB4C5 /* VersionComparer.m in Sources */,
 				0BF683C6194939B000AFB4C5 /* main.m in Sources */,
+				0B7B077E19653A220077F4A4 /* LocationProvider.m in Sources */,
 				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,
 				0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */,
 				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
