@@ -14,6 +14,8 @@
 #import "MapMarker.h"
 
 #import "LocationProvider.h"
+#import "MarkLocationAlertViewHandler.h"
+
 
 @interface MarkLocationViewController ()
 
@@ -28,13 +30,13 @@
 @property (nonatomic, strong) UIBarButtonItem * clearButton;
 
 @property (nonatomic, strong) LocationProvider * locationProvider;
+@property (nonatomic, strong) MarkLocationAlertViewHandler * alertHandler;
 
 #pragma mark - private methods
 
 - (void) setEditMode:(BOOL)active;
 - (void) editButtonPressed;
 
-- (void) promptToClear;
 - (void) clearAllMarkers;
 
 - (void) updateNavbarButtonVisiblity;
@@ -54,6 +56,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        _alertHandler = [[MarkLocationAlertViewHandler alloc] initWithDelegate:self];
+        
         // TODO: move this out to a model class, init in the app delegate and pass in a pointer.
         _locations = [[NSMutableArray alloc] init];
         
@@ -66,8 +70,8 @@
         
         _clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
                                                        style:UIBarButtonItemStylePlain
-                                                      target:self
-                                                      action:@selector(promptToClear)];
+                                                      target:_alertHandler
+                                                      action:@selector(displayClearConfirmAlert)];
         
         self.title = @"The Way Back";
     }
@@ -130,17 +134,7 @@
     [self setEditMode:![_locationTableView isEditing]];
 }
 
-- (void) promptToClear
-{
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Are you sure?"
-                                                     message:@"Are you sure you want to clear all?"
-                                                    delegate:self
-                                           cancelButtonTitle:@"No"
-                                           otherButtonTitles:@"Yes", nil];
-    
-    [alert show];
-}
-
+// TODO: move this to a model class
 - (void) clearAllMarkers
 {
     [_locations removeAllObjects];
@@ -201,6 +195,13 @@
 
 }
 
+- (void) clearButtonAction
+{
+    [self clearAllMarkers];
+    [self setEditMode:NO];
+    [self updateNavbarButtonVisiblity];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)FindButtonPressed:(id)sender
@@ -220,18 +221,9 @@
     }
     else
     {
-        NSString * errorTitle = @"Unable to find location";
-        NSString * errorMessage = @"Unable to find your current location.  Please enable location services in the privacy settings and try again";
-        
         [LogHelper logAndTrackErrorMessage:@"Location services is off" fromClass:self fromFunction:_cmd];
         
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorTitle
-                                                         message:errorMessage
-                                                        delegate:nil
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles:nil];
-        [alert show];
-        
+        [_alertHandler displayLocationServicesAlert];
     }
 }
 
@@ -296,28 +288,5 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     
     [self.navigationController pushViewController:ldvc animated:YES];
 }
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    // need to be sure which alert view we are working with.
-    // although there is probably a better way of doing this.
-    if([[alertView title]  isEqual: @"Are you sure?"])
-    {
-        // check which button was pressed and process it.
-        switch (buttonIndex) {
-            case 1:
-                [self clearAllMarkers];
-                [self setEditMode:NO];
-                [self updateNavbarButtonVisiblity];
-                break;
-            case 0:
-            default:
-                break;
-        }
-    }
-}
-
 
 @end

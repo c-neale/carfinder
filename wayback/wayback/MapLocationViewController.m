@@ -13,9 +13,6 @@
 
 @interface MapLocationViewController ()
 
-#pragma mark - IBOutlet properties
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
 #pragma mark - private properties
 @property (nonatomic, strong) MapViewHandler * mapHandler;
 
@@ -107,7 +104,7 @@
         MapMarker * source = (i == (_locations.count - 1)) ? nil : [_locations objectAtIndex:i+1];
         MapMarker * destination = [_locations objectAtIndex:i];
         
-        [MapViewHandler mapView:_mapView calculateRouteFrom:source to:destination];
+        [_mapHandler calculateRouteFrom:source to:destination];
     }
 }
 

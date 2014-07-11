@@ -10,14 +10,15 @@
 
 #import <MapKit/MapKit.h>
 
+#import "MapLocationViewController.h"
 #import "MapMarker.h"
 
 @interface MapViewHandler : NSObject<MKMapViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray * locations;
+@property (nonatomic, strong) MapLocationViewController * delegate;
 
-- (id) initWithModel:(NSMutableArray *)locations;
+- (id) initWithDelegate:(MapLocationViewController *)delegate;
 
-+ (void) mapView:(MKMapView *)mv calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest;
+- (void) calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest;
 
 @end

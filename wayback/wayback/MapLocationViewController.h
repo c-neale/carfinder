@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import <MapKit/MapKit.h>
+
 #import "GAI.h"
 
 @interface MapLocationViewController : GAITrackedViewController
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, strong) NSMutableArray * locations;
 

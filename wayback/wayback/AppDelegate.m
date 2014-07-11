@@ -12,6 +12,8 @@
 
 #import "GAI.h"
 
+#import "VersionCheck.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -25,12 +27,12 @@
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     
-#ifdef DEBUG
+//#ifdef DEBUG
     // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-#else
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+//#else
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
-#endif
+//#endif
     
     // Initialize tracker. Replace with your tracking ID.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-50634961-2"];
@@ -42,6 +44,9 @@
     
     UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:vc];
     [[self window] setRootViewController:navController];
+    
+//    VersionCheck * checker = [[VersionCheck alloc] init];
+//    [checker newVersionForId:890275501];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

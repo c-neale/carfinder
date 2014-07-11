@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VersionCheck : NSObject<UIAlertViewDelegate>
+#import "VersionCheckAlertViewHandler.h"
+
+@interface VersionCheck : NSObject
+
+@property (nonatomic, strong) VersionCheckAlertViewHandler * alertViewHandler;
+
+- (id) init;
 
 - (void) newVersionForId:(int)appId;
 

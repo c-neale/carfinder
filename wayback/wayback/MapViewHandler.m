@@ -10,7 +10,7 @@
 
 @interface MapViewHandler ()
 
-+ (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker;
+- (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker;
 
 @end
 
@@ -22,19 +22,19 @@ const float distanceThreshold = 10.0f;
 
 #pragma mark - init method(s)
 
-- (id) initWithModel:(NSMutableArray *)locations
+- (id) initWithDelegate:(MapLocationViewController *)delegate
 {
     self = [super init];
     if(self)
     {
-        _locations = locations;
+        _delegate = delegate;
     }
     return self;
 }
 
 #pragma mark - class methods
 
-+ (void) mapView:(MKMapView *)mv calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest
+- (void) calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest
 {
     if([dest routeCalcRequired] == YES)
     {
@@ -60,6 +60,8 @@ const float distanceThreshold = 10.0f;
             }
             else
             {
+                MKMapView * mv = [_delegate mapView];
+                
                 // remove the current overlay, if it exists
                 if(dest.route != nil)
                 {
@@ -81,7 +83,7 @@ const float distanceThreshold = 10.0f;
 
 #pragma mark - private methods
 
-+ (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker
+- (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker
 {
     if(marker == nil)
     {
@@ -96,7 +98,9 @@ const float distanceThreshold = 10.0f;
 
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    MapMarker * marker = [_locations lastObject];
+    NSMutableArray * locations = [_delegate locations];
+    
+    MapMarker * marker = [locations lastObject];
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
     
     if(distToMarker < distanceThreshold)
@@ -105,15 +109,15 @@ const float distanceThreshold = 10.0f;
         [mv removeAnnotation:marker];
         
         // get rid of the last object in the list.
-        [_locations removeLastObject];
+        [locations removeLastObject];
         
         // set the marker to be the new last marker in the list.
-        marker = [_locations lastObject];
+        marker = [locations lastObject];
     }
     
     // now update the path from the current location to the last marker in the list...
     [marker setRouteCalcRequired:YES];
-    [MapViewHandler mapView:mv calculateRouteFrom:nil to:marker];
+    [self calculateRouteFrom:nil to:marker];
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
