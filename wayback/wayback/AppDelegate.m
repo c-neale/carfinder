@@ -18,7 +18,7 @@
 {
 
     // this will stop google tracking data while debugging (without haveing to wrap/remove all the GAI calls)
-#ifndef DEBUG
+#ifdef DEBUG
     [GAI sharedInstance].dryRun = YES;
 #endif
     
