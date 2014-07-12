@@ -10,6 +10,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "LocationDetailsTextViewHandler.h"
+#import "KeyboardNotificationHandler.h"
+
 @interface LocationDetailsViewController ()
 
 #pragma mark - IBOutlet properties
@@ -23,11 +26,8 @@
 @property (nonatomic, strong) UIBarButtonItem * cancelEditButton;
 @property (nonatomic, strong) UIBarButtonItem * commitEditButton;
 
-#pragma mark - private methods
-- (void) registerForKeyboardNotifications;
-- (void) deregisterForKeyboardNotifications;
-- (void) keyboardWillShow:(NSNotification *) notify;
-- (void) keyboardWillBeHidden:(NSNotification *) notify;
+@property (nonatomic, strong) LocationDetailsTextViewHandler * textViewHandler;
+@property (nonatomic, strong) KeyboardNotificationHandler * keyboardHandler;
 
 @end
 
@@ -40,6 +40,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
+        _textViewHandler = [[LocationDetailsTextViewHandler alloc] initWithDelegate:self];
+        _keyboardHandler = [[KeyboardNotificationHandler alloc] initWithDelegate:_addressTextView];
+        
         _cancelEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                             style:UIBarButtonItemStylePlain
                                                            target:self
@@ -66,6 +69,8 @@
     
     MapMarker * currentLocation = [_locations objectAtIndex:_currentIndex];
     [self setupUIFields:currentLocation];
+    
+    [_addressTextView setDelegate:_textViewHandler];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -74,14 +79,14 @@
     
     self.screenName = @"LocationDetailsViewController";
     
-    [self registerForKeyboardNotifications];
+    [_keyboardHandler registerForKeyboardNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    [self deregisterForKeyboardNotifications];
+    [_keyboardHandler deregisterForKeyboardNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,92 +169,6 @@
                  }];
 }
 
-#pragma mark - Keyboard management stuff
-
-- (void) registerForKeyboardNotifications
-{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-}
-
-- (void) deregisterForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
-                                                  object:nil];
-}
-
-- (void) keyboardWillShow:(NSNotification *) notify
-{
-    if( [_addressTextView isFirstResponder] )
-    {
-        NSDictionary* info = [notify userInfo];
-        CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGRect addrFrame = _addressTextView.frame;
-    
-        float kbTop = screenRect.size.height - kbSize.height;
-        float tvTop = addrFrame.origin.y;
-        float tvBottom = tvTop + addrFrame.size.height;
-    
-        // check if the keyboard is obsucring anything.
-        if(tvTop > kbTop || tvBottom > kbTop)
-        {
-            // it is, so we need to find out by how much so we can adjust accordingly.
-            float overlap = (tvBottom - kbTop) + 10.0f; // add 10 px so we get a bit of a buffer
-        
-            [UIView animateWithDuration:0.25f
-                                  delay:0.0f
-                                options:0
-                             animations:^{
-                             
-                                 CGRect curFrame = [[self view] frame];
-                                 CGRect adjustedFrame = CGRectMake(curFrame.origin.x,
-                                                                   curFrame.origin.y - overlap,
-                                                                   curFrame.size.width,
-                                                                   curFrame.size.height);
-                             
-                                 [[self view] setFrame:adjustedFrame];
-                             
-                             }
-                             completion:nil];
-        }
-    }
-}
-
-- (void) keyboardWillBeHidden:(NSNotification *) notify
-{
-    // move all views back to the default position
-    
-    [UIView animateWithDuration:0.25f
-                          delay:0.0f
-                        options:0
-                     animations:^{
-                         
-                         CGRect curFrame = [[self view] frame];
-                         CGRect originalFrame = CGRectMake(0.0f, 0.0f, curFrame.size.width, curFrame.size.height);
-                         
-                         [[self view] setFrame: originalFrame];
-                         
-                     }
-                     completion:nil];
-    
-}
-
 #pragma mark - IBActions
 
 - (IBAction)nameValueChanged:(id)sender
@@ -258,16 +177,5 @@
     [currentLocation setName: [_nameInput text]];
 }
 
-#pragma mark - UITextviewDelegate
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    [self updateAddressEditButtons:YES];
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    [self updateAddressEditButtons:NO];
-}
 
 @end

@@ -12,12 +12,14 @@
 
 #import "MapMarker.h"
 
-@interface LocationDetailsViewController : GAITrackedViewController<UITextViewDelegate>
+@interface LocationDetailsViewController : GAITrackedViewController
 
 @property (nonatomic) NSUInteger currentIndex;
 @property (nonatomic) NSArray * locations;
 
 - (void) setupUIFields:(MapMarker *)marker;
+- (void) updateAddressEditButtons:(BOOL) setVisible;
+
 - (IBAction)nameValueChanged:(id)sender;
 
 @end
