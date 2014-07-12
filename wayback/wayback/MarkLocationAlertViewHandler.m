@@ -8,7 +8,7 @@
 
 #import "MarkLocationAlertViewHandler.h"
 
-
+#import "MarkLocationViewController.h"
 
 @implementation MarkLocationAlertViewHandler
 

@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MarkLocationViewController.h"
+@class MarkLocationViewController;
 
 @interface MarkLocationAlertViewHandler : NSObject<UIAlertViewDelegate>
 
-@property (nonatomic, strong) MarkLocationViewController * delegate;
+@property (nonatomic, weak) MarkLocationViewController * delegate;
 
 - (id) initWithDelegate:(MarkLocationViewController *)delegate;
 

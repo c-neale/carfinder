@@ -10,6 +10,7 @@
 		0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08DACC194D5230001D70A8 /* LogHelper.m */; };
 		0B150755196F9F6600523BE1 /* VersionCheckAlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B150754196F9F6600523BE1 /* VersionCheckAlertViewHandler.m */; };
 		0B15075A196FD2A100523BE1 /* MarkLocationAlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */; };
+		0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */; };
 		0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
 		0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */; };
 		0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
@@ -45,6 +46,8 @@
 		0B150754196F9F6600523BE1 /* VersionCheckAlertViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheckAlertViewHandler.m; sourceTree = "<group>"; };
 		0B150758196FD2A100523BE1 /* MarkLocationAlertViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationAlertViewHandler.h; sourceTree = "<group>"; };
 		0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLocationAlertViewHandler.m; sourceTree = "<group>"; };
+		0B15075C196FEC2000523BE1 /* MarkLocationTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationTableViewHandler.h; sourceTree = "<group>"; };
+		0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLocationTableViewHandler.m; sourceTree = "<group>"; };
 		0B6CFA911936D2DC00B77374 /* The Way Back.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Way Back.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
 				0B150758196FD2A100523BE1 /* MarkLocationAlertViewHandler.h */,
 				0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */,
+				0B15075C196FEC2000523BE1 /* MarkLocationTableViewHandler.h */,
+				0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */,
 			);
 			name = MarkLocation;
 			sourceTree = "<group>";
@@ -153,6 +158,16 @@
 				0B7B0780196541900077F4A4 /* MapViewHandler.m */,
 			);
 			name = MapLocation;
+			sourceTree = "<group>";
+		};
+		0B15075F196FEDE600523BE1 /* LocationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
+				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
+				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+			);
+			name = LocationDetails;
 			sourceTree = "<group>";
 		};
 		0B6CFA881936D2DC00B77374 = {
@@ -202,9 +217,7 @@
 			children = (
 				0B150757196FD27A00523BE1 /* MarkLocation */,
 				0B15075B196FDB8A00523BE1 /* MapLocation */,
-				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
-				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
-				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
+				0B15075F196FEDE600523BE1 /* LocationDetails */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -349,6 +362,7 @@
 				0B7B0781196541900077F4A4 /* MapViewHandler.m in Sources */,
 				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
 				0B150755196F9F6600523BE1 /* VersionCheckAlertViewHandler.m in Sources */,
+				0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */,
 				0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,12 +10,13 @@
 
 #import <MapKit/MapKit.h>
 
-#import "MapLocationViewController.h"
 #import "MapMarker.h"
+
+@class MapLocationViewController;
 
 @interface MapViewHandler : NSObject<MKMapViewDelegate>
 
-@property (nonatomic, strong) MapLocationViewController * delegate;
+@property (nonatomic, weak) MapLocationViewController * delegate;
 
 - (id) initWithDelegate:(MapLocationViewController *)delegate;
 

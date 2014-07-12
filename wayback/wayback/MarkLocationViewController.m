@@ -15,7 +15,7 @@
 
 #import "LocationProvider.h"
 #import "MarkLocationAlertViewHandler.h"
-
+#import "MarkLocationTableViewHandler.h"
 
 @interface MarkLocationViewController ()
 
@@ -31,15 +31,13 @@
 
 @property (nonatomic, strong) LocationProvider * locationProvider;
 @property (nonatomic, strong) MarkLocationAlertViewHandler * alertHandler;
+@property (nonatomic, strong) MarkLocationTableViewHandler * tableHandler;
 
 #pragma mark - private methods
 
-- (void) setEditMode:(BOOL)active;
 - (void) editButtonPressed;
 
 - (void) clearAllMarkers;
-
-- (void) updateNavbarButtonVisiblity;
 
 - (void) markLocation;
 //- (BOOL) shouldPassivelyMarkLocation;
@@ -56,10 +54,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        _alertHandler = [[MarkLocationAlertViewHandler alloc] initWithDelegate:self];
-        
         // TODO: move this out to a model class, init in the app delegate and pass in a pointer.
         _locations = [[NSMutableArray alloc] init];
+        
+        _alertHandler = [[MarkLocationAlertViewHandler alloc] initWithDelegate:self];
+        _tableHandler = [[MarkLocationTableViewHandler alloc] initWithDelegate:self andModel:_locations];
         
         _locationProvider = [[LocationProvider alloc] init];
         
@@ -82,6 +81,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // set the delegate for the tableview.
+    [_locationTableView setDataSource:_tableHandler];
+    [_locationTableView setDelegate:_tableHandler];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -225,68 +228,6 @@
         
         [_alertHandler displayLocationServicesAlert];
     }
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-{
-    return [_locations count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LocationCell"];
-    CLLocation * locationAtIndex = (CLLocation *)[_locations objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = locationAtIndex.description;
-    
-    return cell;
-}
-
-- (void)
-tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // remove the data from the array
-    [_locations removeObjectAtIndex:indexPath.row];
-    
-    // remove the row from the table
-    NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
-    [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    if([_locations count] == 0)
-    {
-        [self setEditMode:NO];
-        [self updateNavbarButtonVisiblity];
-    }
-    
-    //TODO: work out which routes need re-calculating.
-    // for now, just recalculate all of them.
-    for(int i = 0; i < [_locations count]; ++i)
-    {
-        MapMarker * marker = [_locations objectAtIndex:i];
-        [marker setRouteCalcRequired:YES];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;
-{
-    MapMarker * sourceItem = [_locations objectAtIndex:source.row];
-    
-    [_locations removeObject:sourceItem];
-    [_locations insertObject:sourceItem atIndex:dest.row];
-}
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] init];
-    
-    [ldvc setCurrentIndex:indexPath.row];
-    [ldvc setLocations:_locations];
-    
-    [self.navigationController pushViewController:ldvc animated:YES];
 }
 
 @end

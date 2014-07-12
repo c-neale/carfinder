@@ -8,6 +8,8 @@
 
 #import "MapViewHandler.h"
 
+#import "MapLocationViewController.h"
+
 @interface MapViewHandler ()
 
 - (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker;

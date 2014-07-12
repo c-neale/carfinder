@@ -10,7 +10,7 @@
 
 #import "GAI.h"
 
-@interface MarkLocationViewController : GAITrackedViewController<UITableViewDataSource, UITableViewDelegate>
+@interface MarkLocationViewController : GAITrackedViewController
 
 @property (nonatomic, strong) NSMutableArray * locations;
 
@@ -18,5 +18,8 @@
 - (IBAction)FindButtonPressed:(id)sender;
 
 - (void) clearButtonAction;
+
+- (void) setEditMode:(BOOL)active;
+- (void) updateNavbarButtonVisiblity;
 
 @end
