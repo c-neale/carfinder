@@ -9,6 +9,7 @@
                 <outlet property="locationTableView" destination="QH8-93-M2E" id="t79-d1-Ttu"/>
                 <outlet property="markButton" destination="75X-Sg-SJv" id="zwz-Tm-dFb"/>
                 <outlet property="showButton" destination="AGT-CP-TTl" id="wBg-17-cab"/>
+                <outlet property="versionLabel" destination="tZF-lA-eIx" id="uuw-bg-x4j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,9 +37,10 @@
                     <rect key="frame" x="20" y="151" width="280" height="323"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGT-CP-TTl">
-                    <rect key="frame" x="39" y="505" width="238" height="43"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGT-CP-TTl">
+                    <rect key="frame" x="41" y="505" width="238" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="VjD-mp-rrl"/>
@@ -52,15 +54,28 @@
                         <action selector="FindButtonPressed:" destination="-1" eventType="touchUpInside" id="yYU-gn-fP3"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-lA-eIx">
+                    <rect key="frame" x="6" y="547" width="72" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Ldb-zm-ABx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="tZF-lA-eIx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="6" id="6GS-PW-4UY"/>
                 <constraint firstItem="QH8-93-M2E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Hxd-QL-SsC"/>
+                <constraint firstAttribute="bottom" secondItem="tZF-lA-eIx" secondAttribute="bottom" id="Sws-B7-qd7"/>
                 <constraint firstAttribute="centerX" secondItem="AGT-CP-TTl" secondAttribute="centerX" id="UcK-9a-XoL"/>
                 <constraint firstItem="AGT-CP-TTl" firstAttribute="top" secondItem="QH8-93-M2E" secondAttribute="bottom" constant="31" id="V9Z-6I-FR0"/>
                 <constraint firstAttribute="bottom" secondItem="AGT-CP-TTl" secondAttribute="bottom" constant="20" id="ZrU-8y-DwW"/>
                 <constraint firstItem="QH8-93-M2E" firstAttribute="top" secondItem="75X-Sg-SJv" secondAttribute="bottom" constant="28" id="aM1-bT-T4C"/>
                 <constraint firstAttribute="trailing" secondItem="QH8-93-M2E" secondAttribute="trailing" constant="20" id="bHk-lW-JTl"/>
+                <constraint firstAttribute="trailing" secondItem="tZF-lA-eIx" secondAttribute="trailing" constant="242" id="fT8-gx-mmf"/>
                 <constraint firstItem="75X-Sg-SJv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="79" id="iIL-1D-dwV"/>
                 <constraint firstAttribute="centerX" secondItem="75X-Sg-SJv" secondAttribute="centerX" id="rVh-oL-rBN"/>
             </constraints>

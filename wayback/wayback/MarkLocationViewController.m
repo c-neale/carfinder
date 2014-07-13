@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *locationTableView;
 @property (weak, nonatomic) IBOutlet UIButton *markButton;
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 #pragma mark - private properties
 
@@ -41,6 +42,8 @@
 
 - (void) markLocation;
 //- (BOOL) shouldPassivelyMarkLocation;
+
+- (void) setVersionLabel;
 
 @end
 
@@ -90,6 +93,8 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self setVersionLabel];
     
     self.screenName = @"MarkLocationViewController";
  
@@ -203,6 +208,14 @@
     [self clearAllMarkers];
     [self setEditMode:NO];
     [self updateNavbarButtonVisiblity];
+}
+
+- (void) setVersionLabel
+{
+    NSDictionary * infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString * version = [infoDict objectForKey:@"CFBundleShortVersionString"];
+    
+    _versionLabel.text = [NSString stringWithFormat:@"v%@", version];
 }
 
 #pragma mark - IBActions
