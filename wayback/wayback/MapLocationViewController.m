@@ -32,7 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _mapHandler = [[MapViewHandler alloc] init];
+        _mapHandler = [[MapViewHandler alloc] initWithDelegate:self];
         
         self.title = @"";
     }
@@ -42,6 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [_mapView setDelegate:_mapHandler];
     
     _mapView.showsUserLocation = YES;
 }
