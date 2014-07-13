@@ -11,9 +11,6 @@
 #import <MapKit/MapKit.h>
 
 @interface MapMarker : NSObject<MKAnnotation>
-{
-    
-}
 
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) CLPlacemark * placemark;
@@ -25,6 +22,8 @@
 - (id) initWithPlacemark:(CLPlacemark *)pMark;
 
 - (CLLocation *) location;
+
 - (NSString *) address;
+- (NSString *) shortAddress;
 
 @end

@@ -14,37 +14,38 @@
 
 #import "VersionCheck.h"
 
+@interface AppDelegate ()
+
+@property (nonatomic, strong) DataModel * dataModel;
+
+- (void) initGoogleAnalyticsWithId:(NSString *)trackingId;
+
+@end
+
 @implementation AppDelegate
+
+#pragma mark - lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    // this will stop google tracking data while debugging (without haveing to wrap/remove all the GAI calls)
-#ifdef DEBUG
-    [GAI sharedInstance].dryRun = YES;
-#endif
+    [self initGoogleAnalyticsWithId:@"UA-50634961-2"];
     
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-//#ifdef DEBUG
-    // Optional: set Logger to VERBOSE for debug information.
-//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-//#else
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
-//#endif
-    
-    // Initialize tracker. Replace with your tracking ID.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50634961-2"];
-    
+    // create the window.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // placeholder - replace with an actual view controller when I've written it.
-    MarkLocationViewController * vc = [[MarkLocationViewController alloc] init];
+    // create an instance of the data model to hold our data.
+    _dataModel = [[DataModel alloc] init];
     
-    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:vc];
+    // create our starting view controller and pass it the model.
+    MarkLocationViewController * markLocationVc = [[MarkLocationViewController alloc] init];
+    [markLocationVc setModel:_dataModel];
+    
+    // create a navigation controller with our root view controller and set it to the window.
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:markLocationVc];
     [[self window] setRootViewController:navController];
     
+    //check to see if we have the latest version and prompt to upgrade...
 //    VersionCheck * checker = [[VersionCheck alloc] init];
 //    [checker newVersionForId:890275501];
     
@@ -79,6 +80,29 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - helpers
+
+- (void) initGoogleAnalyticsWithId:(NSString *)trackingId
+{
+    // this will stop google tracking data while debugging (without haveing to wrap/remove all the GAI calls)
+#ifdef DEBUG
+    [GAI sharedInstance].dryRun = YES;
+#endif
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    //#ifdef DEBUG
+    // Optional: set Logger to VERBOSE for debug information.
+    //    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    //#else
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
+    //#endif
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:trackingId];
 }
 
 @end

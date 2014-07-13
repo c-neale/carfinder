@@ -13,6 +13,7 @@
 		0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */; };
 		0B1507631970E1B000523BE1 /* LocationDetailsTextViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507621970E1B000523BE1 /* LocationDetailsTextViewHandler.m */; };
 		0B1507661970E3F400523BE1 /* KeyboardNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */; };
+		0B1507691972385000523BE1 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507681972385000523BE1 /* DataModel.m */; };
 		0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
 		0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */; };
 		0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
@@ -54,6 +55,8 @@
 		0B1507621970E1B000523BE1 /* LocationDetailsTextViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsTextViewHandler.m; sourceTree = "<group>"; };
 		0B1507641970E3F400523BE1 /* KeyboardNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardNotificationHandler.h; sourceTree = "<group>"; };
 		0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardNotificationHandler.m; sourceTree = "<group>"; };
+		0B1507671972385000523BE1 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		0B1507681972385000523BE1 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		0B6CFA911936D2DC00B77374 /* The Way Back.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Way Back.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -250,6 +253,8 @@
 			children = (
 				0BF683B1194939B000AFB4C5 /* MapMarker.h */,
 				0BF683B2194939B000AFB4C5 /* MapMarker.m */,
+				0B1507671972385000523BE1 /* DataModel.h */,
+				0B1507681972385000523BE1 /* DataModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
 				0B150755196F9F6600523BE1 /* VersionCheckAlertViewHandler.m in Sources */,
 				0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */,
+				0B1507691972385000523BE1 /* DataModel.m in Sources */,
 				0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */,
 				0B1507661970E3F400523BE1 /* KeyboardNotificationHandler.m in Sources */,
 				0B1507631970E1B000523BE1 /* LocationDetailsTextViewHandler.m in Sources */,

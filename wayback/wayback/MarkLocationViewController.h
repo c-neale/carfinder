@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DataModel.h"
+
 #import "GAI.h"
 
 @interface MarkLocationViewController : GAITrackedViewController
 
-@property (nonatomic, strong) NSMutableArray * locations;
+//@property (nonatomic, strong) NSMutableArray * locations;
+@property (nonatomic, weak) DataModel * model;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model:(DataModel *)model;
 
 - (IBAction)markLocationButtonPressed:(id)sender;
 - (IBAction)FindButtonPressed:(id)sender;

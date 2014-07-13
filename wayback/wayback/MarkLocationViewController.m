@@ -38,8 +38,6 @@
 
 - (void) editButtonPressed;
 
-- (void) clearAllMarkers;
-
 - (void) markLocation;
 //- (BOOL) shouldPassivelyMarkLocation;
 
@@ -52,32 +50,38 @@
 @implementation MarkLocationViewController
 
 #pragma mark - Init/Lifecycle
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    return [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil model:nil];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model:(DataModel *)model;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        // TODO: move this out to a model class, init in the app delegate and pass in a pointer.
-        _locations = [[NSMutableArray alloc] init];
+        _model = model;
         
         _alertHandler = [[MarkLocationAlertViewHandler alloc] initWithDelegate:self];
-        _tableHandler = [[MarkLocationTableViewHandler alloc] initWithDelegate:self andModel:_locations];
+        _tableHandler = [[MarkLocationTableViewHandler alloc] initWithDelegate:self andModel:[_model locations]];
         
         _locationProvider = [[LocationProvider alloc] init];
         
         _editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-                                                      style:UIBarButtonItemStylePlain
-                                                     target:self
-                                                     action:@selector(editButtonPressed)];
+                                                       style:UIBarButtonItemStylePlain
+                                                      target:self
+                                                      action:@selector(editButtonPressed)];
         
         _clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
-                                                       style:UIBarButtonItemStylePlain
-                                                      target:_alertHandler
-                                                      action:@selector(displayClearConfirmAlert)];
+                                                        style:UIBarButtonItemStylePlain
+                                                       target:_alertHandler
+                                                       action:@selector(displayClearConfirmAlert)];
         
         self.title = @"The Way Back";
     }
     return self;
+
 }
 
 - (void)viewDidLoad
@@ -99,7 +103,6 @@
     self.screenName = @"MarkLocationViewController";
  
     [_locationProvider start];
-
     [_locationTableView reloadData];
     
     [self updateNavbarButtonVisiblity];
@@ -110,7 +113,6 @@
     [super viewWillDisappear:animated];
     
     [_locationProvider stop];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,16 +144,9 @@
     [self setEditMode:![_locationTableView isEditing]];
 }
 
-// TODO: move this to a model class
-- (void) clearAllMarkers
-{
-    [_locations removeAllObjects];
-    [_locationTableView reloadData];
-}
-
 - (void) updateNavbarButtonVisiblity
 {
-    if([self.locations count] > 0)
+    if([_model.locations count] > 0)
     {
         [[self navigationItem] setLeftBarButtonItem:_clearButton animated:YES];
         [[self navigationItem] setRightBarButtonItem:_editButton animated:YES];
@@ -166,7 +161,7 @@
 - (void) markLocation
 {
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation: _locationProvider.currentLocation
+    [geocoder reverseGeocodeLocation:_locationProvider.currentLocation
                    completionHandler:^(NSArray * placemarks, NSError * error) {
                        if(error != nil)
                        {
@@ -191,7 +186,7 @@
                            // TODO: handle multiple results somehow? how often will this happen?
                            MapMarker * newMarker = [[MapMarker alloc] initWithPlacemark:[placemarks lastObject]];
                            
-                           [_locations addObject:newMarker];
+                           [[_model locations] addObject:newMarker];
                            
                            // tell the table view it needs to update its data.
                            [_locationTableView reloadData];
@@ -205,7 +200,9 @@
 
 - (void) clearButtonAction
 {
-    [self clearAllMarkers];
+    [_model clearAllLocations];
+    
+    [_locationTableView reloadData];
     [self setEditMode:NO];
     [self updateNavbarButtonVisiblity];
 }
@@ -224,7 +221,7 @@
 {
     MapLocationViewController * mlvc = [[MapLocationViewController alloc] init];
     
-    [mlvc setLocations:_locations];
+    [mlvc setLocations:[_model locations]];
     
     [self.navigationController pushViewController:mlvc animated:YES];
 }
@@ -233,7 +230,8 @@
 {
     if(_locationProvider.currentLocation != nil)
     {
-        [self markLocation];
+        [_model addLocation:_locationProvider.currentLocation];
+        [_locationTableView reloadData];
     }
     else
     {

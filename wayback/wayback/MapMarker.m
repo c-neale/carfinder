@@ -11,23 +11,12 @@
 #import <AddressBookUI/ABAddressFormatting.h>
 
 @interface MapMarker ()
-{
-    
-}
 
 - (NSString *) defaultName;
 
 @end
 
 @implementation MapMarker
-
-#pragma mark - Properties
-
-@synthesize name;
-@synthesize placemark;
-
-@synthesize route;
-@synthesize routeCalcRequired;
 
 #pragma mark - Init and lifecycle
 
@@ -36,13 +25,13 @@
     self = [super init];
     if(self)
     {
-        placemark = pMark;
+        _placemark = pMark;
 
-        name = [self defaultName];
+        _name = [self defaultName];
         
         // TODO: idea - maybe we can calculate routes in advance when the marker is created?
-        route = nil;
-        routeCalcRequired = YES;
+        _route = nil;
+        _routeCalcRequired = YES;
     }
     
     return self;
@@ -50,17 +39,14 @@
 
 - (NSString *)description
 {
-    return name;
+    return _name;
 }
 
 #pragma mark - internal methods
 
 - (NSString *) defaultName
 {
-    NSString * addr = [self address];
-    NSRange rng = [addr rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
-    
-    return [addr substringToIndex:rng.location];
+    return [self shortAddress];
 }
 
 #pragma mark - class methods
@@ -68,14 +54,23 @@
 // helper method to make it easier to get the location from the placemark.
 - (CLLocation *) location
 {
-    return placemark.location;
+    return _placemark.location;
+}
+
+// only returns the first line of the address...
+- (NSString *) shortAddress
+{
+    NSString * addr = [self address];
+    NSRange rng = [addr rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
+    
+    return [addr substringToIndex:rng.location];
 }
 
 - (NSString *) address
 {
-    if(placemark != nil)
+    if(_placemark != nil)
     {
-        return ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+        return ABCreateStringWithAddressDictionary(_placemark.addressDictionary, NO);
     }
     
     return @"";
@@ -85,13 +80,13 @@
 // this will plot the marker to a correct place on map
 - (CLLocationCoordinate2D)coordinate
 {
-    return placemark.location.coordinate;
+    return _placemark.location.coordinate;
 }
 
 // this will be shown as marker title
 - (NSString *)title
 {
-    return name;
+    return _name;
 }
 
 // this will be shown as marker subtitle
