@@ -27,16 +27,23 @@
 
 #pragma mark - Init/lifecycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithModel:(DataModel *)model
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     if (self)
     {
         _mapHandler = [[MapViewHandler alloc] initWithDelegate:self];
+        _model = model;
         
         self.title = @"";
     }
     return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    NSAssert(NO, @"Initialize with -initWithModel:");
+    return nil;
 }
 
 - (void)viewDidLoad
@@ -80,9 +87,9 @@
 - (void) addAnnotations
 {
     [self removeAnnotations];
-    if (_locations != nil)
+    if ([_model locations] != nil)
     {
-        [_mapView addAnnotations:_locations];
+        [_mapView addAnnotations:[_model locations]];
     }
 }
 
@@ -101,10 +108,10 @@
 
 - (void) showDirections
 {
-    for(int i = 0; i < _locations.count; ++i)
+    for(int i = 0; i < [_model locations].count; ++i)
     {
-        MapMarker * source = (i == (_locations.count - 1)) ? nil : [_locations objectAtIndex:i+1];
-        MapMarker * destination = [_locations objectAtIndex:i];
+        MapMarker * source = (i == ([_model locations].count - 1)) ? nil : [_model objectAtIndex:i+1];
+        MapMarker * destination = [_model objectAtIndex:i];
         
         [_mapHandler calculateRouteFrom:source to:destination];
     }

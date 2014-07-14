@@ -63,9 +63,19 @@
     return [_locations objectAtIndex:index];
 }
 
+- (MapMarker *) lastObject
+{
+    return [_locations lastObject];
+}
+
 - (void) removeObjectAtIndex:(NSUInteger) index
 {
     [_locations removeObjectAtIndex:index];
+}
+
+- (void) removeLastObject
+{
+    [_locations removeLastObject];
 }
 
 - (void) clearAllLocations

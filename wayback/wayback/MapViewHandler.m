@@ -100,7 +100,7 @@ const float distanceThreshold = 10.0f;
 
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    NSMutableArray * locations = [_delegate locations];
+    NSArray * locations = [[_delegate model] locations];
     
     MapMarker * marker = [locations lastObject];
     float distToMarker = [userLocation.location distanceFromLocation:marker.location];
@@ -111,10 +111,10 @@ const float distanceThreshold = 10.0f;
         [mv removeAnnotation:marker];
         
         // get rid of the last object in the list.
-        [locations removeLastObject];
+        [[_delegate model] removeLastObject];
         
         // set the marker to be the new last marker in the list.
-        marker = [locations lastObject];
+        marker = [[_delegate model] lastObject];
     }
     
     // now update the path from the current location to the last marker in the list...

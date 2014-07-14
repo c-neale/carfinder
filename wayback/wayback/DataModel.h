@@ -21,8 +21,13 @@ typedef void (^postInitialiseMarker) (void);
 - (NSArray *) locations;
 
 - (void) addLocation:(CLLocation *) newLocation postInit:(postInitialiseMarker)postInit;
+
 - (MapMarker *) objectAtIndex:(NSUInteger)index;
+- (MapMarker *) lastObject;
+
 - (void) removeObjectAtIndex:(NSUInteger) index;
+- (void) removeLastObject;
+
 - (void) clearAllLocations;
 - (void) moveObjectAtIndex:(NSUInteger)sourceIndex to:(NSUInteger)destIndex;
 

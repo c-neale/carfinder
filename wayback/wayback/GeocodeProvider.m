@@ -44,7 +44,35 @@
 
 - (void) geocodeAddress:(NSString *)address onComplete:(onCompleteBlock)onComplete
 {
-    
+    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:address
+                 completionHandler:^(NSArray *placemarks, NSError *error) {
+                     
+                     if(error != nil)
+                     {
+                         DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
+                         [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
+                     }
+                     else
+                     {
+                         // TODO: need to handle multiple results somehow...
+                         CLPlacemark *placemark = [placemarks lastObject];
+                         
+                         if(onComplete)
+                         {
+                             onComplete(placemark);
+                         }
+                         
+                         /*
+                         MapMarker * curMarker = [_locations objectAtIndex:_currentIndex];
+                         [curMarker setPlacemark:placemark];
+                         
+                         // refresh the ui info
+                         [self setupUIFields:curMarker];
+                          */
+                     }
+                     
+                 }];
 }
 
 - (void) reverseGeocodeLocation:(CLLocation *)location onComplete:(onCompleteBlock)onComplete

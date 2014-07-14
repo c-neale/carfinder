@@ -39,10 +39,7 @@
 {
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"LocationCell"];
     MapMarker * locationAtIndex = [_model objectAtIndex:indexPath.row];
-    
-    NSString * name = locationAtIndex.name;
-    NSString * sub = locationAtIndex.shortAddress;
-    
+        
     cell.textLabel.text = locationAtIndex.name;
     cell.detailTextLabel.text = locationAtIndex.shortAddress;
     
@@ -78,12 +75,8 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] init];
-    
+    LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] initWithModel:_model];
     [ldvc setCurrentIndex:indexPath.row];
-    
-    // TODO: pass the model correctly.
-    [ldvc setLocations:[_model locations]];
     
     [_delegate.navigationController pushViewController:ldvc animated:YES];
 }

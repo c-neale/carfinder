@@ -81,35 +81,7 @@
     NSAssert(NO, @"Initialize with -initWithModel:");
     return nil;
 }
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model:(DataModel *)model;
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-        _model = model;
-        
-        _alertHandler = [[MarkLocationAlertViewHandler alloc] initWithDelegate:self];
-        _tableHandler = [[MarkLocationTableViewHandler alloc] initWithDelegate:self andModel:_model];
-        
-        _locationProvider = [[LocationProvider alloc] init];
-        
-        _editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-                                                       style:UIBarButtonItemStylePlain
-                                                      target:self
-                                                      action:@selector(editButtonPressed)];
-        
-        _clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
-                                                        style:UIBarButtonItemStylePlain
-                                                       target:_alertHandler
-                                                       action:@selector(displayClearConfirmAlert)];
-        
-        self.title = @"The Way Back";
-    }
-    return self;
 
-}
-*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -205,9 +177,7 @@
 
 - (IBAction)FindButtonPressed:(id)sender
 {
-    MapLocationViewController * mlvc = [[MapLocationViewController alloc] init];
-    [mlvc setLocations:[_model locations]];
-    
+    MapLocationViewController * mlvc = [[MapLocationViewController alloc] initWithModel:_model];
     [self.navigationController pushViewController:mlvc animated:YES];
 }
 

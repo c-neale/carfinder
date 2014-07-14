@@ -14,8 +14,7 @@
 
 @property (nonatomic) BOOL initialised;
 
-//@property (nonatomic, strong) NSString * name;
-
+@property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) CLPlacemark * placemark;
 
 // this is the route to get to THIS destination
@@ -24,8 +23,6 @@
 
 - (id) init;
 
-// TODOL change this back to a property...
-- (NSString *) name;
 - (CLLocation *) location;
 
 - (NSString *) address;

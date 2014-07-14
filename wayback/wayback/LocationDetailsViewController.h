@@ -11,15 +11,16 @@
 #import "GAI.h"
 
 #import "MapMarker.h"
+#import "DataModel.h"
 
 @interface LocationDetailsViewController : GAITrackedViewController
 
 @property (nonatomic) NSUInteger currentIndex;
-@property (nonatomic) NSArray * locations;
+@property (nonatomic) DataModel * model;
 
-- (void) setupUIFields:(MapMarker *)marker;
-- (void) updateAddressEditButtons:(BOOL) setVisible;
+- (id) initWithModel:(DataModel *)model;
 
 - (IBAction)nameValueChanged:(id)sender;
+- (void) updateAddressEditButtons:(BOOL) setVisible;
 
 @end

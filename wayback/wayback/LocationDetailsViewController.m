@@ -13,6 +13,8 @@
 #import "LocationDetailsTextViewHandler.h"
 #import "KeyboardNotificationHandler.h"
 
+#import "GeocodeProvider.h"
+
 @interface LocationDetailsViewController ()
 
 #pragma mark - IBOutlet properties
@@ -29,33 +31,41 @@
 @property (nonatomic, strong) LocationDetailsTextViewHandler * textViewHandler;
 @property (nonatomic, strong) KeyboardNotificationHandler * keyboardHandler;
 
+- (void) setupUIFields:(MapMarker *)marker;
+
 @end
 
 @implementation LocationDetailsViewController
 
 #pragma mark - Init and Lifecycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithModel:(DataModel *)model
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
-
+        
         _textViewHandler = [[LocationDetailsTextViewHandler alloc] initWithDelegate:self];
         _keyboardHandler = [[KeyboardNotificationHandler alloc] initWithDelegate:_addressTextView];
         
         _cancelEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                            style:UIBarButtonItemStylePlain
-                                                           target:self
-                                                           action:@selector(cancelAddressChange)];
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(cancelAddressChange)];
         
         _commitEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Refine"
-                                                            style:UIBarButtonItemStylePlain
-                                                           target:self
-                                                           action:@selector(commitAddressChange)];
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(commitAddressChange)];
         
         self.title = @"Location Details";
     }
     return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    NSAssert(NO, @"Initialize with -initWithModel:");
+    return nil;
 }
 
 - (void)viewDidLoad
@@ -67,7 +77,7 @@
     _addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     _addressTextView.layer.cornerRadius = 8.0f;
     
-    MapMarker * currentLocation = [_locations objectAtIndex:_currentIndex];
+    MapMarker * currentLocation = [_model objectAtIndex:_currentIndex];
     [self setupUIFields:currentLocation];
     
     [_addressTextView setDelegate:_textViewHandler];
@@ -138,45 +148,30 @@
     [_addressTextView resignFirstResponder];
     
     // refresh the data back to original
-    [self setupUIFields:[_locations objectAtIndex:_currentIndex]];
+    [self setupUIFields:[_model objectAtIndex:_currentIndex]];
 }
 
 - (void) commitAddressChange
 {
     [_addressTextView resignFirstResponder];
     
-    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:_addressTextView.text
-                 completionHandler:^(NSArray *placemarks, NSError *error) {
-                     
-                     if(error != nil)
-                     {
-                         DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
-                         [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
-                     }
-                     else
-                     {
-                         // TODO: need to handle multiple results somehow...
-                         CLPlacemark *placemark = [placemarks lastObject];
-                         
-                         MapMarker * curMarker = [_locations objectAtIndex:_currentIndex];
-                         [curMarker setPlacemark:placemark];
-                         
-                         // refresh the ui info
-                         [self setupUIFields:curMarker];
-                     }
-                     
-                 }];
+    [[GeocodeProvider sharedInstance] geocodeAddress:_addressTextView.text
+                                         onComplete:^(CLPlacemark *placemark) {
+                                             
+                                             MapMarker * curMarker = [_model objectAtIndex:_currentIndex];
+                                             [curMarker setPlacemark:placemark];
+                                             
+                                             // refresh the ui info
+                                             [self setupUIFields:curMarker];
+                                         }];    
 }
 
 #pragma mark - IBActions
 
 - (IBAction)nameValueChanged:(id)sender
 {
-    // TODO: fix this functionality...
-    
-    MapMarker * currentLocation = [_locations objectAtIndex:_currentIndex];
-//    [currentLocation setName: [_nameInput text]];
+    MapMarker * currentLocation = [_model objectAtIndex:_currentIndex];
+    [currentLocation setName: [_nameInput text]];
 }
 
 

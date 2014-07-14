@@ -12,9 +12,9 @@
 
 @interface MapMarker ()
 
-- (NSString *) defaultName;
-
 @end
+
+#define DEFAULT_NAME @"Un-named Location"
 
 @implementation MapMarker
 
@@ -27,19 +27,14 @@
     {
         _initialised = NO;
         
+        _name = DEFAULT_NAME;
+        
         // TODO: idea - maybe we can calculate routes in advance when the marker is created?
         _route = nil;
         _routeCalcRequired = YES;
     }
     
     return self;
-}
-
-#pragma mark - internal methods
-
-- (NSString *) name
-{
-    return @"Un-named Location";
 }
 
 #pragma mark - class methods
