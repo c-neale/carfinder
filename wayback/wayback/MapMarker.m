@@ -20,14 +20,12 @@
 
 #pragma mark - Init and lifecycle
 
-- (id) initWithPlacemark:(CLPlacemark *)pMark
+- (id) init
 {
     self = [super init];
     if(self)
     {
-        _placemark = pMark;
-
-        _name = [self defaultName];
+        _initialised = NO;
         
         // TODO: idea - maybe we can calculate routes in advance when the marker is created?
         _route = nil;
@@ -37,16 +35,11 @@
     return self;
 }
 
-- (NSString *)description
-{
-    return _name;
-}
-
 #pragma mark - internal methods
 
-- (NSString *) defaultName
+- (NSString *) name
 {
-    return [self shortAddress];
+    return @"Un-named Location";
 }
 
 #pragma mark - class methods
@@ -62,6 +55,12 @@
 {
     NSString * addr = [self address];
     NSRange rng = [addr rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
+    
+    // if a new line was not found, return the whole string.
+    if(rng.location == NSNotFound)
+    {
+        return addr;
+    }
     
     return [addr substringToIndex:rng.location];
 }
@@ -86,7 +85,7 @@
 // this will be shown as marker title
 - (NSString *)title
 {
-    return _name;
+    return [self name];
 }
 
 // this will be shown as marker subtitle

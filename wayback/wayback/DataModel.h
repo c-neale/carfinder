@@ -10,13 +10,22 @@
 
 #import <MapKit/MapKit.h>
 
+#import "MapMarker.h"
+
 @interface DataModel : NSObject
 
-@property (nonatomic, strong) NSMutableArray * locations;
+typedef void (^postInitialiseMarker) (void);
 
 - (id) init;
 
-- (void) addLocation:(CLLocation *) newLocation;
+- (NSArray *) locations;
+
+- (void) addLocation:(CLLocation *) newLocation postInit:(postInitialiseMarker)postInit;
+- (MapMarker *) objectAtIndex:(NSUInteger)index;
+- (void) removeObjectAtIndex:(NSUInteger) index;
 - (void) clearAllLocations;
+- (void) moveObjectAtIndex:(NSUInteger)sourceIndex to:(NSUInteger)destIndex;
+
+- (void) resetRouteCalculationFlags;
 
 @end

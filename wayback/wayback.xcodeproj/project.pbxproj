@@ -14,6 +14,7 @@
 		0B1507631970E1B000523BE1 /* LocationDetailsTextViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507621970E1B000523BE1 /* LocationDetailsTextViewHandler.m */; };
 		0B1507661970E3F400523BE1 /* KeyboardNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */; };
 		0B1507691972385000523BE1 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507681972385000523BE1 /* DataModel.m */; };
+		0B15076C197266FD00523BE1 /* GeocodeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15076B197266FD00523BE1 /* GeocodeProvider.m */; };
 		0B6CFA951936D2DC00B77374 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA941936D2DC00B77374 /* Foundation.framework */; };
 		0B6CFA971936D2DC00B77374 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */; };
 		0B6CFA991936D2DC00B77374 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFA981936D2DC00B77374 /* UIKit.framework */; };
@@ -57,6 +58,8 @@
 		0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardNotificationHandler.m; sourceTree = "<group>"; };
 		0B1507671972385000523BE1 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
 		0B1507681972385000523BE1 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		0B15076A197266FD00523BE1 /* GeocodeProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeocodeProvider.h; sourceTree = "<group>"; };
+		0B15076B197266FD00523BE1 /* GeocodeProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeocodeProvider.m; sourceTree = "<group>"; };
 		0B6CFA911936D2DC00B77374 /* The Way Back.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Way Back.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6CFA941936D2DC00B77374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B6CFA961936D2DC00B77374 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,6 +191,8 @@
 			children = (
 				0BF683AC194939B000AFB4C5 /* LogHelper.h */,
 				0B08DACC194D5230001D70A8 /* LogHelper.m */,
+				0B15076A197266FD00523BE1 /* GeocodeProvider.h */,
+				0B15076B197266FD00523BE1 /* GeocodeProvider.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				0BF683CA194939B000AFB4C5 /* MarkLocationViewController.m in Sources */,
 				0BF683CD194939B000AFB4C5 /* VersionComparer.m in Sources */,
 				0BF683C6194939B000AFB4C5 /* main.m in Sources */,
+				0B15076C197266FD00523BE1 /* GeocodeProvider.m in Sources */,
 				0B7B077E19653A220077F4A4 /* LocationProvider.m in Sources */,
 				0B15075A196FD2A100523BE1 /* MarkLocationAlertViewHandler.m in Sources */,
 				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,

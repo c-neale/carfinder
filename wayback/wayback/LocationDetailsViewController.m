@@ -173,8 +173,10 @@
 
 - (IBAction)nameValueChanged:(id)sender
 {
+    // TODO: fix this functionality...
+    
     MapMarker * currentLocation = [_locations objectAtIndex:_currentIndex];
-    [currentLocation setName: [_nameInput text]];
+//    [currentLocation setName: [_nameInput text]];
 }
 
 

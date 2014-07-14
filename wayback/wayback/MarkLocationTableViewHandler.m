@@ -17,13 +17,13 @@
 
 #pragma mark - init
 
-- (id) initWithDelegate:(MarkLocationViewController *)delegate andModel:(NSMutableArray *)locations
+- (id) initWithDelegate:(MarkLocationViewController *)delegate andModel:(DataModel *)model
 {
     self = [super init];
     if( self )
     {
         _delegate = delegate;
-        _locations = locations;
+        _model = model;
     }
     return self;
 }
@@ -32,15 +32,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    return [_locations count];
+    return [[_model locations] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LocationCell"];
-    CLLocation * locationAtIndex = (CLLocation *)[_locations objectAtIndex:indexPath.row];
+    UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"LocationCell"];
+    MapMarker * locationAtIndex = [_model objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = locationAtIndex.description;
+    NSString * name = locationAtIndex.name;
+    NSString * sub = locationAtIndex.shortAddress;
+    
+    cell.textLabel.text = locationAtIndex.name;
+    cell.detailTextLabel.text = locationAtIndex.shortAddress;
     
     return cell;
 }
@@ -49,33 +53,25 @@
 tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // remove the data from the array
-    [_locations removeObjectAtIndex:indexPath.row];
+    [_model removeObjectAtIndex:indexPath.row];
     
     // remove the row from the table
     NSArray * removeIndexes = [[NSArray alloc] initWithObjects:indexPath, nil];
     [tableView deleteRowsAtIndexPaths:removeIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    if([_locations count] == 0)
+    if([[_model locations] count] == 0)
     {
         [_delegate setEditMode:NO];
         [_delegate updateNavbarButtonVisiblity];
     }
     
-    //TODO: work out which routes need re-calculating.
-    // for now, just recalculate all of them.
-    for(int i = 0; i < [_locations count]; ++i)
-    {
-        MapMarker * marker = [_locations objectAtIndex:i];
-        [marker setRouteCalcRequired:YES];
-    }
+    // reset the flags so the routes will get correctly recalculated.
+    [_model resetRouteCalculationFlags];
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)source toIndexPath:(NSIndexPath *)dest;
 {
-    MapMarker * sourceItem = [_locations objectAtIndex:source.row];
-    
-    [_locations removeObject:sourceItem];
-    [_locations insertObject:sourceItem atIndex:dest.row];
+    [_model moveObjectAtIndex:source.row to:dest.row];
 }
 
 #pragma mark - UITableViewDelegate
@@ -85,7 +81,9 @@ tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingSty
     LocationDetailsViewController * ldvc = [[LocationDetailsViewController alloc] init];
     
     [ldvc setCurrentIndex:indexPath.row];
-    [ldvc setLocations:_locations];
+    
+    // TODO: pass the model correctly.
+    [ldvc setLocations:[_model locations]];
     
     [_delegate.navigationController pushViewController:ldvc animated:YES];
 }

@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DataModel.h"
+
 @class MarkLocationViewController;
 
 @interface MarkLocationTableViewHandler : NSObject<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) MarkLocationViewController * delegate;
-@property (nonatomic, weak) NSMutableArray * locations;
+@property (nonatomic, weak) DataModel * model;
 
-- (id) initWithDelegate:(MarkLocationViewController *)delegate andModel:(NSMutableArray *)locations;
+- (id) initWithDelegate:(MarkLocationViewController *)delegate andModel:(DataModel *)model;
 
 @end

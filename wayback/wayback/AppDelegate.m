@@ -38,8 +38,7 @@
     _dataModel = [[DataModel alloc] init];
     
     // create our starting view controller and pass it the model.
-    MarkLocationViewController * markLocationVc = [[MarkLocationViewController alloc] init];
-    [markLocationVc setModel:_dataModel];
+    MarkLocationViewController * markLocationVc = [[MarkLocationViewController alloc] initWithModel:_dataModel];
     
     // create a navigation controller with our root view controller and set it to the window.
     UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:markLocationVc];
