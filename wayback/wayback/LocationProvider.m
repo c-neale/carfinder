@@ -12,6 +12,8 @@
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
+- (void)requestAuthorization;
+
 @end
 
 @implementation LocationProvider
@@ -24,6 +26,7 @@
     if(self)
     {
         _locationManager = [[CLLocationManager alloc] init];
+        
         _currentLocation = nil;
     }
     return self;
@@ -35,12 +38,33 @@
 {
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
+    
+    [self requestAuthorization];
+    
     [_locationManager startUpdatingLocation];
 }
 
 - (void) stop
 {
     [_locationManager stopUpdatingLocation];
+}
+
+- (void)requestAuthorization
+{
+    // NOTE: check info.plist file for display message when requesting auth.
+    // need to check if the locationManager responds; versions of ios prior to 8 will crash on this call.
+    if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+}
+    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        // Send the user to the Settings for this app
+        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+    }
 }
 
 #pragma mark - CLLocationManagerDelegate functions
@@ -57,71 +81,6 @@
      }
      */
 }
-
-/*
-- (BOOL) shouldPassivelyMarkLocation
-{
-    BOOL passiveMode = YES;
-    
-    // if we are not in passive mode, obviously should be a NO.
-    if(passiveMode == NO)
-    {
-        DebugLog(@"Passive Mode is disabled");
-        return NO;
-    }
-    
-    if([_locations count] == 0)
-        return NO;
-    
- 
-     // TODO: this triggers multiple times. need to fix it.
-     // if we have no markers yet, then definately mark the current loction.
-//     if([locations count] == 0)
-//     {
-//     DebugLog(@"Adding first location.");
-//     return YES;
-//     }
- 
-    
-    CLLocation * prevLocation = [(MapMarker *)[_locations lastObject] location];
-    
-    // check if the direction of travel is changing.
-    CLLocationDirection prevDir = prevLocation.course;
-    CLLocationDirection curDir = _currentLocation.course;
-    
-    // TODO: I need to rethink this whole process.
-    // if the deviation is greater than 5 degrees AND the distance is less than 10 or time is less than 5min,
-    // we should be replacing the last marker instead of just adding a new one.  this method probably isnt the
-    //place for that to happen, but i dont want to be doubling up on checking the conditions.
-    double deviation = fabs(prevDir - curDir);
-    DebugLog(@"Course Deviation: %f degrees", deviation);
-    //    if(deviation < 5.0)
-    {
-        // if we have moved less than x metres, then also NO.
-        // TODO: make the 10.0f less hardcoded. value should ideally match the threshold to remove a marker.
-        CLLocationDistance distFromLastMarker = [_currentLocation distanceFromLocation:prevLocation];
-        DebugLog(@"distance from last marker: %f m", distFromLastMarker);
-        if(distFromLastMarker < 10.0f)
-        {
-            return NO;
-        }
-        
-        // don't set a marker too often...
-        NSDate * prevTime = prevLocation.timestamp;
-        NSDate * thisTime = _currentLocation.timestamp;
-        
-        NSTimeInterval interval = [thisTime timeIntervalSinceDate:prevTime];
-        double minsSinceLastMarker = interval / 60.0f;
-        
-        DebugLog(@"minutes since last marker: %f", minsSinceLastMarker);
-        if(minsSinceLastMarker < 1.0f) // TODO: make the 5.0f less hardcoded.
-        {
-            return NO;
-        }
-    }
-    
-    return YES;
-}*/
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {

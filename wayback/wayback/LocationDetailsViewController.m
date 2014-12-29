@@ -44,6 +44,8 @@
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         
+        _model = model;
+        
         _textViewHandler = [[LocationDetailsTextViewHandler alloc] initWithDelegate:self];
         _keyboardHandler = [[KeyboardNotificationHandler alloc] initWithDelegate:_addressTextView];
         

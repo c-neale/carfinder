@@ -76,6 +76,13 @@
     [self showDirections];
 }
 
+// TODO: investigate. this code may fix a random crash I've been seeing, however i can no longer repo the crash.
+// if steps are discovered, re-enable this and see if it has any effect.
+/*- (void) dealloc
+{
+    [_mapView setDelegate:nil];
+}*/
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

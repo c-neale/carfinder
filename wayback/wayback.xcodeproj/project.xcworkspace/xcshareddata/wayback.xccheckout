@@ -10,29 +10,29 @@
 	<string>wayback</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3631EB49-FD5F-4B4E-A1D6-C255B569AA05</key>
+		<key>326C0D104412BCA4937F81CE383EBD72B91BCCFA</key>
 		<string>https://github.com/c-neale/wayback.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>wayback/wayback.xcodeproj/project.xcworkspace</string>
+	<string>wayback/wayback.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3631EB49-FD5F-4B4E-A1D6-C255B569AA05</key>
+		<key>326C0D104412BCA4937F81CE383EBD72B91BCCFA</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/c-neale/wayback.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3631EB49-FD5F-4B4E-A1D6-C255B569AA05</string>
+	<string>326C0D104412BCA4937F81CE383EBD72B91BCCFA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3631EB49-FD5F-4B4E-A1D6-C255B569AA05</string>
+			<string>326C0D104412BCA4937F81CE383EBD72B91BCCFA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>wayback</string>
 		</dict>

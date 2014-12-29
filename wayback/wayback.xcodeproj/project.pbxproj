@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08DACC194D5230001D70A8 /* LogHelper.m */; };
+		0B09FA391A4EA33200B3B02E /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09FA341A4EA33200B3B02E /* Appirater.m */; };
+		0B09FA3A1A4EA33200B3B02E /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B09FA371A4EA33200B3B02E /* AppiraterLocalizable.strings */; };
+		0B09FA3C1A4EA3B700B3B02E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B09FA3B1A4EA3B700B3B02E /* CFNetwork.framework */; };
+		0B09FA3E1A4EA3C600B3B02E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B09FA3D1A4EA3C600B3B02E /* StoreKit.framework */; };
+		0B09FA411A5108E200B3B02E /* Ratings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09FA401A5108E200B3B02E /* Ratings.m */; };
 		0B150755196F9F6600523BE1 /* VersionCheckAlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B150754196F9F6600523BE1 /* VersionCheckAlertViewHandler.m */; };
 		0B15075A196FD2A100523BE1 /* MarkLocationAlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */; };
 		0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */; };
@@ -46,6 +51,14 @@
 
 /* Begin PBXFileReference section */
 		0B08DACC194D5230001D70A8 /* LogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHelper.m; sourceTree = "<group>"; };
+		0B09FA331A4EA33200B3B02E /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Appirater.h; path = Appirater/Appirater.h; sourceTree = "<group>"; };
+		0B09FA341A4EA33200B3B02E /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Appirater/Appirater.m; sourceTree = "<group>"; };
+		0B09FA351A4EA33200B3B02E /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppiraterDelegate.h; path = Appirater/AppiraterDelegate.h; sourceTree = "<group>"; };
+		0B09FA381A4EA33200B3B02E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		0B09FA3B1A4EA3B700B3B02E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0B09FA3D1A4EA3C600B3B02E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0B09FA3F1A5108E200B3B02E /* Ratings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ratings.h; sourceTree = "<group>"; };
+		0B09FA401A5108E200B3B02E /* Ratings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ratings.m; sourceTree = "<group>"; };
 		0B150753196F9F6600523BE1 /* VersionCheckAlertViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCheckAlertViewHandler.h; sourceTree = "<group>"; };
 		0B150754196F9F6600523BE1 /* VersionCheckAlertViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheckAlertViewHandler.m; sourceTree = "<group>"; };
 		0B150758196FD2A100523BE1 /* MarkLocationAlertViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationAlertViewHandler.h; sourceTree = "<group>"; };
@@ -113,6 +126,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B09FA3E1A4EA3C600B3B02E /* StoreKit.framework in Frameworks */,
+				0B09FA3C1A4EA3B700B3B02E /* CFNetwork.framework in Frameworks */,
 				0BC7B885194B1A4A006EEFE7 /* AdSupport.framework in Frameworks */,
 				0BC7B883194B1A3B006EEFE7 /* libz.dylib in Frameworks */,
 				0BC7B881194B1A31006EEFE7 /* CoreData.framework in Frameworks */,
@@ -131,6 +146,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B09FA321A4EA2DA00B3B02E /* Appirater */ = {
+			isa = PBXGroup;
+			children = (
+				0B09FA331A4EA33200B3B02E /* Appirater.h */,
+				0B09FA341A4EA33200B3B02E /* Appirater.m */,
+				0B09FA351A4EA33200B3B02E /* AppiraterDelegate.h */,
+				0B09FA361A4EA33200B3B02E /* en.lproj */,
+			);
+			name = Appirater;
+			sourceTree = "<group>";
+		};
+		0B09FA361A4EA33200B3B02E /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				0B09FA371A4EA33200B3B02E /* AppiraterLocalizable.strings */,
+			);
+			name = en.lproj;
+			path = Appirater/en.lproj;
+			sourceTree = "<group>";
+		};
 		0B150756196F9F6D00523BE1 /* VersionCheck */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +228,8 @@
 				0B08DACC194D5230001D70A8 /* LogHelper.m */,
 				0B15076A197266FD00523BE1 /* GeocodeProvider.h */,
 				0B15076B197266FD00523BE1 /* GeocodeProvider.m */,
+				0B09FA3F1A5108E200B3B02E /* Ratings.h */,
+				0B09FA401A5108E200B3B02E /* Ratings.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -217,6 +254,8 @@
 		0B6CFA931936D2DC00B77374 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B09FA3D1A4EA3C600B3B02E /* StoreKit.framework */,
+				0B09FA3B1A4EA3B700B3B02E /* CFNetwork.framework */,
 				0BC7B884194B1A4A006EEFE7 /* AdSupport.framework */,
 				0BC7B882194B1A3B006EEFE7 /* libz.dylib */,
 				0BC7B880194B1A31006EEFE7 /* CoreData.framework */,
@@ -281,6 +320,7 @@
 		0BF683A3194939B000AFB4C5 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
+				0B09FA321A4EA2DA00B3B02E /* Appirater */,
 				0B1507601970E15500523BE1 /* Utils */,
 				0B150756196F9F6D00523BE1 /* VersionCheck */,
 				0BC7B873194B19DD006EEFE7 /* GoogleAnalytics */,
@@ -357,6 +397,7 @@
 			files = (
 				0BF683C8194939B000AFB4C5 /* MapLocationViewController.xib in Resources */,
 				0BF683CB194939B000AFB4C5 /* MarkLocationViewController.xib in Resources */,
+				0B09FA3A1A4EA33200B3B02E /* AppiraterLocalizable.strings in Resources */,
 				0BF683C5194939B000AFB4C5 /* LocationDetailsViewController.xib in Resources */,
 				0BF683C2194939B000AFB4C5 /* InfoPlist.strings in Resources */,
 				0BF683C3194939B000AFB4C5 /* Images.xcassets in Resources */,
@@ -378,6 +419,8 @@
 				0B15076C197266FD00523BE1 /* GeocodeProvider.m in Sources */,
 				0B7B077E19653A220077F4A4 /* LocationProvider.m in Sources */,
 				0B15075A196FD2A100523BE1 /* MarkLocationAlertViewHandler.m in Sources */,
+				0B09FA411A5108E200B3B02E /* Ratings.m in Sources */,
+				0B09FA391A4EA33200B3B02E /* Appirater.m in Sources */,
 				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,
 				0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */,
 				0B7B0781196541900077F4A4 /* MapViewHandler.m in Sources */,
@@ -394,6 +437,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0B09FA371A4EA33200B3B02E /* AppiraterLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B09FA381A4EA33200B3B02E /* en */,
+			);
+			name = AppiraterLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		0BF683A6194939B000AFB4C5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

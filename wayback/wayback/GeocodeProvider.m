@@ -10,6 +10,8 @@
 
 @interface GeocodeProvider ()
 
+// TODO: these should be changed to some sort of hashmap
+@property (nonatomic, strong) NSMutableDictionary * forwardGeocodeCache;
 @property (nonatomic, strong) NSMutableDictionary * reverseGeocodeCache;
 
 @end
@@ -35,6 +37,7 @@
     self = [super init];
     if(self)
     {
+        _forwardGeocodeCache = [[NSMutableDictionary alloc] init];
         _reverseGeocodeCache = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -44,6 +47,16 @@
 
 - (void) geocodeAddress:(NSString *)address onComplete:(onCompleteBlock)onComplete
 {
+    CLPlacemark * placemark = [_forwardGeocodeCache objectForKey:address];
+    if(placemark != nil)
+    {
+        if(onComplete != nil)
+        {
+            onComplete(placemark);
+        }
+        return;
+    }
+    
     CLGeocoder * geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:address
                  completionHandler:^(NSArray *placemarks, NSError *error) {
