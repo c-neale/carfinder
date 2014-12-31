@@ -38,8 +38,6 @@
         _initialLocation = location;
         _model = model;
         
-        [_mapView setShowsUserLocation:YES];
-        
         self.title = @"";
     }
     return self;
@@ -55,11 +53,13 @@
 {
     [super viewDidLoad];
     
+    // map view needs to be loaded before we can do stuff with it...
     [_mapView setDelegate:_mapHandler];
     
     [self setRegionWithLocation:_initialLocation andRadius:MAP_VIEW_RADIUS];
     
     [self addAnnotations];
+    [self showDirections];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -67,8 +67,6 @@
     [super viewWillAppear:animated];
     
     self.screenName = @"MapLocationViewController";
-    
-    [self showDirections];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -128,6 +126,7 @@
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, radius, radius);
     [_mapView setRegion:region animated:NO];
+    [_mapView setShowsUserLocation:YES];
 }
 
 #pragma mark - IBActions

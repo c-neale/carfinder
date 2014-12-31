@@ -3,7 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[MapLocationViewController mapView:rendererForOverlay:]:MapLocationViewController.m">
+         contextName = "-[MarkLocationViewController markLocationButtonPressed:]:MarkLocationViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MapLocationViewController viewDidLoad]:MapLocationViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_mapView">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "__43-[MapLocationViewController showDirections]_block_invoke:MapLocationViewController.m">
@@ -14,7 +22,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[MarkLocationViewController markLocationButtonPressed:]:MarkLocationViewController.m">
+         contextName = "-[MapLocationViewController initWithModel:andLocation:]:MapLocationViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_mapView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MapLocationViewController mapView:rendererForOverlay:]:MapLocationViewController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
