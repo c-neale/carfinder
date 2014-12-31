@@ -89,4 +89,24 @@
     return @"";
 }
 
+#pragma mark - NSCoding
+
+- (void) encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_placemark forKey:@"placemark"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [self init];
+    if(self)
+    {
+        [self setName: [decoder decodeObjectForKey:@"name"]];
+        [self setPlacemark: [decoder decodeObjectForKey:@"placemark"] ];
+    }
+    
+    return self;
+}
+
 @end

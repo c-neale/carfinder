@@ -10,7 +10,7 @@
 
 #import <MapKit/MapKit.h>
 
-@interface MapMarker : NSObject<MKAnnotation>
+@interface MapMarker : NSObject<MKAnnotation, NSCoding>
 
 @property (nonatomic) BOOL initialised;
 

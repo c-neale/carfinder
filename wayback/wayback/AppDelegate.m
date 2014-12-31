@@ -12,7 +12,6 @@
 
 #import "GAI.h"
 
-//#import "VersionCheck.h"
 #import "Ratings.h"
 
 @interface AppDelegate ()
@@ -29,7 +28,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
     [self initGoogleAnalyticsWithId:@"UA-50634961-2"];
     
     // create the window.
@@ -37,6 +35,7 @@
     
     // create an instance of the data model to hold our data.
     _dataModel = [[DataModel alloc] init];
+    [_dataModel loadModel];
     
     // create our starting view controller and pass it the model.
     MarkLocationViewController * markLocationVc = [[MarkLocationViewController alloc] initWithModel:_dataModel];
@@ -44,10 +43,6 @@
     // create a navigation controller with our root view controller and set it to the window.
     UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:markLocationVc];
     [[self window] setRootViewController:navController];
-    
-    //check to see if we have the latest version and prompt to upgrade...
-//    VersionCheck * checker = [[VersionCheck alloc] init];
-//    [checker newVersionForId:890275501];
     
     [Ratings SetupForAppId:@"890275501"];
     
@@ -67,6 +62,15 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    BOOL saved = [_dataModel saveModel];
+    if(saved)
+    {
+        DebugLog(@"dataModel successfully saved");
+    }
+    else
+    {
+        DebugLog(@"app failed to save data.");
+    }
     
     [Ratings exitedForeground];
 }

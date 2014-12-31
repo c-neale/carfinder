@@ -12,9 +12,9 @@
 
 @interface DataModel ()
 
-// TODO: add a public readonly property to access this as an NSArray.
-// all changes should be done through this class.
 @property (nonatomic, strong) NSMutableArray * locations;
+
+- (NSString *) itemArchivePath;
 
 @end
 
@@ -100,4 +100,36 @@
         [marker setRouteCalcRequired:YES];
     }
 }
+
+#pragma mark saving/loading
+
+- (NSString *) itemArchivePath
+{
+    // search for the documents directory (last 2 parameters are always the same for iOS)
+    NSArray * documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    // for iOS, the above will always only return 1 result, so just get the first thing in the array.
+    NSString * documentDirectory = [documentDirectories objectAtIndex:0];
+    
+    return [documentDirectory stringByAppendingPathComponent:@"locations.archive"];
+}
+
+- (BOOL) saveModel
+{
+    NSString * path = [self itemArchivePath];
+    return [NSKeyedArchiver archiveRootObject:_locations toFile:path];
+}
+
+- (void) loadModel
+{
+    NSString * path = [self itemArchivePath];
+    _locations = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
+    // if the file doesn't exist, unarchiver will return nil, so check and create an empty array to handle this case.
+    if(_locations == nil)
+    {
+        _locations = [[NSMutableArray alloc] init];
+    }
+}
+
 @end

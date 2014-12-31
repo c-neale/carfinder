@@ -18,6 +18,9 @@ typedef void (^postInitialiseMarker) (void);
 
 - (id) init;
 
+- (BOOL) saveModel;
+- (void) loadModel;
+
 - (NSArray *) locations;
 
 - (void) addLocation:(CLLocation *) newLocation postInit:(postInitialiseMarker)postInit;
