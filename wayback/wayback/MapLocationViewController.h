@@ -19,11 +19,12 @@
 
 @property (nonatomic, strong) DataModel * model;
 
-- (id) initWithModel:(DataModel *)model;
+- (id) initWithModel:(DataModel *)model andLocation:(CLLocation*)location;
 
 - (IBAction)changeMapType:(UISegmentedControl *)sender;
 
 // TODO: move these to the map handler?
+- (void)setRegionWithLocation:(CLLocation *)location andRadius:(double)radius;
 - (void)addAnnotations;
 - (void)removeAnnotations;
 

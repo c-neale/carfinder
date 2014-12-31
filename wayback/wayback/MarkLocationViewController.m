@@ -104,6 +104,8 @@
     [_locationTableView reloadData];
     
     [self updateNavbarButtonVisiblity];
+    
+    [_showButton setEnabled: [_model locations].count > 0];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -177,7 +179,7 @@
 
 - (IBAction)FindButtonPressed:(id)sender
 {
-    MapLocationViewController * mlvc = [[MapLocationViewController alloc] initWithModel:_model];
+    MapLocationViewController * mlvc = [[MapLocationViewController alloc] initWithModel:_model andLocation:[_locationProvider currentLocation]];
     [self.navigationController pushViewController:mlvc animated:YES];
 }
 
@@ -192,6 +194,8 @@
         
         [_locationTableView reloadData];
         [self updateNavbarButtonVisiblity];
+        
+        [_showButton setEnabled: [_model locations].count > 0];
     }
     else
     {

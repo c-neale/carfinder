@@ -12,6 +12,8 @@
 
 #import "MapMarker.h"
 
+// TODO: make this class a singleton
+
 @interface DataModel : NSObject
 
 typedef void (^postInitialiseMarker) (void);

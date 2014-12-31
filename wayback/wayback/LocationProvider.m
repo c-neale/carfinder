@@ -73,13 +73,6 @@
 {
     // just silently store the location so we know where they are when the button is pressed.
     _currentLocation = newLocation;
-    
-    // TODO: this needs way more thought.
-    /*    if([self shouldPassivelyMarkLocation])
-     {
-     [self markLocation];
-     }
-     */
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

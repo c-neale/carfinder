@@ -85,6 +85,10 @@
 		0B7B077F196541900077F4A4 /* MapViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewHandler.h; sourceTree = "<group>"; };
 		0B7B0780196541900077F4A4 /* MapViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewHandler.m; sourceTree = "<group>"; };
 		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0BBBEF3A1A53F5030029F294 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		0BBBEF3B1A53F5030029F294 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		0BBBEF3C1A53F5030029F294 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		0BBBEF3D1A53F5030029F294 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
 		0BC7B874194B19DD006EEFE7 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		0BC7B875194B19DD006EEFE7 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		0BC7B876194B19DD006EEFE7 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
@@ -306,6 +310,10 @@
 		0BC7B873194B19DD006EEFE7 /* GoogleAnalytics */ = {
 			isa = PBXGroup;
 			children = (
+				0BBBEF3A1A53F5030029F294 /* GAIEcommerceFields.h */,
+				0BBBEF3B1A53F5030029F294 /* GAIEcommerceProduct.h */,
+				0BBBEF3C1A53F5030029F294 /* GAIEcommerceProductAction.h */,
+				0BBBEF3D1A53F5030029F294 /* GAIEcommercePromotion.h */,
 				0BC7B87C194B19F7006EEFE7 /* libGoogleAnalyticsServices.a */,
 				0BC7B874194B19DD006EEFE7 /* GAI.h */,
 				0BC7B875194B19DD006EEFE7 /* GAIDictionaryBuilder.h */,
@@ -539,12 +547,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wayback/wayback-Prefix.pch";
 				INFOPLIST_FILE = "wayback/wayback-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/wayback/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "The Way Back";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -558,12 +567,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wayback/wayback-Prefix.pch";
 				INFOPLIST_FILE = "wayback/wayback-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/wayback/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "The Way Back";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -16,24 +16,29 @@
 #pragma mark - private properties
 @property (nonatomic, strong) MapViewHandler * mapHandler;
 
+@property (nonatomic, weak) CLLocation * initialLocation;
 
 #pragma mark - private methods
 
 @end
 
-#pragma mark -
+#pragma mark - defines
+#define MAP_VIEW_RADIUS 75.0
 
 @implementation MapLocationViewController
 
 #pragma mark - Init/lifecycle
 
-- (id) initWithModel:(DataModel *)model
+- (id) initWithModel:(DataModel *)model andLocation:(CLLocation*)location
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self)
     {
         _mapHandler = [[MapViewHandler alloc] initWithDelegate:self];
+        _initialLocation = location;
         _model = model;
+        
+        [_mapView setShowsUserLocation:YES];
         
         self.title = @"";
     }
@@ -52,7 +57,9 @@
     
     [_mapView setDelegate:_mapHandler];
     
-    _mapView.showsUserLocation = YES;
+    [self setRegionWithLocation:_initialLocation andRadius:MAP_VIEW_RADIUS];
+    
+    [self addAnnotations];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -60,28 +67,14 @@
     [super viewWillAppear:animated];
     
     self.screenName = @"MapLocationViewController";
+    
+    [self showDirections];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    
-    MKUserLocation *userLocation = _mapView.userLocation;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 50, 50);
-    [_mapView setRegion:region animated:NO];
-
-    [_mapView setCenterCoordinate:userLocation.coordinate animated:NO];
-    
-    [self addAnnotations];
-    [self showDirections];
+    [super viewDidAppear:animated];    
 }
-
-// TODO: investigate. this code may fix a random crash I've been seeing, however i can no longer repo the crash.
-// if steps are discovered, re-enable this and see if it has any effect.
-/*- (void) dealloc
-{
-    [_mapView setDelegate:nil];
-}*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -122,6 +115,19 @@
         
         [_mapHandler calculateRouteFrom:source to:destination];
     }
+}
+
+- (void)setRegionWithLocation:(CLLocation *)location andRadius:(double)radius;
+{
+    // TODO: wtf am i doing? current user location should be coming from an instance
+    // of the location manager. At this point, the mapview doesn't know the users
+    // location, so its obviously returning nil.
+//    MKUserLocation *userLocation = _mapView.userLocation;
+//    CLLocation * testLoc = userLocation.location;
+//    CLLocationCoordinate2D testCoords = testLoc.coordinate;
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, radius, radius);
+    [_mapView setRegion:region animated:NO];
 }
 
 #pragma mark - IBActions

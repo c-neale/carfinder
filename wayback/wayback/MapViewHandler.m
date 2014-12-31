@@ -100,6 +100,8 @@ const float distanceThreshold = 10.0f;
 
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+//    mv.centerCoordinate = userLocation.location.coordinate;
+    
     NSArray * locations = [[_delegate model] locations];
     
     MapMarker * marker = [locations lastObject];
