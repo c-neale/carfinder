@@ -7,13 +7,15 @@
 //
 
 #import "LocationDetailsViewController.h"
+#import "LocationDetailsViewController+UITextViewDelegate.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "LocationDetailsTextViewHandler.h"
 #import "KeyboardNotificationHandler.h"
 
 #import "GeocodeProvider.h"
+
+#import "DataModel.h"
 
 @interface LocationDetailsViewController ()
 
@@ -28,7 +30,6 @@
 @property (nonatomic, strong) UIBarButtonItem * cancelEditButton;
 @property (nonatomic, strong) UIBarButtonItem * commitEditButton;
 
-@property (nonatomic, strong) LocationDetailsTextViewHandler * textViewHandler;
 @property (nonatomic, strong) KeyboardNotificationHandler * keyboardHandler;
 
 - (void) setupUIFields:(MapMarker *)marker;
@@ -39,14 +40,11 @@
 
 #pragma mark - Init and Lifecycle
 
-- (id) initWithModel:(DataModel *)model
+- (id) init
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         
-        _model = model;
-        
-        _textViewHandler = [[LocationDetailsTextViewHandler alloc] initWithDelegate:self];
         _keyboardHandler = [[KeyboardNotificationHandler alloc] initWithDelegate:_addressTextView];
         
         _cancelEditButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
@@ -79,10 +77,10 @@
     _addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     _addressTextView.layer.cornerRadius = 8.0f;
     
-    MapMarker * currentLocation = [_model objectAtIndex:_currentIndex];
+    MapMarker * currentLocation = [[DataModel sharedInstance] objectAtIndex:_currentIndex];
     [self setupUIFields:currentLocation];
     
-    [_addressTextView setDelegate:_textViewHandler];
+    [_addressTextView setDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -150,7 +148,7 @@
     [_addressTextView resignFirstResponder];
     
     // refresh the data back to original
-    [self setupUIFields:[_model objectAtIndex:_currentIndex]];
+    [self setupUIFields:[[DataModel sharedInstance] objectAtIndex:_currentIndex]];
 }
 
 - (void) commitAddressChange
@@ -160,7 +158,7 @@
     [[GeocodeProvider sharedInstance] geocodeAddress:_addressTextView.text
                                          onComplete:^(CLPlacemark *placemark) {
                                              
-                                             MapMarker * curMarker = [_model objectAtIndex:_currentIndex];
+                                             MapMarker * curMarker = [[DataModel sharedInstance] objectAtIndex:_currentIndex];
                                              [curMarker setPlacemark:placemark];
                                              
                                              // refresh the ui info
@@ -172,7 +170,7 @@
 
 - (IBAction)nameValueChanged:(id)sender
 {
-    MapMarker * currentLocation = [_model objectAtIndex:_currentIndex];
+    MapMarker * currentLocation = [[DataModel sharedInstance] objectAtIndex:_currentIndex];
     [currentLocation setName: [_nameInput text]];
 }
 

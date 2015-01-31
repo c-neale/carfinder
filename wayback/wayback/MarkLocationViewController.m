@@ -7,15 +7,17 @@
 //
 
 #import "MarkLocationViewController.h"
+#import "MarkLocationViewController+UIAlertViewDelegate.h"
+#import "MarkLocationViewController+UITableViewDataSource.h"
+#import "MarkLocationViewController+UITableViewDelegate.h"
 
 #import "MapLocationViewController.h"
 #import "LocationDetailsViewController.h"
 
 #import "MapMarker.h"
 
+#import "DataModel.h"
 #import "LocationProvider.h"
-#import "MarkLocationAlertViewHandler.h"
-#import "MarkLocationTableViewHandler.h"
 
 @interface MarkLocationViewController ()
 
@@ -30,10 +32,6 @@
 @property (nonatomic, strong) UIBarButtonItem * editButton;
 @property (nonatomic, strong) UIBarButtonItem * clearButton;
 
-@property (nonatomic, strong) LocationProvider * locationProvider;
-@property (nonatomic, strong) MarkLocationAlertViewHandler * alertHandler;
-@property (nonatomic, strong) MarkLocationTableViewHandler * tableHandler;
-
 #pragma mark - private methods
 
 - (void) editButtonPressed;
@@ -47,19 +45,12 @@
 
 #pragma mark - Init/Lifecycle
 
-- (id) initWithModel:(DataModel *)model
+- (id) init
 {
     self = [super initWithNibName:nil bundle:nil];
     
     if (self)
     {
-        _model = model;
-        
-        _alertHandler = [[MarkLocationAlertViewHandler alloc] initWithDelegate:self];
-        _tableHandler = [[MarkLocationTableViewHandler alloc] initWithDelegate:self andModel:_model];
-        
-        _locationProvider = [[LocationProvider alloc] init];
-        
         _editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit"
                                                        style:UIBarButtonItemStylePlain
                                                       target:self
@@ -67,7 +58,7 @@
         
         _clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear"
                                                         style:UIBarButtonItemStylePlain
-                                                       target:_alertHandler
+                                                       target:self
                                                        action:@selector(displayClearConfirmAlert)];
         
         self.title = @"The Way Back";
@@ -88,8 +79,8 @@
     // Do any additional setup after loading the view from its nib.
     
     // set the delegate and datasource pointers for the tableview.
-    [_locationTableView setDataSource:_tableHandler];
-    [_locationTableView setDelegate:_tableHandler];
+    [_locationTableView setDataSource:self];
+    [_locationTableView setDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -100,19 +91,19 @@
     
     self.screenName = @"MarkLocationViewController";
  
-    [_locationProvider start];
+    [[LocationProvider sharedInstance] start];
     [_locationTableView reloadData];
     
     [self updateNavbarButtonVisiblity];
     
-    [_showButton setEnabled: [_model locations].count > 0];
+    [_showButton setEnabled: [[DataModel sharedInstance] locations].count > 0];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     
-    [_locationProvider stop];
+    [[LocationProvider sharedInstance] stop];
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,7 +137,7 @@
 
 - (void) updateNavbarButtonVisiblity
 {
-    if([_model.locations count] > 0)
+    if([[[DataModel sharedInstance] locations] count] > 0)
     {
         [[self navigationItem] setLeftBarButtonItem:_clearButton animated:YES];
         [[self navigationItem] setRightBarButtonItem:_editButton animated:YES];
@@ -160,7 +151,7 @@
 
 - (void) clearButtonAction
 {
-    [_model clearAllLocations];
+    [[DataModel sharedInstance] clearAllLocations];
     
     [_locationTableView reloadData];
     [self setEditMode:NO];
@@ -179,15 +170,17 @@
 
 - (IBAction)FindButtonPressed:(id)sender
 {
-    MapLocationViewController * mlvc = [[MapLocationViewController alloc] initWithModel:_model andLocation:[_locationProvider currentLocation]];
+    MapLocationViewController * mlvc = [[MapLocationViewController alloc] initWithLocation:[[LocationProvider sharedInstance] currentLocation]];
     [self.navigationController pushViewController:mlvc animated:YES];
 }
 
 - (IBAction)markLocationButtonPressed:(id)sender
 {
-    if(_locationProvider.currentLocation != nil)
+    CLLocation * currentLocation = [[LocationProvider sharedInstance] currentLocation];
+    
+    if(currentLocation != nil)
     {
-        [_model addLocation:_locationProvider.currentLocation postInit:^{
+        [[DataModel sharedInstance] addLocation:currentLocation postInit:^{
             [_locationTableView reloadData];
             [self updateNavbarButtonVisiblity];
         }];
@@ -195,13 +188,13 @@
         [_locationTableView reloadData];
         [self updateNavbarButtonVisiblity];
         
-        [_showButton setEnabled: [_model locations].count > 0];
+        [_showButton setEnabled: [[DataModel sharedInstance] locations].count > 0];
     }
     else
     {
         [LogHelper logAndTrackErrorMessage:@"Location services is off" fromClass:self fromFunction:_cmd];
         
-        [_alertHandler displayLocationServicesAlert];
+        [self displayLocationServicesAlert];
     }
 }
 

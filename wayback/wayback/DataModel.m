@@ -20,6 +20,20 @@
 
 @implementation DataModel
 
+#pragma mark - sharedInstance
+
++ (DataModel *) sharedInstance
+{
+    static DataModel *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[DataModel alloc] init];
+    });
+    
+    return _sharedInstance;
+}
+
 #pragma mark - init
 
 - (id) init

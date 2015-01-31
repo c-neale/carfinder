@@ -18,6 +18,20 @@
 
 @implementation LocationProvider
 
+#pragma mark - sharedInstance
+
++ (LocationProvider *) sharedInstance
+{
+    static LocationProvider *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[LocationProvider alloc] init];
+    });
+    
+    return _sharedInstance;
+}
+
 #pragma mark - init method(s)
 
 - (id) init

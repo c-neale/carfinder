@@ -16,6 +16,8 @@
 
 @interface DataModel : NSObject
 
++ (DataModel *) sharedInstance;
+
 typedef void (^postInitialiseMarker) (void);
 
 - (id) init;

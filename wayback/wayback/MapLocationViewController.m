@@ -7,18 +7,19 @@
 //
 
 #import "MapLocationViewController.h"
+#import "MapLocationViewController+MKMapViewDelegate.h"
 
-#import "MapViewHandler.h"
 #import "MapMarker.h"
+
+#import "DataModel.h"
 
 @interface MapLocationViewController ()
 
 #pragma mark - private properties
-@property (nonatomic, strong) MapViewHandler * mapHandler;
-
 @property (nonatomic, weak) CLLocation * initialLocation;
 
 #pragma mark - private methods
+- (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker;
 
 @end
 
@@ -29,14 +30,12 @@
 
 #pragma mark - Init/lifecycle
 
-- (id) initWithModel:(DataModel *)model andLocation:(CLLocation*)location
+- (id) initWithLocation:(CLLocation*)location
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self)
     {
-        _mapHandler = [[MapViewHandler alloc] initWithDelegate:self];
         _initialLocation = location;
-        _model = model;
         
         self.title = @"";
     }
@@ -54,7 +53,7 @@
     [super viewDidLoad];
     
     // map view needs to be loaded before we can do stuff with it...
-    [_mapView setDelegate:_mapHandler];
+    [_mapView setDelegate:self];
     
     [self setRegionWithLocation:_initialLocation andRadius:MAP_VIEW_RADIUS];
     
@@ -85,9 +84,9 @@
 - (void) addAnnotations
 {
     [self removeAnnotations];
-    if ([_model locations] != nil)
+    if ([[DataModel sharedInstance] locations] != nil)
     {
-        [_mapView addAnnotations:[_model locations]];
+        [_mapView addAnnotations:[[DataModel sharedInstance] locations]];
     }
 }
 
@@ -106,12 +105,14 @@
 
 - (void) showDirections
 {
-    for(int i = 0; i < [_model locations].count; ++i)
+    DataModel * dataModel = [DataModel sharedInstance];
+    
+    for(int i = 0; i < [dataModel locations].count; ++i)
     {
-        MapMarker * source = (i == ([_model locations].count - 1)) ? nil : [_model objectAtIndex:i+1];
-        MapMarker * destination = [_model objectAtIndex:i];
+        MapMarker * source = (i == ([dataModel locations].count - 1)) ? nil : [dataModel objectAtIndex:i+1];
+        MapMarker * destination = [dataModel objectAtIndex:i];
         
-        [_mapHandler calculateRouteFrom:source to:destination];
+        [self calculateRouteFrom:source to:destination];
     }
 }
 
@@ -127,6 +128,64 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, radius, radius);
     [_mapView setRegion:region animated:NO];
     [_mapView setShowsUserLocation:YES];
+}
+
+- (MKMapItem *)createMapItemFromMarker:(MapMarker *)marker
+{
+    if(marker == nil)
+    {
+        return [MKMapItem mapItemForCurrentLocation];
+    }
+    
+    MKPlacemark * markerPm = [[MKPlacemark alloc] initWithPlacemark:marker.placemark];
+    return [[MKMapItem alloc] initWithPlacemark:markerPm];
+}
+
+- (void) calculateRouteFrom:(MapMarker *)source to:(MapMarker *)dest
+{
+    if([dest routeCalcRequired] == YES)
+    {
+        [dest setRouteCalcRequired:NO];
+        
+        MKDirectionsRequest * dirRequest = [[MKDirectionsRequest alloc] init];
+        [dirRequest setTransportType:MKDirectionsTransportTypeWalking];
+        
+        [dirRequest setSource:[self createMapItemFromMarker:source]];
+        [dirRequest setDestination:[self createMapItemFromMarker:dest]];
+        
+        MKDirections * dirs = [[MKDirections alloc] initWithRequest:dirRequest];
+        
+        [dirs calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+            if(error != nil)
+            {
+                DebugLog(@"error domain: %@ code: %d", error.domain, (int)error.code);
+                
+                [LogHelper logAndTrackError:error fromClass:self fromFunction:_cmd];
+                
+                // reset this flag so it will get processed again next time.
+                [dest setRouteCalcRequired:YES];
+            }
+            else
+            {
+                //MKMapView * mv = [_delegate mapView];
+                
+                // remove the current overlay, if it exists
+                if(dest.route != nil)
+                {
+                    [_mapView removeOverlay:dest.route.polyline];
+                }
+                
+                // get the route from the response object
+                MKRoute * route = response.routes.lastObject;
+                
+                // apply the new route overlay to the map.
+                [_mapView addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
+                
+                // store the route on the destination for future reference.
+                [dest setRoute:route];
+            }
+        }];
+    }
 }
 
 #pragma mark - IBActions

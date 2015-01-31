@@ -1,30 +1,14 @@
 //
-//  MarkLocationAlertViewHandler.m
+//  MarkLocationViewController+UIAlertViewDelegate.m
 //  wayback
 //
-//  Created by Cory Neale on 11/07/2014.
-//  Copyright (c) 2014 Cory Neale. All rights reserved.
+//  Created by Cory Neale on 31/01/2015.
+//  Copyright (c) 2015 Cory Neale. All rights reserved.
 //
 
-#import "MarkLocationAlertViewHandler.h"
+#import "MarkLocationViewController+UIAlertViewDelegate.h"
 
-#import "MarkLocationViewController.h"
-
-@implementation MarkLocationAlertViewHandler
-
-#pragma mark - Init
-
-- (id) initWithDelegate:(MarkLocationViewController *)delegate
-{
-    self = [super init];
-    if(self)
-    {
-        _delegate = delegate;
-    }
-    return self;
-}
-
-#pragma mark - class methods
+@implementation MarkLocationViewController (UIAlertViewDelegate)
 
 - (void) displayLocationServicesAlert
 {
@@ -61,7 +45,7 @@
         // check which button was pressed and process it.
         switch (buttonIndex) {
             case 1:
-                [_delegate clearButtonAction];
+                [self clearButtonAction];
                 break;
             case 0:
             default:
@@ -69,5 +53,6 @@
         }
     }
 }
+
 
 @end

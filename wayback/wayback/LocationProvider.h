@@ -10,8 +10,9 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-// TODO: this should be made into a singleton maybe?
 @interface LocationProvider : NSObject<CLLocationManagerDelegate>
+
++ (LocationProvider *) sharedInstance;
 
 @property (nonatomic, strong) CLLocation * currentLocation;
 

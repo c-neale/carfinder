@@ -11,14 +11,12 @@
 #import "GAI.h"
 
 #import "MapMarker.h"
-#import "DataModel.h"
 
 @interface LocationDetailsViewController : GAITrackedViewController
 
 @property (nonatomic) NSUInteger currentIndex;
-@property (nonatomic) DataModel * model;
 
-- (id) initWithModel:(DataModel *)model;
+- (id) init;
 
 - (IBAction)nameValueChanged:(id)sender;
 - (void) updateAddressEditButtons:(BOOL) setVisible;

@@ -12,11 +12,11 @@
 
 #import "GAI.h"
 
+#import "DataModel.h"
+
 #import "Ratings.h"
 
 @interface AppDelegate ()
-
-@property (nonatomic, strong) DataModel * dataModel;
 
 - (void) initGoogleAnalyticsWithId:(NSString *)trackingId;
 
@@ -33,12 +33,11 @@
     // create the window.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // create an instance of the data model to hold our data.
-    _dataModel = [[DataModel alloc] init];
-    [_dataModel loadModel];
+    // load the data model.  sharedInstance will handle the object creation.
+    [[DataModel sharedInstance] loadModel];
     
     // create our starting view controller and pass it the model.
-    MarkLocationViewController * markLocationVc = [[MarkLocationViewController alloc] initWithModel:_dataModel];
+    MarkLocationViewController * markLocationVc = [[MarkLocationViewController alloc] init];
     
     // create a navigation controller with our root view controller and set it to the window.
     UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:markLocationVc];
@@ -62,7 +61,7 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    BOOL saved = [_dataModel saveModel];
+    BOOL saved = [[DataModel sharedInstance] saveModel];
     if(saved)
     {
         DebugLog(@"dataModel successfully saved");

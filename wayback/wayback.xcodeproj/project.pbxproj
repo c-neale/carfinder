@@ -14,9 +14,6 @@
 		0B09FA3E1A4EA3C600B3B02E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B09FA3D1A4EA3C600B3B02E /* StoreKit.framework */; };
 		0B09FA411A5108E200B3B02E /* Ratings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B09FA401A5108E200B3B02E /* Ratings.m */; };
 		0B150755196F9F6600523BE1 /* VersionCheckAlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B150754196F9F6600523BE1 /* VersionCheckAlertViewHandler.m */; };
-		0B15075A196FD2A100523BE1 /* MarkLocationAlertViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */; };
-		0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */; };
-		0B1507631970E1B000523BE1 /* LocationDetailsTextViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507621970E1B000523BE1 /* LocationDetailsTextViewHandler.m */; };
 		0B1507661970E3F400523BE1 /* KeyboardNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */; };
 		0B1507691972385000523BE1 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1507681972385000523BE1 /* DataModel.m */; };
 		0B15076C197266FD00523BE1 /* GeocodeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15076B197266FD00523BE1 /* GeocodeProvider.m */; };
@@ -27,8 +24,12 @@
 		0B6CFAD419398F2300B77374 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFAD319398F2300B77374 /* CoreLocation.framework */; };
 		0B6CFADB193B300A00B77374 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6CFADA193B300A00B77374 /* AddressBook.framework */; };
 		0B7B077E19653A220077F4A4 /* LocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B077D19653A220077F4A4 /* LocationProvider.m */; };
-		0B7B0781196541900077F4A4 /* MapViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B7B0780196541900077F4A4 /* MapViewHandler.m */; };
 		0B7B8FB519455C3D00FE3716 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */; };
+		0BBBF0921A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0911A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.m */; };
+		0BBBF0951A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0941A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.m */; };
+		0BBBF0981A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0971A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.m */; };
+		0BBBF09C1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF09B1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.m */; };
+		0BBBF09F1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF09E1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.m */; };
 		0BC7B87D194B19F7006EEFE7 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B87C194B19F7006EEFE7 /* libGoogleAnalyticsServices.a */; };
 		0BC7B87F194B1A1E006EEFE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B87E194B1A1E006EEFE7 /* SystemConfiguration.framework */; };
 		0BC7B881194B1A31006EEFE7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7B880194B1A31006EEFE7 /* CoreData.framework */; };
@@ -61,12 +62,6 @@
 		0B09FA401A5108E200B3B02E /* Ratings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ratings.m; sourceTree = "<group>"; };
 		0B150753196F9F6600523BE1 /* VersionCheckAlertViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionCheckAlertViewHandler.h; sourceTree = "<group>"; };
 		0B150754196F9F6600523BE1 /* VersionCheckAlertViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionCheckAlertViewHandler.m; sourceTree = "<group>"; };
-		0B150758196FD2A100523BE1 /* MarkLocationAlertViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationAlertViewHandler.h; sourceTree = "<group>"; };
-		0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLocationAlertViewHandler.m; sourceTree = "<group>"; };
-		0B15075C196FEC2000523BE1 /* MarkLocationTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLocationTableViewHandler.h; sourceTree = "<group>"; };
-		0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLocationTableViewHandler.m; sourceTree = "<group>"; };
-		0B1507611970E1B000523BE1 /* LocationDetailsTextViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsTextViewHandler.h; sourceTree = "<group>"; };
-		0B1507621970E1B000523BE1 /* LocationDetailsTextViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsTextViewHandler.m; sourceTree = "<group>"; };
 		0B1507641970E3F400523BE1 /* KeyboardNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardNotificationHandler.h; sourceTree = "<group>"; };
 		0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardNotificationHandler.m; sourceTree = "<group>"; };
 		0B1507671972385000523BE1 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
@@ -82,13 +77,21 @@
 		0B6CFADA193B300A00B77374 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		0B7B077C19653A220077F4A4 /* LocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationProvider.h; sourceTree = "<group>"; };
 		0B7B077D19653A220077F4A4 /* LocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationProvider.m; sourceTree = "<group>"; };
-		0B7B077F196541900077F4A4 /* MapViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewHandler.h; sourceTree = "<group>"; };
-		0B7B0780196541900077F4A4 /* MapViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewHandler.m; sourceTree = "<group>"; };
 		0B7B8FB419455C3D00FE3716 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0BBBEF3A1A53F5030029F294 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
 		0BBBEF3B1A53F5030029F294 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
 		0BBBEF3C1A53F5030029F294 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
 		0BBBEF3D1A53F5030029F294 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		0BBBF0901A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MarkLocationViewController+UIAlertViewDelegate.h"; sourceTree = "<group>"; };
+		0BBBF0911A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MarkLocationViewController+UIAlertViewDelegate.m"; sourceTree = "<group>"; };
+		0BBBF0931A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MarkLocationViewController+UITableViewDataSource.h"; sourceTree = "<group>"; };
+		0BBBF0941A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MarkLocationViewController+UITableViewDataSource.m"; sourceTree = "<group>"; };
+		0BBBF0961A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MarkLocationViewController+UITableViewDelegate.h"; sourceTree = "<group>"; };
+		0BBBF0971A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MarkLocationViewController+UITableViewDelegate.m"; sourceTree = "<group>"; };
+		0BBBF09A1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LocationDetailsViewController+UITextViewDelegate.h"; sourceTree = "<group>"; };
+		0BBBF09B1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LocationDetailsViewController+UITextViewDelegate.m"; sourceTree = "<group>"; };
+		0BBBF09D1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MapLocationViewController+MKMapViewDelegate.h"; sourceTree = "<group>"; };
+		0BBBF09E1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MapLocationViewController+MKMapViewDelegate.m"; sourceTree = "<group>"; };
 		0BC7B874194B19DD006EEFE7 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		0BC7B875194B19DD006EEFE7 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
 		0BC7B876194B19DD006EEFE7 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
@@ -186,15 +189,15 @@
 		0B150757196FD27A00523BE1 /* MarkLocation */ = {
 			isa = PBXGroup;
 			children = (
-				0B7B077C19653A220077F4A4 /* LocationProvider.h */,
-				0B7B077D19653A220077F4A4 /* LocationProvider.m */,
 				0BF683B3194939B000AFB4C5 /* MarkLocationViewController.h */,
 				0BF683B4194939B000AFB4C5 /* MarkLocationViewController.m */,
 				0BF683B5194939B000AFB4C5 /* MarkLocationViewController.xib */,
-				0B150758196FD2A100523BE1 /* MarkLocationAlertViewHandler.h */,
-				0B150759196FD2A100523BE1 /* MarkLocationAlertViewHandler.m */,
-				0B15075C196FEC2000523BE1 /* MarkLocationTableViewHandler.h */,
-				0B15075D196FEC2000523BE1 /* MarkLocationTableViewHandler.m */,
+				0BBBF0901A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.h */,
+				0BBBF0911A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.m */,
+				0BBBF0931A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.h */,
+				0BBBF0941A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.m */,
+				0BBBF0961A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.h */,
+				0BBBF0971A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.m */,
 			);
 			name = MarkLocation;
 			sourceTree = "<group>";
@@ -205,8 +208,8 @@
 				0BF683AE194939B000AFB4C5 /* MapLocationViewController.h */,
 				0BF683AF194939B000AFB4C5 /* MapLocationViewController.m */,
 				0BF683B0194939B000AFB4C5 /* MapLocationViewController.xib */,
-				0B7B077F196541900077F4A4 /* MapViewHandler.h */,
-				0B7B0780196541900077F4A4 /* MapViewHandler.m */,
+				0BBBF09D1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.h */,
+				0BBBF09E1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.m */,
 			);
 			name = MapLocation;
 			sourceTree = "<group>";
@@ -217,10 +220,8 @@
 				0BF683A9194939B000AFB4C5 /* LocationDetailsViewController.h */,
 				0BF683AA194939B000AFB4C5 /* LocationDetailsViewController.m */,
 				0BF683AB194939B000AFB4C5 /* LocationDetailsViewController.xib */,
-				0B1507611970E1B000523BE1 /* LocationDetailsTextViewHandler.h */,
-				0B1507621970E1B000523BE1 /* LocationDetailsTextViewHandler.m */,
-				0B1507641970E3F400523BE1 /* KeyboardNotificationHandler.h */,
-				0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */,
+				0BBBF09A1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.h */,
+				0BBBF09B1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.m */,
 			);
 			name = LocationDetails;
 			sourceTree = "<group>";
@@ -273,6 +274,17 @@
 				0B6CFA981936D2DC00B77374 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0BBBF0991A7CD7D50029F294 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0B7B077C19653A220077F4A4 /* LocationProvider.h */,
+				0B7B077D19653A220077F4A4 /* LocationProvider.m */,
+				0B1507641970E3F400523BE1 /* KeyboardNotificationHandler.h */,
+				0B1507651970E3F400523BE1 /* KeyboardNotificationHandler.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		0BC7B87019493D11006EEFE7 /* ViewControllers */ = {
@@ -328,6 +340,7 @@
 		0BF683A3194939B000AFB4C5 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
+				0BBBF0991A7CD7D50029F294 /* Common */,
 				0B09FA321A4EA2DA00B3B02E /* Appirater */,
 				0B1507601970E15500523BE1 /* Utils */,
 				0B150756196F9F6D00523BE1 /* VersionCheck */,
@@ -420,25 +433,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF683C7194939B000AFB4C5 /* MapLocationViewController.m in Sources */,
+				0BBBF09F1A7CD8D80029F294 /* MapLocationViewController+MKMapViewDelegate.m in Sources */,
+				0BBBF0921A7CD2E70029F294 /* MarkLocationViewController+UIAlertViewDelegate.m in Sources */,
 				0BF683C4194939B000AFB4C5 /* LocationDetailsViewController.m in Sources */,
 				0BF683CA194939B000AFB4C5 /* MarkLocationViewController.m in Sources */,
 				0BF683CD194939B000AFB4C5 /* VersionComparer.m in Sources */,
+				0BBBF09C1A7CD8080029F294 /* LocationDetailsViewController+UITextViewDelegate.m in Sources */,
 				0BF683C6194939B000AFB4C5 /* main.m in Sources */,
 				0B15076C197266FD00523BE1 /* GeocodeProvider.m in Sources */,
 				0B7B077E19653A220077F4A4 /* LocationProvider.m in Sources */,
-				0B15075A196FD2A100523BE1 /* MarkLocationAlertViewHandler.m in Sources */,
 				0B09FA411A5108E200B3B02E /* Ratings.m in Sources */,
 				0B09FA391A4EA33200B3B02E /* Appirater.m in Sources */,
 				0BF683C1194939B000AFB4C5 /* AppDelegate.m in Sources */,
 				0BF683C9194939B000AFB4C5 /* MapMarker.m in Sources */,
-				0B7B0781196541900077F4A4 /* MapViewHandler.m in Sources */,
 				0BF683CC194939B000AFB4C5 /* VersionCheck.m in Sources */,
 				0B150755196F9F6600523BE1 /* VersionCheckAlertViewHandler.m in Sources */,
-				0B15075E196FEC2000523BE1 /* MarkLocationTableViewHandler.m in Sources */,
+				0BBBF0951A7CD4D40029F294 /* MarkLocationViewController+UITableViewDataSource.m in Sources */,
 				0B1507691972385000523BE1 /* DataModel.m in Sources */,
 				0B08DACD194D5230001D70A8 /* LogHelper.m in Sources */,
+				0BBBF0981A7CD58C0029F294 /* MarkLocationViewController+UITableViewDelegate.m in Sources */,
 				0B1507661970E3F400523BE1 /* KeyboardNotificationHandler.m in Sources */,
-				0B1507631970E1B000523BE1 /* LocationDetailsTextViewHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
