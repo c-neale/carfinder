@@ -16,6 +16,7 @@
 		0BBBF0D71A8DFD4D0029F294 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D51A8DFD4D0029F294 /* MapViewController.xib */; };
 		0BBBF0DA1A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */; };
 		0BBBF0DC1A8E02BE0029F294 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBBF0DB1A8E02BE0029F294 /* MapKit.framework */; };
+		0BBBF0E01A8E03E80029F294 /* LocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0DF1A8E03E80029F294 /* LocationProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		0BBBF0D81A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MapViewController+MKMapViewDelegate.h"; sourceTree = "<group>"; };
 		0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MapViewController+MKMapViewDelegate.m"; sourceTree = "<group>"; };
 		0BBBF0DB1A8E02BE0029F294 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0BBBF0DE1A8E03E80029F294 /* LocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationProvider.h; sourceTree = "<group>"; };
+		0BBBF0DF1A8E03E80029F294 /* LocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,7 @@
 		0BBBF0AB1A80BEED0029F294 /* wayback */ = {
 			isa = PBXGroup;
 			children = (
+				0BBBF0DD1A8E03C90029F294 /* Classes */,
 				0BBBF0D21A8DFD160029F294 /* ViewControllers */,
 				0BBBF0B01A80BEED0029F294 /* AppDelegate.h */,
 				0BBBF0B11A80BEED0029F294 /* AppDelegate.m */,
@@ -134,6 +138,15 @@
 				0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0BBBF0DD1A8E03C90029F294 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0BBBF0DE1A8E03E80029F294 /* LocationProvider.h */,
+				0BBBF0DF1A8E03E80029F294 /* LocationProvider.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +251,7 @@
 			files = (
 				0BBBF0DA1A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m in Sources */,
 				0BBBF0D61A8DFD4D0029F294 /* MapViewController.m in Sources */,
+				0BBBF0E01A8E03E80029F294 /* LocationProvider.m in Sources */,
 				0BBBF0B21A80BEED0029F294 /* AppDelegate.m in Sources */,
 				0BBBF0AF1A80BEED0029F294 /* main.m in Sources */,
 			);
