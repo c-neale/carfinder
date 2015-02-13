@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "MapViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +25,14 @@
     // TODO: insert code for view controller when its done.
     //self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     //self.window.rootViewController = self.viewController;
+    
+    MapViewController * mvc = [[MapViewController alloc] init];
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:mvc];
+    
+    self.window.rootViewController = navController;
+    
+//    self.viewController = navController;
+//    self.window.rootViewController self.ViewController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

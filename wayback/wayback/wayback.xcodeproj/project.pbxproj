@@ -15,6 +15,7 @@
 		0BBBF0D61A8DFD4D0029F294 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D41A8DFD4D0029F294 /* MapViewController.m */; };
 		0BBBF0D71A8DFD4D0029F294 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D51A8DFD4D0029F294 /* MapViewController.xib */; };
 		0BBBF0DA1A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */; };
+		0BBBF0DC1A8E02BE0029F294 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBBF0DB1A8E02BE0029F294 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		0BBBF0D51A8DFD4D0029F294 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		0BBBF0D81A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MapViewController+MKMapViewDelegate.h"; sourceTree = "<group>"; };
 		0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MapViewController+MKMapViewDelegate.m"; sourceTree = "<group>"; };
+		0BBBF0DB1A8E02BE0029F294 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BBBF0DC1A8E02BE0029F294 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +69,7 @@
 		0BBBF0A01A80BEED0029F294 = {
 			isa = PBXGroup;
 			children = (
+				0BBBF0DB1A8E02BE0029F294 /* MapKit.framework */,
 				0BBBF0AB1A80BEED0029F294 /* wayback */,
 				0BBBF0C51A80BEED0029F294 /* waybackTests */,
 				0BBBF0AA1A80BEED0029F294 /* Products */,
