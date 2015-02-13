@@ -14,6 +14,7 @@
 		0BBBF0C91A80BEED0029F294 /* waybackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0C81A80BEED0029F294 /* waybackTests.m */; };
 		0BBBF0D61A8DFD4D0029F294 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D41A8DFD4D0029F294 /* MapViewController.m */; };
 		0BBBF0D71A8DFD4D0029F294 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D51A8DFD4D0029F294 /* MapViewController.xib */; };
+		0BBBF0DA1A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		0BBBF0D31A8DFD4D0029F294 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		0BBBF0D41A8DFD4D0029F294 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		0BBBF0D51A8DFD4D0029F294 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		0BBBF0D81A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MapViewController+MKMapViewDelegate.h"; sourceTree = "<group>"; };
+		0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MapViewController+MKMapViewDelegate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				0BBBF0D31A8DFD4D0029F294 /* MapViewController.h */,
 				0BBBF0D41A8DFD4D0029F294 /* MapViewController.m */,
 				0BBBF0D51A8DFD4D0029F294 /* MapViewController.xib */,
+				0BBBF0D81A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.h */,
+				0BBBF0D91A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BBBF0DA1A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m in Sources */,
 				0BBBF0D61A8DFD4D0029F294 /* MapViewController.m in Sources */,
 				0BBBF0B21A80BEED0029F294 /* AppDelegate.m in Sources */,
 				0BBBF0AF1A80BEED0029F294 /* main.m in Sources */,
@@ -412,6 +418,7 @@
 				0BBBF0CE1A80BEED0029F294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0BBBF0CF1A80BEED0029F294 /* Build configuration list for PBXNativeTarget "waybackTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				0BBBF0D11A80BEED0029F294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
