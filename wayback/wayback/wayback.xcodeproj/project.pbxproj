@@ -20,6 +20,7 @@
 		0BBBF0E61A8F1B180029F294 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0E41A8F1B180029F294 /* ListViewController.m */; };
 		0BBBF0E71A8F1B180029F294 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBBF0E51A8F1B180029F294 /* ListViewController.xib */; };
 		0BBBF0EA1A8F22930029F294 /* ListViewController+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0E91A8F22930029F294 /* ListViewController+UITableViewDelegate.m */; };
+		0BBBF0ED1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		0BBBF0E51A8F1B180029F294 /* ListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		0BBBF0E81A8F22930029F294 /* ListViewController+UITableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListViewController+UITableViewDelegate.h"; sourceTree = "<group>"; };
 		0BBBF0E91A8F22930029F294 /* ListViewController+UITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListViewController+UITableViewDelegate.m"; sourceTree = "<group>"; };
+		0BBBF0EB1A8F239D0029F294 /* ListViewController+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListViewController+UITableViewDataSource.h"; sourceTree = "<group>"; };
+		0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListViewController+UITableViewDataSource.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				0BBBF0E51A8F1B180029F294 /* ListViewController.xib */,
 				0BBBF0E81A8F22930029F294 /* ListViewController+UITableViewDelegate.h */,
 				0BBBF0E91A8F22930029F294 /* ListViewController+UITableViewDelegate.m */,
+				0BBBF0EB1A8F239D0029F294 /* ListViewController+UITableViewDataSource.h */,
+				0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */,
 			);
 			name = ListViewController;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				0BBBF0E01A8E03E80029F294 /* LocationProvider.m in Sources */,
 				0BBBF0B21A80BEED0029F294 /* AppDelegate.m in Sources */,
 				0BBBF0AF1A80BEED0029F294 /* main.m in Sources */,
+				0BBBF0ED1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
