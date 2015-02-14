@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ListViewController_UITableViewDelegate : NSObject
+#import "ListViewController.h"
+
+@interface ListViewController (UITableViewDelegate) <UITableViewDelegate>
 
 @end

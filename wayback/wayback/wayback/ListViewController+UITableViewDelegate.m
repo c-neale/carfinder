@@ -8,6 +8,6 @@
 
 #import "ListViewController+UITableViewDelegate.h"
 
-@implementation ListViewController_UITableViewDelegate
+@implementation ListViewController (UITableViewDelegate)
 
 @end
