@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface LocationProvider : NSObject
+@interface LocationProvider : NSObject <CLLocationManagerDelegate>
+
++ (LocationProvider *) sharedInstance;
+
+- (void) start;
+- (void) stop;
+
 
 @end

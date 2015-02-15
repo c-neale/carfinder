@@ -21,6 +21,7 @@
 		0BBBF0E71A8F1B180029F294 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BBBF0E51A8F1B180029F294 /* ListViewController.xib */; };
 		0BBBF0EA1A8F22930029F294 /* ListViewController+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0E91A8F22930029F294 /* ListViewController+UITableViewDelegate.m */; };
 		0BBBF0ED1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */; };
+		0BBBF0EF1A90AE980029F294 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBBF0EE1A90AE980029F294 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0BBBF0E91A8F22930029F294 /* ListViewController+UITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListViewController+UITableViewDelegate.m"; sourceTree = "<group>"; };
 		0BBBF0EB1A8F239D0029F294 /* ListViewController+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListViewController+UITableViewDataSource.h"; sourceTree = "<group>"; };
 		0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListViewController+UITableViewDataSource.m"; sourceTree = "<group>"; };
+		0BBBF0EE1A90AE980029F294 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BBBF0EF1A90AE980029F294 /* CoreLocation.framework in Frameworks */,
 				0BBBF0DC1A8E02BE0029F294 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +86,7 @@
 		0BBBF0A01A80BEED0029F294 = {
 			isa = PBXGroup;
 			children = (
+				0BBBF0EE1A90AE980029F294 /* CoreLocation.framework */,
 				0BBBF0DB1A8E02BE0029F294 /* MapKit.framework */,
 				0BBBF0AB1A80BEED0029F294 /* wayback */,
 				0BBBF0C51A80BEED0029F294 /* waybackTests */,
