@@ -8,6 +8,14 @@
 
 #import "LocationProvider.h"
 
+@interface LocationProvider ()
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
+- (void)requestAuthorization;
+
+@end
+
 @implementation LocationProvider
 
 #pragma mark - sharedInstance
@@ -31,7 +39,8 @@
     self = [super init];
     if(self)
     {
-        
+        _currentLocation = nil;
+        _locationManager = [[CLLocationManager alloc] init];
     }
     
     return self;
@@ -41,12 +50,26 @@
 
 - (void) start
 {
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
     
+    [self requestAuthorization];
+    
+    [_locationManager startUpdatingLocation];
 }
 
 - (void) stop
 {
-    
+    [_locationManager stopUpdatingLocation];
+}
+
+- (void) requestAuthorization
+{
+    // NOTE: check info.plist file for display message when requesting auth.
+    // need to check if the locationManager responds; versions of ios prior to 8 will crash on this call.
+    if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
 }
 
 #pragma mark - CLLocationManagerDelegate
