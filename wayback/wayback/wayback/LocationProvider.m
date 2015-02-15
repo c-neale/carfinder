@@ -76,7 +76,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-
+    _currentLocation = newLocation;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
