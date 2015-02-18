@@ -7,6 +7,8 @@
 //
 
 #import "LocationProvider.h"
+#import "LocationProvider+CLLocationManagerDelegate.h"
+
 
 @interface LocationProvider ()
 
@@ -70,18 +72,6 @@
     if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [self.locationManager requestWhenInUseAuthorization];
     }
-}
-
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    _currentLocation = newLocation;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    
 }
 
 @end
