@@ -43,6 +43,8 @@
     {
         _currentLocation = nil;
         _locationManager = [[CLLocationManager alloc] init];
+        
+        _isStarted = NO;
     }
     
     return self;
@@ -54,15 +56,18 @@
 {
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
+    _isStarted = YES;
     
     [self requestAuthorization];
-    
     [_locationManager startUpdatingLocation];
 }
 
 - (void) stop
 {
     [_locationManager stopUpdatingLocation];
+
+    _currentLocation = nil;
+    _isStarted = NO;
 }
 
 - (void) requestAuthorization

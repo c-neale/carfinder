@@ -11,6 +11,7 @@
 
 @interface LocationProvider : NSObject
 
+@property (nonatomic) BOOL isStarted;
 @property (nonatomic, strong) CLLocation * currentLocation;
 
 + (LocationProvider *) sharedInstance;

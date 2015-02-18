@@ -19,7 +19,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    
+    // TODO: should probably handle some errors here...
 }
 
 @end
