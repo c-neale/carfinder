@@ -22,6 +22,7 @@
 		0BBBF0EA1A8F22930029F294 /* ListViewController+UITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0E91A8F22930029F294 /* ListViewController+UITableViewDelegate.m */; };
 		0BBBF0ED1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */; };
 		0BBBF0EF1A90AE980029F294 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBBF0EE1A90AE980029F294 /* CoreLocation.framework */; };
+		0BBBF0F21A9490960029F294 /* LocationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBBF0F11A9490960029F294 /* LocationStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		0BBBF0EB1A8F239D0029F294 /* ListViewController+UITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListViewController+UITableViewDataSource.h"; sourceTree = "<group>"; };
 		0BBBF0EC1A8F239D0029F294 /* ListViewController+UITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListViewController+UITableViewDataSource.m"; sourceTree = "<group>"; };
 		0BBBF0EE1A90AE980029F294 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0BBBF0F01A9490960029F294 /* LocationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationStore.h; sourceTree = "<group>"; };
+		0BBBF0F11A9490960029F294 /* LocationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 			children = (
 				0BBBF0DE1A8E03E80029F294 /* LocationProvider.h */,
 				0BBBF0DF1A8E03E80029F294 /* LocationProvider.m */,
+				0BBBF0F01A9490960029F294 /* LocationStore.h */,
+				0BBBF0F11A9490960029F294 /* LocationStore.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 			files = (
 				0BBBF0EA1A8F22930029F294 /* ListViewController+UITableViewDelegate.m in Sources */,
 				0BBBF0DA1A8DFFFC0029F294 /* MapViewController+MKMapViewDelegate.m in Sources */,
+				0BBBF0F21A9490960029F294 /* LocationStore.m in Sources */,
 				0BBBF0D61A8DFD4D0029F294 /* MapViewController.m in Sources */,
 				0BBBF0E61A8F1B180029F294 /* ListViewController.m in Sources */,
 				0BBBF0E01A8E03E80029F294 /* LocationProvider.m in Sources */,
