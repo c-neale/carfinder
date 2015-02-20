@@ -11,6 +11,8 @@
 
 #import "LocationProvider.h"
 
+extern NSString * const LocationProviderUpdatedNotification;
+
 @interface LocationProvider (CLLocationManagerDelegate) <CLLocationManagerDelegate>
 
 @end

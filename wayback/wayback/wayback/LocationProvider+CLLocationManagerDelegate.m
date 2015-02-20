@@ -8,6 +8,8 @@
 
 #import "LocationProvider+CLLocationManagerDelegate.h"
 
+NSString * const LocationProviderUpdatedNotification = @"LocationProviderUpdated";
+
 @implementation LocationProvider (CLLocationManagerDelegate)
 
 #pragma mark - CLLocationManagerDelegate
@@ -20,7 +22,7 @@
     
     // dispatch the notification asynchronously...
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"LocationManagerLocationUpdated" object:self userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LocationProviderUpdatedNotification object:self userInfo:userInfo];
     });
 }
 
