@@ -8,6 +8,13 @@
 
 #import "LocationStore.h"
 
+@interface LocationStore ()
+
+@property (nonatomic, strong) NSMutableArray * markedLocations;
+@property (nonatomic, strong) NSMutableArray * breadcrumbs;
+
+@end
+
 @implementation LocationStore
 
 #pragma mark - sharedInstance
@@ -31,7 +38,8 @@
     self = [super init];
     if(self)
     {
-        
+        _markedLocations = [[NSMutableArray alloc] init];
+        _breadcrumbs = [[NSMutableArray alloc] init];
     }
     
     return self;
