@@ -15,6 +15,13 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     [self setCurrentLocation:newLocation];
+    
+    NSDictionary *userInfo = @{@"location": newLocation};
+    
+    // dispatch the notification asynchronously...
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"LocationManagerLocationUpdated" object:self userInfo:userInfo];
+    });
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
